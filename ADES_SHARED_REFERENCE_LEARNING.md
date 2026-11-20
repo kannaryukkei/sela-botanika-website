@@ -7,7 +7,7 @@ This is GPT Lead's synthesis of the three roster-named R1 HTML submissions plus 
 ## R1 artifacts
 - Gemini: `exploration/r1/r1-gemini.html` — 1,771 source lines, English, 6 remote Unsplash image references, mobile drawer, room-fit filter, category filter, home/business switch, local inquiry preview; exact model label NOT_DISCLOSED.
 - DeepSeek: `exploration/r1/r1-deepseek.html` — 1,110 source lines, English, original inline SVG hero, room reader, care library, workshop/styling/price sections, local note toggles; exact model label NOT_DISCLOSED.
-- Meta Muse: `exploration/r1/r1-muse.html` — 718 source lines, Indonesian, 6 Unsplash image elements, light-map SVG hero, 3-input finder, category discovery, light guide, home/business split, workshops, FAQ, local non-sending contact placeholder; exact model label NOT_DISCLOSED.
+- Meta Muse: `exploration/r1/r1-muse.html` — 718 source lines, Indonesian, 6 <img> elements with 6 unique Unsplash URLs, light-map SVG hero, 3-input finder, category discovery, light guide, home/business split, workshops, FAQ, local non-sending contact placeholder; exact model label NOT_DISCLOSED.
 - All three use reduced-motion CSS. None contains GSAP.
 - Static source inspection only; no candidate has been rendered or browser-tested by Lead. Remote image availability, image rights, responsive crops, and actual interaction behavior remain NOT_VERIFIED.
 
