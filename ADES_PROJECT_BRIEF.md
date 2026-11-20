@@ -13,13 +13,13 @@ _Last updated: 2026-11-21 (Asia/Jakarta)_
 - **Free-tier selection rule:** use each named provider's official free consumer interface and its default model/mode available to the operator. Do not purchase API credits, enable a paid plan, or assume a backend version not displayed by the provider.
 - **Model identity evidence (2026-11-21):** Gemini official subscription page lists Flash-Lite access on Free; DeepSeek official consumer chat is free, but the exact backend model/version served to a free chat session is not reliably exposed by the available official evidence; Meta's official Muse page says Muse is free with usage limits, but does not identify a fixed underlying model/version. Preserve those unknowns as NOT_DISCLOSED rather than guessing.
 - **External execution path:** DELEGATION_PACK (no direct authorized model integration verified in this session). Each external agent must note the exact model/version displayed in its own UI if available; otherwise report NOT_DISCLOSED and include a screenshot/text evidence of the selected free interface/model label.
-- **Repository latest commit:** `0a144b59eaa35764b53f41bff02f4635130844a2` on `main` (Brief update; R1 concept and Delegation Pack are in its history)
+- **Repository latest verified commit:** `822f7a27e6951161fe787c4dc2e6f7f8fbc5f82a` on `main` (GPT R2 concept; R1 submissions and R2 delegation artifacts are committed in prior history)
 - **Initial inspected HEAD:** `ee37041356cbf3ef06b1b9e099e1e28f36f48e60` had an empty tree after `Delete index.html`; subsequent commits now add the ADES Brief, R1 concept, and Delegation Pack only. No integrated website implementation exists yet.
 - **Parent commit inspected:** `3d61e0284ed1e29cab79966330db0edaa59f8d23`; its tree had one `index.html` (20,002 bytes). This is historical prior work, not present at HEAD.
-- **Current stage/gate:** G1 complete; G2 R1 in progress. GPT R1 concept and external Delegation Pack are committed; external outputs are pending.
+- **Current stage/gate:** G1 complete. R1 roster outputs received, archived and source-reviewed; shared learning synthesis and R2 delegation pack committed. G2 remains IN_PROGRESS pending three external R2 HTML directions and GPT-only R3 synthesis.
 - **Overall status:** IN_PROGRESS
-- **Next Lead task:** Independently evaluate returned external R1 HTMLs when supplied; deduplicate evidence, update the Shared Reference Learning Brief, then prepare R2 prompts. Do not start R2 before R1 evidence is returned.
-- **Next operator action:** Run the three R1 prompts in ADES_R1_DELEGATION_PACK.md using the official free interfaces and return exactly one HTML file per agent. No model substitution or paid access; no waiver is assumed.
+- **Next Lead task:** Independently evaluate returned R2 HTMLs when supplied; compare against shared R1 learning, then complete GPT-only R3 multi-file synthesis. Do not ask operator to choose model-produced candidates.
+- **Next operator action:** Run the three prompts in `ADES_R2_DELEGATION_PACK.md` using the exact official free interfaces and return exactly one full-site HTML file per agent. No model substitution or paid access; no waiver is assumed.
 
 ## 2. G0–G5 gate board
 | Gate | Status | Evidence / decision |
@@ -98,58 +98,60 @@ References inspected:
 | Historical Unsplash photos in deleted parent HTML | EXISTED IN HISTORICAL CONCEPT ONLY | File metadata cited creators/Unsplash URLs; current HEAD empty. Verify current source/license terms and download/integrate only after review; not documentary images of Sela Botanika |
 | New generated visuals | NOT_CREATED | Candidate plan: generate at least 3 original editorial images and label as fictional illustrative imagery |
 
-## 7. G2 roster / delegation state
-- **Operator roster entries:** GEMINI / DEEPSEEK / MUSE.
-- **Free-only constraint:** confirmed by operator. Use official consumer free tiers for Gemini, DeepSeek and Meta Muse; no API usage or paid-plan upgrade.
-- **Model labels:** Gemini Free currently advertises Flash-Lite. DeepSeek free chat does not reliably expose an exact backend model/version in the public evidence inspected. Meta Muse free usage is documented, but no fixed underlying model/version is disclosed. Capture the actual visible model label during each delegated run; if absent, record NOT_DISCLOSED.
-- **No substitutions:** do not route to a different provider or paid tier. Do not claim an undisclosed backend version.
-- **Next operator action:** none to clarify roster/tier. ADES provides a consolidated R1 Delegation Pack; operator runs the three official free interfaces and returns exactly one browser-ready HTML file per agent. Do not treat non-response as waiver.
-- **R1/R2 minimum evidence:** each external agent must research 3+ independent relevant niche sites and embed source/learning manifest in R1. GPT's R1 concept and initial research are complete at source level. External outputs are pending. After all R1 outputs arrive, GPT will compare evidence and create the Shared Reference Learning Brief. R2 then gives each agent a distinct design thesis and taste-stretch constraint, with responsive full-site HTML, imagery and meaningful GSAP prototype where possible. Lead rendering/testing remains NOT_VERIFIED until an actual browser harness is available.
-- **G3:** GPT-only synthesis and multi-file implementation in target repo, after G2 deliverables and evidence.
+## 7. Multi-agent roster and R1/R2 state
+- **Exact operator roster:** GEMINI / DEEPSEEK / MUSE. Free consumer interfaces only; no API, paid tier, credits or provider substitution.
+- **Model labels in submitted artifacts:** Gemini NOT_DISCLOSED; DeepSeek NOT_DISCLOSED; Meta Muse NOT_DISCLOSED. Do not infer backend model/version.
+- **R1 external HTML received and archived under filename attribution:**
+  - Gemini — `exploration/r1/r1-gemini.html` (1,771 lines; English; six image elements reported in its source comment / seven Unsplash URL occurrences; room-fit filter, offering tabs, styling toggle, inquiry preview; no GSAP).
+  - DeepSeek — `exploration/r1/r1-deepseek.html` (1,110 lines; English; original inline SVG illustration; room reader, care library, workshop/styling/price sections, local explanatory toggles; no GSAP).
+  - Meta Muse — `exploration/r1/r1-muse.html` (718 lines; Indonesian; six Unsplash image elements; light-map hero, three-input finder, categories, light guide, home/business styling, workshops, FAQ, non-sending form; no GSAP).
+- **Legacy supplemental file:** `exploration/r1/external-submission-unattributed.html` is a separate earlier exploration artifact, not one of the three roster-named files. It remains excluded from roster completion and must not be attributed to an agent.
+- **R1 evidence synthesis:** `ADES_SHARED_REFERENCE_LEARNING.md` records common findings, source-level comparison, reference evidence and gaps. Lead independently retrieved public content for Patch Plants, Foliage Living, Bloomscape, The Sill, Léon & George, Seb's Urban Jungle, Botanical Designs by Tina, Plunt and Our Infinite Nature. DeepSeek's Siap Nanam, Rareform Plants and Botanical Archive references remain agent-reported / NOT_INDEPENDENTLY_VERIFIED. No full visual render of competitor sites was performed.
+- **R1 status:** COMPLETE at source/document level. Each roster participant supplied one complete HTML concept with a reference manifest. Browser rendering and interaction validation of these artifacts remain NOT_VERIFIED.
+- **R2 status:** GPT candidate created at `exploration/r2/gpt-direction.html` (“Herbarium Ruang”: editorial field-notes direction). Three distinct external prompts are in `ADES_R2_DELEGATION_PACK.md`. External R2 outputs are pending.
+- **R2 requirements:** each agent returns a materially distinct complete full-site HTML, Indonesian-first, three or more meaningful image assets, functioning local simulations, responsive navigation, and purposeful GSAP prototype with reduced-motion fallback. No release or live business features.
+- **R3:** GPT Lead alone synthesizes evidence and implements the integrated multi-file project after R2 artifacts are evaluated.
 
 ## 8. Control family state
 | Control | Status | Evidence / blocker |
 |---|---|---|
-| GOV-01 | PASS (G0 facts and restrictions) | Mode and synthetic boundary in intake; no external outreach/release |
-| DISC-01 | PASS | Audience, offer, visitor tasks, page scope, exclusions and acceptance criteria consolidated in the Brief |
-| EXP-01 | IN_PROGRESS | Free-tier-only roster confirmed; direct integrations unavailable; R1 Delegation Pack committed; GPT R1 concept committed; external R1 HTMLs pending |
-| VIS-01 | NOT_VERIFIED | Historical concept had image URL metadata; no current integrated project assets or rendered inspection |
-| INT-01 | NOT_VERIFIED | Historical demo finder code exists in parent concept only; no interactive browser test |
-| RESP-01 | NOT_VERIFIED | CSS breakpoints visible in historical HTML, but no actual viewport render evidence |
-| MOTION-01 | NOT_VERIFIED | No GSAP behavior evidenced in historical concept; R2 prototype still required |
-| BUILD-01 | NOT_STARTED | HEAD has no website files |
-| QA-01 | NOT_VERIFIED | No terminal/browser QA tools verified |
-| PREVIEW-01 | NOT_STARTED | No near-final candidate |
-| RELEASE-01 | NOT_AUTHORIZED | Internal experiment, no publication/release |
+| GOV-01 | PASS | Synthetic project boundary and no-release restrictions in intake; no external contact, cost or publication |
+| DISC-01 | PASS | Audience, offer, visitor tasks, scope, exclusions and acceptance criteria consolidated from intake |
+| EXP-01 | IN_PROGRESS | R1 complete; GPT R2 concept and three-agent R2 Delegation Pack committed; external R2 full-site outputs and GPT-only R3 synthesis pending |
+| VIS-01 | NOT_VERIFIED | R1 candidates include remote Unsplash images / SVG illustration; no final local asset set or image rights/loading verification |
+| INT-01 | NOT_VERIFIED | Source-level client-side interactions exist in R1 and GPT R2; none browser-executed by Lead |
+| RESP-01 | NOT_VERIFIED | CSS breakpoints / mobile navigation intent visible in source; no rendered viewport QA |
+| MOTION-01 | IN_PROGRESS | No R1 GSAP; GPT R2 prototype uses GSAP + ScrollTrigger one-time editorial reveals with reduced-motion bypass; not browser-executed. External R2 GSAP prototypes pending |
+| BUILD-01 | NOT_STARTED | No integrated production-style multi-file website project yet |
+| QA-01 | NOT_VERIFIED | Terminal/browser harness not verified; no build, visual, responsive, accessibility or runtime QA |
+| PREVIEW-01 | NOT_STARTED | No near-final integrated candidate |
+| RELEASE-01 | NOT_AUTHORIZED | Synthetic internal experiment only; public release prohibited without explicit authorization |
 
 ## 9. Decisions and blockers
 - Keep project purely synthetic and NOT FOR RELEASE.
 - No fabricated contacts, schedules, inventory, testimonials, exact address, opening hours, botanical safety or health claims.
 - No checkout/payment/backend/CRM/booking until supported by a material requirement and separately approved.
-- Repository target is the user-supplied website repo, never ADES documentation repo.
-- **Current dependency:** operator runs the three prepared R1 prompts in the official free consumer interfaces and returns each HTML artifact. This is the manual delegation path, not a request for further model selection. If any provider is inaccessible on the free tier, report the exact limitation; do not substitute or upgrade.
-- Deployment, DNS, paid services, third-party outreach and public release remain prohibited without explicit approval.
+- No paid external model access, API credits, third-party proxy or roster substitution.
+- No public deployment, DNS changes, third-party outreach, spending or release without explicit operator approval.
+- **Current dependency:** operator runs the three R2 prompts in the official free consumer interfaces and returns one full-site HTML per named participant. This is the manual delegation bridge; no direct model integrations were verified.
+- **Next step:** evaluate the three R2 HTMLs against the shared learning and GPT direction, then complete GPT-only R3 synthesis. No model winner selection will be requested.
 
+## 10. Current artifact index
+| Artifact | Repository path |
+|---|---|
+| R1 Gemini | `exploration/r1/r1-gemini.html` |
+| R1 DeepSeek | `exploration/r1/r1-deepseek.html` |
+| R1 Meta Muse | `exploration/r1/r1-muse.html` |
+| Earlier supplemental unattributed concept (excluded from roster count) | `exploration/r1/external-submission-unattributed.html` |
+| GPT R1 concept | `exploration/r1/gpt-concept.html` |
+| Shared R1 learning | `ADES_SHARED_REFERENCE_LEARNING.md` |
+| R2 external delegation pack | `ADES_R2_DELEGATION_PACK.md` |
+| GPT R2 direction | `exploration/r2/gpt-direction.html` |
+| R1 delegation pack (historical) | `ADES_R1_DELEGATION_PACK.md` |
 
-## R1 Submission Intake — 2026-11-21
-
-- Received one complete external HTML concept submission (1,771 source lines; 27,868 characters) from the operator's uploaded file.
-- Repository copy: `exploration/r1/external-submission-unattributed.html`.
-- Attribution: **UNATTRIBUTED / MODEL NOT DISCLOSED**. The submission states `NOT_DISCLOSED` for its exact UI model label and does not identify which roster member produced it. Do not infer Gemini, DeepSeek, or Meta Muse.
-- Claimed additional references: Patch Plants, Foliage Living, Bloomscape, and The Sill. The submission explicitly describes its Patch Plants, Foliage Living, and Bloomscape evidence as inspected via search/snippet analysis; these are not counted as independently verified full-site inspections by ADES. The Sill is described only as a contextual check.
-- Concept strengths: room/light/routine-first discovery, distinct home vs. commercial styling, inquiry-led workshops, clear fictional-price disclaimers, and an explicit non-sending inquiry preview.
-- Implementation claims in the submission are source-level claims only. No browser rendering, cross-browser/device testing, accessibility audit, image URL/license verification, or GSAP behavior has been independently verified.
-- R1 external-agent requirement remains **IN_PROGRESS**: two named roster submissions are still outstanding, and this submission must be attributed to a roster member before it can count toward that participant's required R1 deliverable.
-- G2 remains **BLOCKED / IN_PROGRESS** pending the full three-agent R1 evidence set and attribution. No R2 candidate work is authorized until the R1 gate is satisfied.
-
-
-### R1 External HTML — Source-Level Review
-
-- Repository artifact was fetched back successfully after commit; source length is 1,771 lines / 27,868 characters.
-- Source-level features present: responsive CSS breakpoints, mobile navigation drawer, room-fit filtering, category filtering, home/business styling toggle, FAQ disclosures, local-only inquiry preview, and reduced-motion CSS.
-- Six remote Unsplash image references are present in the HTML. Their actual image content, availability, provenance, and license status have **not** been independently verified by ADES; no local image assets are included.
-- No GSAP dependency or GSAP behavior is present. CSS transitions are used instead. This is not a failure for R1; R2 must prototype purposeful GSAP motion as required for this brand-led visual direction.
-- HTML document language is English (`lang="en"`); Indonesian localization is a likely R2/R3 improvement for the intended audience.
-- Source-level accessibility review: visible focus styles, skip link, semantic landmarks, and Escape-to-close mobile navigation are present. Category controls use `role="tab"` / `aria-selected`, but the source does not implement arrow-key tab navigation or a corresponding tabpanel pattern; review and correct semantics in R2.
-- Room-fit filtering always returns the top three archetypes even when filters produce weak matches; improve relevance handling and disclose when no close fit exists.
-- Static source review only. No browser render, interaction execution, responsive viewport QA, accessibility audit, or cross-browser test has been performed.
+## 11. Runtime and harness
+- **Repository:** `https://github.com/kannaryukkei/sela-botanika-website`, branch `main`.
+- **Verified capabilities:** GitHub fetch/create/update operations.
+- **Not verified:** local terminal/checkout, runtime versions, package manager, browser automation, Chromium/Playwright, screenshot rendering, coding-agent harness.
+- **Runbook:** NOT_PREPARED; derive exact commands only after the R3 implementation stack and lockfiles exist.
+- **Operator preview:** NOT_RUN. No local preview URL has been verified.
