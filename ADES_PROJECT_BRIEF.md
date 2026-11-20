@@ -100,9 +100,10 @@ References inspected:
 
 ## 7. G2 roster / delegation state
 - **Operator roster entries:** GEMINI / DEEPSEEK / MUSE.
-- **Problem:** each lacks exact product/model/version; "MUSE" also does not uniquely identify a model. No directly authorized runtime or connector for these agents was confirmed in available tools.
-- **No substitutions:** do not infer Gemini 2.x, DeepSeek R1/V3, Muse model variant, or any other model.
-- **Required next operator action:** reply with exact provider + model/product + version strings for all three (or explicitly waive a named agent). ADES then supplies one consolidated round-specific delegation pack per round. For R1/R2 each model returns exactly one browser-ready HTML file; run the prompts externally and return HTML. Do not treat non-response as waiver.
+- **Free-only constraint:** confirmed by operator. Use official consumer free tiers for Gemini, DeepSeek and Meta Muse; no API usage or paid-plan upgrade.
+- **Model labels:** Gemini Free currently advertises Flash-Lite. DeepSeek free chat does not reliably expose an exact backend model/version in the public evidence inspected. Meta Muse free usage is documented, but no fixed underlying model/version is disclosed. Capture the actual visible model label during each delegated run; if absent, record NOT_DISCLOSED.
+- **No substitutions:** do not route to a different provider or paid tier. Do not claim an undisclosed backend version.
+- **Next operator action:** none to clarify roster/tier. ADES provides a consolidated R1 Delegation Pack; operator runs the three official free interfaces and returns exactly one browser-ready HTML file per agent. Do not treat non-response as waiver.
 - **R1/R2 minimum evidence:** each agent researches 3+ independent relevant niche sites and embeds source/learning manifest in R1; Round 2 receives shared R1 learning brief and creates materially different full-site HTML with responsive behavior, imagery, meaningful motion/GSAP prototype where possible. GPT also participates independently. Lead renders/tests all returned artifacts where tools permit; currently render QA is NOT_VERIFIED.
 - **G3:** GPT-only synthesis and multi-file implementation in target repo, after G2 deliverables and evidence.
 
@@ -111,7 +112,7 @@ References inspected:
 |---|---|---|
 | GOV-01 | PASS (G0 facts and restrictions) | Mode and synthetic boundary in intake; no external outreach/release |
 | DISC-01 | IN_PROGRESS | Initial intake synthesis; G1 still to formalize |
-| EXP-01 | BLOCKED | Exact external model IDs/versions needed; no integrations verified |
+| EXP-01 | IN_PROGRESS | Free-tier-only roster confirmed; direct integrations unavailable; manual delegation pack required; exact backend versions captured only if visible |
 | VIS-01 | NOT_VERIFIED | Historical concept had image URL metadata; no current integrated project assets or rendered inspection |
 | INT-01 | NOT_VERIFIED | Historical demo finder code exists in parent concept only; no interactive browser test |
 | RESP-01 | NOT_VERIFIED | CSS breakpoints visible in historical HTML, but no actual viewport render evidence |
@@ -126,5 +127,5 @@ References inspected:
 - No fabricated contacts, schedules, inventory, testimonials, exact address, opening hours, botanical safety or health claims.
 - No checkout/payment/backend/CRM/booking until supported by a material requirement and separately approved.
 - Repository target is the user-supplied website repo, never ADES documentation repo.
-- **Single current blocker:** exact external model product/version identifiers for GEMINI, DEEPSEEK and MUSE. Once supplied, proceed using a consolidated Delegation Pack. If any integration is unavailable, retain manual delegation; waiver only by explicit operator instruction.
+- **Current dependency:** operator must execute the prepared prompts in the three official free consumer interfaces and return each HTML artifact. This is the intended manual delegation path, not a request for further model selection. If any provider is inaccessible on the free tier, report the exact limitation; do not substitute or upgrade.
 - Deployment, DNS, paid services, third-party outreach and public release remain prohibited without explicit approval.
