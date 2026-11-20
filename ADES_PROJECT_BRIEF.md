@@ -108,7 +108,7 @@ References inspected:
 - **Legacy supplemental file:** `exploration/r1/external-submission-unattributed.html` is a separate earlier exploration artifact, not one of the three roster-named files. It remains excluded from roster completion and must not be attributed to an agent.
 - **R1 evidence synthesis:** `ADES_SHARED_REFERENCE_LEARNING.md` records common findings, source-level comparison, reference evidence and gaps. Lead independently retrieved public content for Patch Plants, Foliage Living, Bloomscape, The Sill, Léon & George, Seb's Urban Jungle, Botanical Designs by Tina, Plunt and Our Infinite Nature. DeepSeek's Siap Nanam, Rareform Plants and Botanical Archive references remain agent-reported / NOT_INDEPENDENTLY_VERIFIED. No full visual render of competitor sites was performed.
 - **R1 status:** COMPLETE at source/document level. Each roster participant supplied one complete HTML concept with a reference manifest. Browser rendering and interaction validation of these artifacts remain NOT_VERIFIED.
-- **R2 status:** GPT candidate created at `exploration/r2/gpt-direction.html` (“Herbarium Ruang”: editorial field-notes direction). Three distinct external prompts are in `ADES_R2_DELEGATION_PACK.md`. External R2 outputs are pending.
+- **R2 status:** GPT candidate `exploration/r2/gpt-direction.html` (“Herbarium Ruang”) is present. External submissions received by exact upload filename: Meta Muse `exploration/r2/r2-muse.html` (complete), Gemini `exploration/r2/r2-gemini.html` (complete), DeepSeek `exploration/r2/r2-deepseek.html` (**incomplete upload; source truncates mid-SVG at `<text x`**). Muse and Gemini pass source-level completeness; both include ≥3 image elements and GSAP/ScrollTrigger source with reduced-motion handling. DeepSeek fragment has 0 `<img>`, no JavaScript/GSAP or R2 manifest/reference list, and is not a full-site candidate. R2 evaluation: `ADES_R2_EVALUATION.md`. GPT + Muse + Gemini provide three complete candidate directions, but the four-participant roster workflow remains incomplete pending a full DeepSeek resubmission or explicit operator waiver.
 - **R2 requirements:** each agent returns a materially distinct complete full-site HTML, Indonesian-first, three or more meaningful image assets, functioning local simulations, responsive navigation, and purposeful GSAP prototype with reduced-motion fallback. No release or live business features.
 - **R3:** GPT Lead alone synthesizes evidence and implements the integrated multi-file project after R2 artifacts are evaluated.
 
@@ -117,13 +117,13 @@ References inspected:
 |---|---|---|
 | GOV-01 | PASS | Synthetic project boundary and no-release restrictions in intake; no external contact, cost or publication |
 | DISC-01 | PASS | Audience, offer, visitor tasks, scope, exclusions and acceptance criteria consolidated from intake |
-| EXP-01 | IN_PROGRESS | R1 complete; GPT R2 concept and three-agent R2 Delegation Pack committed; external R2 full-site outputs and GPT-only R3 synthesis pending |
-| VIS-01 | NOT_VERIFIED | R1 candidates include remote Unsplash images / SVG illustration; no final local asset set or image rights/loading verification |
-| INT-01 | NOT_VERIFIED | Source-level client-side interactions exist in R1 and GPT R2; none browser-executed by Lead |
-| RESP-01 | NOT_VERIFIED | CSS breakpoints / mobile navigation intent visible in source; no rendered viewport QA |
-| MOTION-01 | IN_PROGRESS | No R1 GSAP; GPT R2 prototype uses GSAP + ScrollTrigger one-time editorial reveals with reduced-motion bypass; not browser-executed. External R2 GSAP prototypes pending |
+| EXP-01 | IN_PROGRESS | R1 complete; GPT, Muse and Gemini R2 full source candidates evaluated; DeepSeek-named R2 upload is truncated and blocks full roster completion; GPT-only R3 synthesis pending |
+| VIS-01 | NOT_VERIFIED | Muse R2 has 6 and Gemini R2 has 3 remote Unsplash image elements; GPT R2 has 6. DeepSeek fragment has none. No browser image-load, crop, rights or local asset verification |
+| INT-01 | NOT_VERIFIED | Source-level interactions in GPT, Muse and Gemini R2; Muse/Gemini inline JS passed `node --check`, but browser interactions were not executed |
+| RESP-01 | NOT_VERIFIED | Responsive source patterns exist in candidates; Playwright/Chromium navigation was blocked by environment policy, so no viewport screenshots or responsive inspection |
+| MOTION-01 | IN_PROGRESS | GPT, Muse and Gemini R2 include purposeful GSAP + ScrollTrigger source and reduced-motion bypass; runtime/CDN/ScrollTrigger behavior NOT_VERIFIED. DeepSeek fragment has no motion implementation |
 | BUILD-01 | NOT_STARTED | No integrated production-style multi-file website project yet |
-| QA-01 | NOT_VERIFIED | Terminal/browser harness not verified; no build, visual, responsive, accessibility or runtime QA |
+| QA-01 | NOT_VERIFIED | Muse/Gemini inline JS syntax checks passed; browser navigation was blocked (`ERR_BLOCKED_BY_ADMINISTRATOR`) and headless screenshot attempt timed out. No rendered, responsive, interaction, accessibility, performance or cross-browser QA |
 | PREVIEW-01 | NOT_STARTED | No near-final integrated candidate |
 | RELEASE-01 | NOT_AUTHORIZED | Synthetic internal experiment only; public release prohibited without explicit authorization |
 
@@ -133,8 +133,8 @@ References inspected:
 - No checkout/payment/backend/CRM/booking until supported by a material requirement and separately approved.
 - No paid external model access, API credits, third-party proxy or roster substitution.
 - No public deployment, DNS changes, third-party outreach, spending or release without explicit operator approval.
-- **Current dependency:** operator runs the three R2 prompts in the official free consumer interfaces and returns one full-site HTML per named participant. This is the manual delegation bridge; no direct model integrations were verified.
-- **Next step:** evaluate the three R2 HTMLs against the shared learning and GPT direction, then complete GPT-only R3 synthesis. No model winner selection will be requested.
+- **Current dependency:** request one complete replacement for the DeepSeek-named R2 upload, which currently ends mid-SVG and contains no closing `</html>` or R2 manifest. Keep the original fragment archived as received. Gemini and Muse do not need to rerun. Manual delegation remains the only verified bridge; no direct model integrations were verified.
+- **Next step:** receive the complete DeepSeek R2 HTML + reference/media/motion manifest, then finish the four-candidate source evaluation and proceed to GPT-only R3 synthesis. No model winner selection will be requested.
 
 ## 10. Current artifact index
 | Artifact | Repository path |
@@ -147,11 +147,16 @@ References inspected:
 | Shared R1 learning | `ADES_SHARED_REFERENCE_LEARNING.md` |
 | R2 external delegation pack | `ADES_R2_DELEGATION_PACK.md` |
 | GPT R2 direction | `exploration/r2/gpt-direction.html` |
+| R2 Meta Muse | `exploration/r2/r2-muse.html` |
+| R2 Gemini | `exploration/r2/r2-gemini.html` |
+| R2 DeepSeek-named upload (incomplete) | `exploration/r2/r2-deepseek.html` |
+| R2 evaluation | `ADES_R2_EVALUATION.md` |
 | R1 delegation pack (historical) | `ADES_R1_DELEGATION_PACK.md` |
 
 ## 11. Runtime and harness
 - **Repository:** `https://github.com/kannaryukkei/sela-botanika-website`, branch `main`.
 - **Verified capabilities:** GitHub fetch/create/update operations.
-- **Not verified:** local terminal/checkout, runtime versions, package manager, browser automation, Chromium/Playwright, screenshot rendering, coding-agent harness.
+- **Partially verified:** Chromium binary and Python Playwright package are installed in the current tool container, but navigation to local HTTP and `file://` pages was blocked by `ERR_BLOCKED_BY_ADMINISTRATOR`; direct headless screenshot attempt timed out. This is not a usable browser QA harness.
+- **Not verified:** local repository checkout, runtime versions for the actual website project, coding-agent harness.
 - **Runbook:** NOT_PREPARED; derive exact commands only after the R3 implementation stack and lockfiles exist.
 - **Operator preview:** NOT_RUN. No local preview URL has been verified.
