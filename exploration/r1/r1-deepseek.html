@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sela Botanika — Start with the room</title>
+<meta name="description" content="A fictional studio-development concept for a Bandung indoor-plant shop and styling studio. Start with room light and realistic care time, then explore illustrative plant directions. Internal experiment only; not for release.">
+<style>
+  :root{
+    --paper:#f4f0e8;
+    --paper-2:#ece6da;
+    --paper-3:#e5ddcf;
+    --ink:#1e2a23;
+    --muted:#5c665f;
+    --moss:#3f5a45;
+    --leaf:#6f8f6a;
+    --leaf-2:#8daa86;
+    --clay:#a97655;
+    --sun:#e5c47a;
+    --line:#d4cdc0;
+    --radius:18px;
+    --radius-sm:12px;
+    --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+    --sans:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+    --shadow:0 18px 40px -28px rgba(30,42,35,.38);
+    --max:1120px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:1rem;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;height:auto;display:block}
+  button,input{font:inherit}
+  button{cursor:pointer}
+  a{color:var(--moss);text-underline-offset:.18em}
+  a:hover{color:var(--ink)}
+  :focus-visible{outline:3px solid var(--clay);outline-offset:3px}
+  [hidden]{display:none !important}
+
+  .skip{
+    position:absolute;
+    left:1rem;
+    top:-5rem;
+    z-index:100;
+    background:var(--ink);
+    color:var(--paper);
+    padding:.65rem 1rem;
+    border-radius:8px;
+    text-decoration:none;
+    transition:top .2s ease;
+  }
+  .skip:focus{top:1rem}
+
+  .wrap{width:min(100% - 2rem,var(--max));margin-inline:auto}
+  @media (min-width:720px){.wrap{width:min(100% - 4rem,var(--max))}}
+
+  .site-header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(244,240,232,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(212,205,192,.7);
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    padding:.85rem 0;
+  }
+  .brand{
+    display:inline-flex;
+    align-items:center;
+    gap:.55rem;
+    text-decoration:none;
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:1.1rem;
+    letter-spacing:.01em;
+    line-height:1.1;
+  }
+  .brand-mark{
+    width:30px;
+    height:30px;
+    flex:0 0 auto;
+  }
+  .header-nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.35rem .9rem;
+    font-size:.82rem;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+  }
+  .header-nav a{
+    text-decoration:none;
+    color:var(--muted);
+    padding:.25rem 0;
+    border-bottom:1px solid transparent;
+  }
+  .header-nav a:hover,
+  .header-nav a:focus-visible{
+    color:var(--ink);
+    border-bottom-color:var(--clay);
+  }
+  @media (max-width:560px){
+    .header-nav{display:none}
+  }
+
+  .eyebrow{
+    display:inline-block;
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--clay);
+    font-weight:600;
+    margin:0 0 .75rem;
+  }
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:500;
+    line-height:1.06;
+    letter-spacing:-.025em;
+    margin:0;
+  }
+  h1{font-size:clamp(2.6rem,8vw,5.2rem)}
+  h2{font-size:clamp(1.9rem,4.6vw,3.3rem)}
+  h3{font-size:clamp(1.25rem,2.6vw,1.65rem);letter-spacing:-.015em}
+  p{margin:0 0 1rem;max-width:66ch}
+  .lede{font-size:clamp(1.05rem,2.1vw,1.28rem);color:var(--muted);line-height:1.55;max-width:56ch}
+  .small{font-size:.82rem;color:var(--muted);line-height:1.5}
+  .tiny{font-size:.72rem;color:var(--muted);letter-spacing:.02em}
+
+  .hero{
+    padding:clamp(2.5rem,7vw,6rem) 0 clamp(2rem,5vw,4.5rem);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;
+    gap:clamp(2rem,5vw,4rem);
+    align-items:center;
+  }
+  @media (min-width:880px){
+    .hero-grid{grid-template-columns:1.05fr .95fr}
+  }
+  .hero-copy h1{margin-bottom:1.1rem}
+  .hero-copy h1 em{
+    font-style:normal;
+    color:var(--moss);
+    display:block;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.7rem;
+    margin-top:1.5rem;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.45rem;
+    min-height:46px;
+    padding:.7rem 1.15rem;
+    border-radius:999px;
+    border:1px solid var(--moss);
+    background:var(--moss);
+    color:#fbf7ef;
+    text-decoration:none;
+    font-size:.9rem;
+    font-weight:600;
+    letter-spacing:.01em;
+    transition:transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .btn:hover{background:var(--ink);border-color:var(--ink);color:#fff;transform:translateY(-1px)}
+  .btn-secondary{
+    background:transparent;
+    color:var(--moss);
+    border-color:var(--line);
+  }
+  .btn-secondary:hover{background:var(--paper-2);color:var(--ink);border-color:var(--moss)}
+  .btn-small{min-height:40px;padding:.5rem .9rem;font-size:.82rem}
+
+  .hero-figure{
+    position:relative;
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:var(--paper-2);
+    box-shadow:var(--shadow);
+    border:1px solid var(--line);
+  }
+  .hero-figure svg{width:100%;height:auto}
+  .figure-caption{
+    position:absolute;
+    left:1rem;
+    bottom:1rem;
+    right:1rem;
+    padding:.65rem .8rem;
+    border-radius:10px;
+    background:rgba(244,240,232,.9);
+    backdrop-filter:blur(8px);
+    font-size:.7rem;
+    line-height:1.35;
+    color:var(--muted);
+    border:1px solid rgba(212,205,192,.8);
+  }
+
+  section{padding:clamp(2.5rem,6vw,5rem) 0;border-bottom:1px solid var(--line)}
+  .section-head{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:end;
+    justify-content:space-between;
+    gap:1rem;
+    margin-bottom:1.8rem;
+  }
+  .section-head p{margin:0;max-width:48ch}
+
+  .editorial-split{
+    display:grid;
+    gap:1.5rem;
+  }
+  @media (min-width:820px){
+    .editorial-split{grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+  }
+  .pull-note{
+    padding:1.1rem 1.2rem;
+    border-left:3px solid var(--clay);
+    background:var(--paper-2);
+    border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:1.1rem;
+    line-height:1.4;
+    margin:0;
+  }
+
+  /* Room reader */
+  .reader{
+    background:linear-gradient(180deg,var(--paper-2),var(--paper));
+  }
+  .reader-layout{
+    display:grid;
+    gap:1.5rem;
+  }
+  @media (min-width:900px){
+    .reader-layout{grid-template-columns:.9fr 1.1fr;gap:2rem;align-items:start}
+  }
+  .reader-controls{
+    background:#fbf7ef;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.25rem;
+    box-shadow:var(--shadow);
+  }
+  fieldset{
+    border:0;
+    padding:0;
+    margin:0 0 1.3rem;
+  }
+  legend{
+    font-size:.76rem;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--moss);
+    margin-bottom:.65rem;
+  }
+  .chip-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:.5rem;
+  }
+  @media (min-width:520px){
+    .chip-grid{grid-template-columns:1fr 1fr}
+  }
+  .chip{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:.55rem;
+    min-height:44px;
+    padding:.55rem .7rem;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:var(--paper);
+    color:var(--ink);
+    font-size:.82rem;
+    line-height:1.3;
+    cursor:pointer;
+    transition:background .18s ease, border-color .18s ease, transform .18s ease;
+  }
+  .chip:hover{background:var(--paper-2);border-color:var(--moss)}
+  .chip input{
+    position:absolute;
+    opacity:0;
+    width:1px;
+    height:1px;
+    pointer-events:none;
+  }
+  .chip span{
+    display:inline-block;
+    width:16px;
+    height:16px;
+    border:2px solid var(--line);
+    border-radius:50%;
+    flex:0 0 auto;
+    transition:border-color .18s ease, background .18s ease, box-shadow .18s ease;
+  }
+  .chip input:checked + span{
+    border-color:var(--moss);
+    background:var(--moss);
+    box-shadow:inset 0 0 0 3px #fbf7ef;
+  }
+  .chip:has(input:checked){
+    background:#eef2ea;
+    border-color:var(--moss);
+  }
+  .chip input:focus-visible + span{
+    outline:3px solid var(--clay);
+    outline-offset:3px;
+  }
+
+  .reader-result{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:var(--radius);
+    padding:1.35rem;
+    min-height:260px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:1rem;
+    box-shadow:var(--shadow);
+  }
+  .reader-result .eyebrow{color:var(--sun)}
+  .reader-result h3{color:#fbf7ef;margin-bottom:.35rem}
+  .reader-result p{color:#d8d2c5;margin:0}
+  .direction-list{
+    display:grid;
+    gap:.75rem;
+    margin:.35rem 0 0;
+    padding:0;
+    list-style:none;
+  }
+  .direction-list li{
+    padding:.8rem .9rem;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:var(--radius-sm);
+  }
+  .direction-list strong{
+    display:block;
+    font-size:.9rem;
+    color:#fbf7ef;
+    margin-bottom:.2rem;
+  }
+  .direction-list span{font-size:.82rem;color:#d8d2c5;line-height:1.45}
+  .result-caveat{
+    font-size:.72rem;
+    color:#bfb9ad;
+    border-top:1px solid rgba(255,255,255,.14);
+    padding-top:.75rem;
+    margin:0;
+  }
+
+  /* Care library */
+  .care-grid{
+    display:grid;
+    gap:.8rem;
+  }
+  @media (min-width:720px){
+    .care-grid{grid-template-columns:1fr 1fr}
+  }
+  details.care-note{
+    background:#fbf7ef;
+    border:1px solid var(--line);
+    border-radius:var(--radius-sm);
+    padding:.2rem .95rem .15rem;
+    transition:background .18s ease, border-color .18s ease;
+  }
+  details.care-note:hover{background:var(--paper-2)}
+  details.care-note summary{
+    list-style:none;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    min-height:54px;
+    font-weight:600;
+    font-size:.95rem;
+  }
+  details.care-note summary::-webkit-details-marker{display:none}
+  details.care-note summary::after{
+    content:"+";
+    font-family:var(--serif);
+    font-size:1.4rem;
+    color:var(--clay);
+    line-height:1;
+    transition:transform .2s ease;
+  }
+  details.care-note[open] summary::after{transform:rotate(45deg)}
+  details.care-note .care-body{
+    padding:0 0 1rem;
+    color:var(--muted);
+    font-size:.9rem;
+  }
+  details.care-note .care-body p{margin:0 0 .6rem}
+  details.care-note .care-body p:last-child{margin-bottom:0}
+
+  /* Workshops */
+  .workshop-grid{
+    display:grid;
+    gap:1rem;
+  }
+  @media (min-width:760px){
+    .workshop-grid{grid-template-columns:repeat(3,1fr)}
+  }
+  .workshop-card{
+    background:#fbf7ef;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.25rem;
+    display:flex;
+    flex-direction:column;
+    gap:.75rem;
+  }
+  .workshop-card h3{font-size:1.2rem}
+  .workshop-card p{font-size:.88rem;color:var(--muted);margin:0}
+  .price-tag{
+    display:inline-block;
+    align-self:flex-start;
+    padding:.25rem .6rem;
+    border:1px dashed var(--clay);
+    border-radius:6px;
+    font-size:.72rem;
+    letter-spacing:.04em;
+    color:var(--clay);
+    background:rgba(169,118,85,.06);
+  }
+  .enquiry-note{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:var(--radius-sm);
+    padding:1rem 1.1rem;
+    font-size:.84rem;
+    line-height:1.55;
+    border-left:4px solid var(--sun);
+  }
+  .enquiry-note strong{color:var(--sun)}
+
+  /* Styling */
+  .styling-list{
+    display:grid;
+    gap:1rem;
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  @media (min-width:720px){
+    .styling-list{grid-template-columns:repeat(3,1fr)}
+  }
+  .styling-list li{
+    padding:1.15rem;
+    border:1px solid var(--line);
+    border-radius:var(--radius-sm);
+    background:var(--paper-2);
+  }
+  .styling-list h3{font-size:1.15rem;margin-bottom:.35rem}
+  .styling-list p{font-size:.86rem;color:var(--muted);margin:0}
+
+  /* Price transparency */
+  .price-grid{
+    display:grid;
+    gap:.8rem;
+  }
+  @media (min-width:720px){
+    .price-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (min-width:1000px){
+    .price-grid{grid-template-columns:repeat(3,1fr)}
+  }
+  .price-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius-sm);
+    padding:1rem 1.1rem;
+    background:#fbf7ef;
+  }
+  .price-card .label{
+    display:block;
+    font-size:.72rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--clay);
+    margin-bottom:.25rem;
+  }
+  .price-card .band{
+    font-family:var(--serif);
+    font-size:1.25rem;
+    display:block;
+    margin-bottom:.25rem;
+  }
+  .price-card .note{font-size:.74rem;color:var(--muted);margin:0}
+
+  /* Contact + footer */
+  .contact-box{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:var(--radius);
+    padding:clamp(1.4rem,4vw,2.4rem);
+    display:grid;
+    gap:1.25rem;
+  }
+  @media (min-width:780px){
+    .contact-box{grid-template-columns:1.1fr .9fr;align-items:center}
+  }
+  .contact-box h2{color:#fbf7ef}
+  .contact-box p{color:#d8d2c5}
+  .contact-box .btn{
+    background:var(--sun);
+    color:var(--ink);
+    border-color:var(--sun);
+  }
+  .contact-box .btn:hover{background:#f3d99a;border-color:#f3d99a}
+
+  .site-footer{
+    padding:2rem 0 2.5rem;
+    font-size:.76rem;
+    color:var(--muted);
+    line-height:1.65;
+  }
+  .site-footer p{max-width:80ch;margin:0 0 .5rem}
+
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+    .reveal.is-visible{
+      opacity:1;
+      transform:none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Sela Botanika — back to top">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20 36 C20 24 26 16 34 12 C30 22 26 30 20 36 Z" fill="#6f8f6a"/>
+        <path d="M20 36 C20 24 14 16 6 12 C10 22 14 30 20 36 Z" fill="#3f5a45"/>
+        <circle cx="20" cy="9" r="3" fill="#a97655"/>
+      </svg>
+      <span>Sela Botanika</span>
+    </a>
+    <nav class="header-nav" aria-label="Main">
+      <a href="#approach">Approach</a>
+      <a href="#room-reader">Room reader</a>
+      <a href="#care-library">Care library</a>
+      <a href="#workshops">Workshops</a>
+      <a href="#styling">Styling</a>
+      <a href="#prices">Prices</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Studio development · illustrative concept</p>
+        <h1>Start with the room.<em>Then the plant.</em></h1>
+        <p class="lede">Sela Botanika is a fictional boutique indoor-plant shop and small styling studio in a Bandung scenario. This concept puts room light and realistic care time ahead of browsing a wall of names.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#room-reader">Read your room</a>
+          <a class="btn btn-secondary" href="#approach">See the approach</a>
+        </div>
+        <p class="small" style="margin-top:1rem;">No message is sent from this prototype. No contact channel is configured. Internal experiment only; not for release.</p>
+      </div>
+      <figure class="hero-figure">
+        <svg viewBox="0 0 600 520" role="img" aria-label="Illustrative window with soft light and abstract leaves — a generated illustration, not a photograph of the studio">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f8f1e2"/>
+              <stop offset="1" stop-color="#e8ddc8"/>
+            </linearGradient>
+            <linearGradient id="light" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f6e3b8" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#f6e3b8" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="leafA" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#6f8f6a"/>
+              <stop offset="1" stop-color="#3f5a45"/>
+            </linearGradient>
+            <linearGradient id="pot" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#b07d5a"/>
+              <stop offset="1" stop-color="#8d5f43"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="520" fill="url(#sky)"/>
+          <rect x="90" y="50" width="420" height="360" rx="6" fill="#fbf7ef" stroke="#c9bda9" stroke-width="10"/>
+          <line x1="300" y1="55" x2="300" y2="405" stroke="#c9bda9" stroke-width="8"/>
+          <line x1="95" y1="230" x2="505" y2="230" stroke="#c9bda9" stroke-width="8"/>
+          <polygon points="120,80 240,80 380,430 260,430" fill="url(#light)"/>
+          <polygon points="330,80 460,80 520,430 390,430" fill="url(#light)" opacity=".6"/>
+          <path d="M150 410 C170 300 210 250 250 230 C230 300 220 380 210 420 Z" fill="url(#leafA)" opacity=".9"/>
+          <path d="M200 420 C230 330 290 290 330 280 C300 350 270 400 260 430 Z" fill="#5f7d5c" opacity=".8"/>
+          <path d="M360 430 C380 340 430 300 470 290 C450 360 420 410 410 440 Z" fill="#4e6b50" opacity=".75"/>
+          <path d="M250 430 L350 430 L335 490 L265 490 Z" fill="url(#pot)"/>
+          <rect x="245" y="425" width="110" height="12" rx="6" fill="#9c6c4c"/>
+        </svg>
+        <figcaption class="figure-caption">Generated illustration only. Not actual Sela Botanika inventory, premises, staff, or customers.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">The approach</p>
+          <h2>Room first. Care rhythm second. Plant direction third.</h2>
+        </div>
+        <p class="small">The core question is not “Which plant is trending?” It is “Which plant direction may suit this room’s light and the care time someone can realistically give?”</p>
+      </div>
+      <div class="editorial-split reveal">
+        <div>
+          <p>This concept is built for beginner plant owners, apartment and small-home residents, young workers and couples, hobbyists, and small café or studio operators. It treats light and care time as the first filter, not an afterthought.</p>
+          <p>Instead of a marketplace wall, the page offers an editorial path: read the room, read the routine, then explore an indicative direction. It is a conversation starter — not a botanical diagnosis and not a guarantee of suitability.</p>
+        </div>
+        <blockquote class="pull-note">“Choose the plant for the room — not the label.” This reference lesson is integrated as a design principle, not copied as a claim about any specific plant.</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="reader" id="room-reader">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Useful interaction · client-side only</p>
+          <h2>Read your room and your week.</h2>
+        </div>
+        <p class="small">Choose a light condition and a care-time rhythm. The panel updates with illustrative plant directions and practical notes. Nothing is checked against inventory, and no result is a guarantee.</p>
+      </div>
+
+      <div class="reader-layout reveal">
+        <form class="reader-controls" id="roomForm" aria-label="Room light and care time selector">
+          <fieldset>
+            <legend>Room light</legend>
+            <div class="chip-grid">
+              <label class="chip"><input type="radio" name="light" value="low" checked><span aria-hidden="true"></span>Low / mostly indirect</label>
+              <label class="chip"><input type="radio" name="light" value="medium"><span aria-hidden="true"></span>Medium / soft daylight</label>
+              <label class="chip"><input type="radio" name="light" value="bright"><span aria-hidden="true"></span>Bright / filtered sun</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Realistic care time</legend>
+            <div class="chip-grid">
+              <label class="chip"><input type="radio" name="care" value="little" checked><span aria-hidden="true"></span>A little, weekly</label>
+              <label class="chip"><input type="radio" name="care" value="steady"><span aria-hidden="true"></span>A steady routine</label>
+              <label class="chip"><input type="radio" name="care" value="fuss"><span aria-hidden="true"></span>I like to fuss</label>
+            </div>
+          </fieldset>
+
+          <p class="tiny" style="margin:0;">Synthetic scenario values only. The result is illustrative, not a suitability rating.</p>
+        </form>
+
+        <div class="reader-result" id="roomResult" aria-live="polite" aria-atomic="true">
+          <!-- JS fills this -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="care-library">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Care library</p>
+          <h2>Practical starting points, not a diagnosis.</h2>
+        </div>
+        <p class="small">Expand a note for beginner-level guidance. These notes are intentionally general and do not claim expert botanical diagnosis, pet safety, air purification, or health benefits.</p>
+      </div>
+
+      <div class="care-grid reveal">
+        <details class="care-note">
+          <summary>Reading indoor light without a meter</summary>
+          <div class="care-body">
+            <p>Notice how many hours a day a spot receives soft daylight, whether the sun ever lands directly on the leaves, and how far the spot sits from the window. A bright-looking room can still have a dim corner.</p>
+            <p>Treat light as a range, not a fixed label. A plant may tolerate less light than it prefers, but “tolerate” is not the same as “thrive”.</p>
+          </div>
+        </details>
+
+        <details class="care-note">
+          <summary>Watering rhythm before watering schedule</summary>
+          <div class="care-body">
+            <p>Check the soil before adding water. A fixed weekly schedule can overwater in cool, low-light rooms and underwater in bright, warm ones.</p>
+            <p>Pot size, growing medium, airflow, and season all change how quickly moisture moves. The realistic care time you can give matters more than a perfect calendar.</p>
+          </div>
+        </details>
+
+        <details class="care-note">
+          <summary>Pot and repotting basics</summary>
+          <div class="care-body">
+            <p>Drainage matters. A pot without drainage makes it harder to judge moisture and easier to create a waterlogged root zone.</p>
+            <p>Repotting is not an automatic upgrade. Root health, pot size, and the plant’s current condition should guide the decision. This concept does not diagnose root problems.</p>
+          </div>
+        </details>
+
+        <details class="care-note">
+          <summary>The first month after bringing a plant home</summary>
+          <div class="care-body">
+            <p>Give the plant a stable spot and observe it before changing everything. Moving it repeatedly makes it harder to read how the plant responds.</p>
+            <p>A new plant may drop a leaf or pause growth while adjusting. This is general guidance, not a diagnosis or a guarantee that every plant will settle in the same way.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="workshops">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Beginner workshops</p>
+          <h2>Enquiry-led, not a booking engine.</h2>
+        </div>
+        <p class="small">Workshops are part of the fictional offer. No dates, times, capacity, or booking are configured here. Price bands below are synthetic estimates only; final price must be confirmed.</p>
+      </div>
+
+      <div class="workshop-grid reveal">
+        <article class="workshop-card">
+          <span class="price-tag">Synthetic estimate · Rp100.000–175.000 / person</span>
+          <h3>Starting with houseplants</h3>
+          <p>A beginner-level workshop direction covering light, watering rhythm, and realistic expectations. No prior experience assumed.</p>
+        </article>
+        <article class="workshop-card">
+          <span class="price-tag">Synthetic estimate · Rp100.000–175.000 / person</span>
+          <h3>Repotting and potting media</h3>
+          <p>A practical workshop direction about drainage, pot size, and handling roots with care. General guidance only, not a diagnosis of a specific plant.</p>
+        </article>
+        <article class="workshop-card">
+          <span class="price-tag">Synthetic estimate · Rp100.000–175.000 / person</span>
+          <h3>Small-space plant styling</h3>
+          <p>A styling workshop direction for apartments, small homes, and studio corners. Starts with the room and the care routine, not a product list.</p>
+        </article>
+      </div>
+
+      <div class="reveal" style="margin-top:1.2rem;">
+        <button class="btn btn-secondary btn-small" type="button" data-note-toggle aria-expanded="false" aria-controls="workshopEnquiryNote">
+          How an enquiry would work
+        </button>
+        <div class="enquiry-note" id="workshopEnquiryNote" hidden style="margin-top:.8rem;">
+          <strong>No message is sent.</strong> This prototype has no contact channel configured, so pressing the button does not submit an enquiry, reserve a place, or share any details. A real studio would need a configured enquiry route and would confirm dates, capacity, and price separately. Workshop price bands shown are synthetic estimates only.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="styling">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Plant styling</p>
+          <h2>For homes, studios, and small cafés.</h2>
+        </div>
+        <p class="small">Styling has no fixed price in this concept. It starts with the room, its light, and who will care for the plants. No message is sent from this prototype because no contact channel is configured.</p>
+      </div>
+
+      <ul class="styling-list reveal">
+        <li>
+          <h3>Homes and apartments</h3>
+          <p>Room-by-room plant directions that account for window orientation, rental constraints, and realistic care time. Illustrative only; no guarantee of suitability.</p>
+        </li>
+        <li>
+          <h3>Studios and small workspaces</h3>
+          <p>Greenery for a desk, a production corner, or a client-facing nook. The brief begins with light and maintenance responsibility, not a shopping list.</p>
+        </li>
+        <li>
+          <h3>Small café operators</h3>
+          <p>Plant styling directions for compact hospitality spaces. No fixed price. A real conversation would need to confirm scope, care arrangements, and constraints.</p>
+        </li>
+      </ul>
+
+      <div class="reveal" style="margin-top:1.2rem;">
+        <button class="btn btn-secondary btn-small" type="button" data-note-toggle aria-expanded="false" aria-controls="stylingNote">
+          Styling enquiry affordance
+        </button>
+        <div class="enquiry-note" id="stylingNote" hidden style="margin-top:.8rem;">
+          <strong>No message is sent.</strong> This is a contact affordance in a prototype, not a working enquiry route. No contact channel is configured, and no styling brief is submitted. Styling is not assigned a fixed price in this concept; any real scope would need to be discussed and confirmed.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prices">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Transparency</p>
+          <h2>Synthetic price bands, clearly labelled.</h2>
+        </div>
+        <p class="small">All ranges below are illustrative estimates for this fictional scenario. They are not quotes, not availability, and not a checkout. Final price must be confirmed.</p>
+      </div>
+
+      <div class="price-grid reveal">
+        <article class="price-card">
+          <span class="label">Indoor plants</span>
+          <span class="band">Rp35.000–450.000</span>
+          <p class="note">Synthetic estimate only. No stock, SKU, or availability is implied.</p>
+        </article>
+        <article class="price-card">
+          <span class="label">Pots, media, tools</span>
+          <span class="band">Rp15.000–180.000</span>
+          <p class="note">Synthetic estimate only. Illustrative bands, not a product catalogue.</p>
+        </article>
+        <article class="price-card">
+          <span class="label">Starter sets</span>
+          <span class="band">Rp85.000–250.000</span>
+          <p class="note">Synthetic estimate only. No bundle contents or availability are specified.</p>
+        </article>
+        <article class="price-card">
+          <span class="label">Workshops</span>
+          <span class="band">Rp100.000–175.000 / person</span>
+          <p class="note">Synthetic estimate only. No dates, capacity, or booking are configured.</p>
+        </article>
+        <article class="price-card">
+          <span class="label">Plant styling</span>
+          <span class="band">No fixed price</span>
+          <p class="note">Scope would depend on the room, light, care responsibility, and brief. Not a quote.</p>
+        </article>
+        <article class="price-card">
+          <span class="label">Illustrative status</span>
+          <span class="band">Concept only</span>
+          <p class="note">Internal experiment. Not for release. No checkout, payment, booking, accounts, CRM, or inventory integration.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box reveal">
+        <div>
+          <p class="eyebrow" style="color:var(--sun)">Contact affordance</p>
+          <h2>No message is sent.</h2>
+          <p>This prototype has no contact channel configured. The button below is an honest affordance: pressing it does not send a message, start a booking, or share your details.</p>
+        </div>
+        <div>
+          <button class="btn" type="button" data-note-toggle aria-expanded="false" aria-controls="contactNote">
+            Try the contact affordance
+          </button>
+          <div class="enquiry-note" id="contactNote" hidden style="margin-top:.8rem;">
+            <strong>Nothing was sent.</strong> No contact channel is configured in this concept. A real studio would need a working channel and a clear privacy notice before accepting messages.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>Sela Botanika</strong> is a fictional boutique indoor-plant shop and small workshop/styling studio in a fictional Bandung scenario. This page is a studio-development concept and an internal experiment only. <strong>Not for release.</strong></p>
+    <p>No stock, availability, SKU, opening hours, street address, contact number, WhatsApp, email, social link, workshop date, time, capacity, shipping guarantee, testimonial, staff member, premises, or customer story is represented. No checkout, payment, booking, account, CRM, or inventory integration exists. No expert botanical diagnosis, pet-safety, air-purification, health-benefit, or guaranteed-suitability claim is made. All imagery is generated illustration, not actual inventory, premises, staff, or customers. Prices are synthetic estimates only; final price must be confirmed.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Room reader simulation ---------- */
+  var directions = {
+    low: {
+      little: [
+        {
+          title: "Tolerant foliage direction",
+          note: "Often discussed for low-light corners: snake plant, ZZ plant, cast-iron plant. These are starting points, not a suitability guarantee."
+        },
+        {
+          title: "Slow-and-steady succulent leaning",
+          note: "Some succulent-leaning plants tolerate infrequent watering, but low light can stretch them. Treat this as a question to test, not a promise."
+        }
+      ],
+      steady: [
+        {
+          title: "Trailing tropicals direction",
+          note: "Pothos and some philodendrons are commonly discussed for softer light. Check soil moisture before watering rather than following a fixed calendar."
+        },
+        {
+          title: "Upright tolerant foliage",
+          note: "Snake plant and ZZ plant are often mentioned for lower-light rooms. They still need a realistic watering rhythm and a pot with drainage."
+        }
+      ],
+      fuss: [
+        {
+          title: "Foliage you can watch closely",
+          note: "Ferns and some calatheas are often discussed for lower light, but they can be less forgiving. This direction suits someone who enjoys checking plants often."
+        }
+      ]
+    },
+    medium: {
+      little: [
+        {
+          title: "Easy-going foliage direction",
+          note: "Pothos, spider plant, and some philodendrons are commonly discussed as beginner-friendly. Still check the soil and the actual light in the spot."
+        },
+        {
+          title: "Adaptable upright plants",
+          note: "Some dracaena and rubber-plant directions are often mentioned for medium light. Mature size and maintenance should be part of the decision."
+        }
+      ],
+      steady: [
+        {
+          title: "Classic beginner tropicals",
+          note: "Monstera, pothos, and philodendron directions are often discussed for medium indirect light. A steady routine matters more than a perfect schedule."
+        },
+        {
+          title: "Softer-leaf foliage",
+          note: "Peace lily and some aglaonema directions are commonly mentioned for medium light. These are illustrative directions, not stock or a guarantee."
+        }
+      ],
+      fuss: [
+        {
+          title: "Prayer-plant and fern direction",
+          note: "Maranta, calathea, and some ferns are often discussed for medium indirect light and consistent moisture. They can be less forgiving if care is irregular."
+        }
+      ]
+    },
+    bright: {
+      little: [
+        {
+          title: "Succulent direction",
+          note: "Bright light and infrequent watering can pair for some succulents, but species and pot matter. This is a direction to investigate, not a suitability claim."
+        },
+        {
+          title: "Sun-tolerant statement plants",
+          note: "Some ficus and euphorbia directions are often discussed for brighter spots. Check mature size and the room’s real sun exposure before deciding."
+        }
+      ],
+      steady: [
+        {
+          title: "Flowering and fruiting direction",
+          note: "Herbs and some flowering plants are commonly discussed for bright, filtered light. A steady routine supports consistency, but no result is guaranteed."
+        },
+        {
+          title: "Bright foliage direction",
+          note: "Croton and some ficus directions are often mentioned for brighter rooms. Acclimation and watering rhythm still need attention."
+        }
+      ],
+      fuss: [
+        {
+          title: "High-light collection direction",
+          note: "A mixed group of flowering plants, herbs, and sun-loving foliage can suit a bright room with attentive care. This is a starting point for a conversation, not a diagnosis."
+        }
+      ]
+    }
+  };
+
+  var roomResult = document.getElementById("roomResult");
+  var lightInputs = document.querySelectorAll('input[name="light"]');
+  var careInputs = document.querySelectorAll('input[name="care"]');
+
+  function renderResult() {
+    if (!roomResult) return;
+    var light = document.querySelector('input[name="light"]:checked');
+    var care = document.querySelector('input[name="care"]:checked');
+    if (!light || !care) return;
+
+    var items = (directions[light.value] && directions[light.value][care.value]) || [];
+
+    var list = items.map(function (item) {
+      return '<li><strong>' + item.title + '</strong><span>' + item.note + '</span></li>';
+    }).join("");
+
+    roomResult.innerHTML =
