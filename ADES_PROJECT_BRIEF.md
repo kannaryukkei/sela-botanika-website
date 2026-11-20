@@ -1,6 +1,11 @@
 # ADES PROJECT BRIEF — SELA BOTANIKA
 _Last updated: 2026-11-21 (Asia/Jakarta)_
 
+## Workflow version and migration note
+- **ADES workflow version used for this project:** ADES 1.x (legacy three-round protocol), because Sela Botanika exploration and direction approval predate the ADES 2.0 revision.
+- **Migration policy:** preserve all existing R1/R2/R3 artifacts, evidence, and the operator's direction approval as historical records. Do not relabel them as ADES 2.0-compliant and do not rerun the exploration automatically.
+- **ADES 2.0 applicability:** ADES 2.0 is the default for new projects and for any future Sela creative re-exploration explicitly requested by the operator. This project remains in its existing technical-QA/handover track unless a material redesign is reopened.
+
 ## 1. Project snapshot
 - **Business / brand:** Sela Botanika (100% fictional synthetic brand)
 - **Project name:** SELA BOTANIKA
@@ -13,10 +18,11 @@ _Last updated: 2026-11-21 (Asia/Jakarta)_
 - **Free-tier selection rule:** use each named provider's official free consumer interface and its default model/mode available to the operator. Do not purchase API credits, enable a paid plan, or assume a backend version not displayed by the provider.
 - **Model identity evidence (2026-11-21):** Gemini official subscription page lists Flash-Lite access on Free; DeepSeek official consumer chat is free, but the exact backend model/version served to a free chat session is not reliably exposed by the available official evidence; Meta's official Muse page says Muse is free with usage limits, but does not identify a fixed underlying model/version. Preserve those unknowns as NOT_DISCLOSED rather than guessing.
 - **External execution path:** DELEGATION_PACK (no direct authorized model integration verified in this session). Each external agent must note the exact model/version displayed in its own UI if available; otherwise report NOT_DISCLOSED and include a screenshot/text evidence of the selected free interface/model label.
+- **Legacy workflow note:** this project's completed artifacts are evidence of the prior ADES 1.x protocol only; they are not retroactively counted as ADES 2.0's three-concepts-per-agent, per-agent synthesis, and rendered Visual Jury sequence.
 - **R3 implementation commit:** `7104ebc25396ba6dc3e70ecf0411ac7b9bc1c738` on `main` (website, asset manifest, synthesis and runbook; this Brief is updated in a subsequent commit)
 - **Initial inspected HEAD:** `ee37041356cbf3ef06b1b9e099e1e28f36f48e60` was an empty-tree historical state after `Delete index.html`; not the current repository state.
 - **Parent commit inspected:** `3d61e0284ed1e29cab79966330db0edaa59f8d23`; its tree had one `index.html` (20,002 bytes). Historical only.
-- **Current stage/gate:** R1 and all four R2 source artifacts are complete. GPT-only R3 synthesis and a six-file static website project are committed. Static source QA passed; rendered/browser QA remains NOT_VERIFIED because local clone DNS failed and browser navigation is blocked in this environment.
+- **Current stage/gate:** Legacy ADES 1.x exploration is complete at source level: R1 and all four R2 source artifacts are complete. GPT-only R3 synthesis and a six-file static website project are committed. Static source QA passed; rendered/browser QA remains NOT_VERIFIED because local clone DNS failed and browser navigation is blocked in this environment.
 - **Overall status:** DIRECTION_APPROVED / TECHNICAL_QA_IN_PROGRESS (operator approved the integrated GPT direction on 2026-11-21; rendered preview remains blocked/unverified)
 - **Next Lead task:** Continue autonomous source/runbook verification; retain the browser-render limitation and do not claim visual inspection or release readiness.
 - **Operator decision (2026-11-21):** “semua disetujui, lanjut!” — accepted the integrated GPT recommendation and current direction. Scope is design/direction approval only; it does not authorize publication, deployment, DNS changes, spending, external contact, or release.
@@ -26,7 +32,7 @@ _Last updated: 2026-11-21 (Asia/Jakarta)_
 |---|---|---|
 | G0 — Project activation | PASS | Intake and Guide read; studio_development mode and no-release boundaries set; repository identity/branch/HEAD and GitHub write permission verified; current tool availability checked. Runtime/browser/harness limitations are recorded, not treated as proof of QA. |
 | G1 — Discovery & scope | PASS | Audience, offer, visitor needs, primary room-fit-to-enquiry journey, secondary workshop/business-styling paths, provisional page structure, price caveats, exclusions, and acceptance criteria consolidated in this Brief from the intake. |
-| G2 — Multi-agent exploration/synthesis | IN_PROGRESS | R1 complete; four complete R2 directions evaluated at source level; GPT-only R3 synthesis and integrated multi-file site are committed. Actual rendered candidate comparison remains NOT_VERIFIED due browser environment block. |
+| G2 — Legacy ADES 1.x exploration/synthesis | IN_PROGRESS | R1 complete; four complete R2 directions evaluated at source level; GPT-only R3 synthesis and integrated multi-file site are committed. Actual rendered candidate comparison remains NOT_VERIFIED due browser environment block. |
 | G3 — Build ready for QA | PASS | Complete multi-file site exists in the target repository; R3 synthesis and V0→V1 correction are recorded; current files/commit are known; latest HTML/JS/CSS static checks re-run successfully. Browser QA is a separate NOT_VERIFIED control. |
 | G4 — Operator review | PASS (direction scope) | Operator explicitly approved the single integrated GPT recommendation on 2026-11-21 (“semua disetujui, lanjut!”). Approval is for the integrated direction/artifact only; no rendered local preview was reviewed and no release authority was granted. |
 | G5 — Handover/release | IN_PROGRESS | Repository-specific local runbook prepared (Python standard-library server, port 4173); clean checkout/run not verified. Public release is not authorized. |
