@@ -13,10 +13,10 @@ _Last updated: 2026-11-21 (Asia/Jakarta)_
 - **Free-tier selection rule:** use each named provider's official free consumer interface and its default model/mode available to the operator. Do not purchase API credits, enable a paid plan, or assume a backend version not displayed by the provider.
 - **Model identity evidence (2026-11-21):** Gemini official subscription page lists Flash-Lite access on Free; DeepSeek official consumer chat is free, but the exact backend model/version served to a free chat session is not reliably exposed by the available official evidence; Meta's official Muse page says Muse is free with usage limits, but does not identify a fixed underlying model/version. Preserve those unknowns as NOT_DISCLOSED rather than guessing.
 - **External execution path:** DELEGATION_PACK (no direct authorized model integration verified in this session). Each external agent must note the exact model/version displayed in its own UI if available; otherwise report NOT_DISCLOSED and include a screenshot/text evidence of the selected free interface/model label.
-- **Repository HEAD:** `ee37041356cbf3ef06b1b9e099e1e28f36f48e60` on `main` (verified via GitHub commit listing)
-- **HEAD tree:** empty tree `4b825dc642cb6eb9a060e54bf8d69288fbee4904`; latest commit message: `Delete index.html`
+- **Repository latest commit:** `d040d10d22dba61c430dbc9e715da71c0d1584aa` on `main` (Brief update; R1 concept and Delegation Pack are in its history)
+- **Initial inspected HEAD:** `ee37041356cbf3ef06b1b9e099e1e28f36f48e60` had an empty tree after `Delete index.html`; subsequent commits now add the ADES Brief, R1 concept, and Delegation Pack only. No integrated website implementation exists yet.
 - **Parent commit inspected:** `3d61e0284ed1e29cab79966330db0edaa59f8d23`; its tree had one `index.html` (20,002 bytes). This is historical prior work, not present at HEAD.
-- **Current stage/gate:** G0 activation complete except local runtime/browser/harness identification; next is G1, then G2 delegation.
+- **Current stage/gate:** G1 complete; G2 R1 in progress. GPT R1 concept and external Delegation Pack are committed; external outputs are pending.
 - **Overall status:** IN_PROGRESS
 - **Next Lead task:** Independently evaluate returned external R1 HTMLs when supplied; deduplicate evidence, update the Shared Reference Learning Brief, then prepare R2 prompts. Do not start R2 before R1 evidence is returned.
 - **Next operator action:** Run the three R1 prompts in ADES_R1_DELEGATION_PACK.md using the official free interfaces and return exactly one HTML file per agent. No model substitution or paid access; no waiver is assumed.
@@ -27,7 +27,7 @@ _Last updated: 2026-11-21 (Asia/Jakarta)_
 | G0 — Project activation | PASS | Intake and Guide read; studio_development mode and no-release boundaries set; repository identity/branch/HEAD and GitHub write permission verified; current tool availability checked. Runtime/browser/harness limitations are recorded, not treated as proof of QA. |
 | G1 — Discovery & scope | PASS | Audience, offer, visitor needs, primary room-fit-to-enquiry journey, secondary workshop/business-styling paths, provisional page structure, price caveats, exclusions, and acceptance criteria consolidated in this Brief from the intake. |
 | G2 — Multi-agent exploration/synthesis | IN_PROGRESS | Free-tier-only roster confirmed; direct model integrations unavailable; R1 Delegation Pack and GPT R1 concept committed. External R1 HTML outputs are pending. R2/R3 remain gated on completed/evaluated artifacts. |
-| G3 — Build ready for QA | NOT_STARTED | No website files at HEAD; no project stack yet. |
+| G3 — Build ready for QA | NOT_STARTED | No integrated website implementation or stack exists yet; only R1 concept HTML and project-control files are present. |
 | G4 — Operator review | NOT_STARTED | No near-final artifact. |
 | G5 — Handover/release | NOT_STARTED | No runbook possible until implementation stack exists. Public release is not authorized. |
 
@@ -111,7 +111,7 @@ References inspected:
 | Control | Status | Evidence / blocker |
 |---|---|---|
 | GOV-01 | PASS (G0 facts and restrictions) | Mode and synthetic boundary in intake; no external outreach/release |
-| DISC-01 | IN_PROGRESS | Initial intake synthesis; G1 still to formalize |
+| DISC-01 | PASS | Audience, offer, visitor tasks, page scope, exclusions and acceptance criteria consolidated in the Brief |
 | EXP-01 | IN_PROGRESS | Free-tier-only roster confirmed; direct integrations unavailable; R1 Delegation Pack committed; GPT R1 concept committed; external R1 HTMLs pending |
 | VIS-01 | NOT_VERIFIED | Historical concept had image URL metadata; no current integrated project assets or rendered inspection |
 | INT-01 | NOT_VERIFIED | Historical demo finder code exists in parent concept only; no interactive browser test |
