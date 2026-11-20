@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ruang Hening — Sela Botanika | Studio Tanaman Fiktif, Bandung</title>
+<meta name="description" content="Ruang Hening adalah arah konsep kedua Sela Botanika: studio tanaman hias fiktif di Bandung. Susun satu sudut yang tenang dari cahaya, ruang, dan waktu perawatanmu. Eksperimen internal, bukan untuk dirilis.">
+<style>
+  :root{
+    --cream:#f7ecdc; --cream-2:#fffaf2; --sand:#e9dcc6; --sand-2:#e2d2b6;
+    --clay:#b85c38; --clay-deep:#8a3f24; --bark:#2e211a; --bark-2:#4a3a2e;
+    --sage:#7d8b6f; --sage-soft:#e6e9dc; --sun:#e2a63d; --line:#d9c7ad;
+    --ink:#2b211b; --muted:#6b5a4a; --radius:20px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    font-size:17px; line-height:1.65; overflow-x:hidden;
+  }
+  img{max-width:100%; display:block}
+  a{color:var(--clay-deep)}
+  a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+    outline:3px solid var(--clay-deep); outline-offset:3px; border-radius:8px;
+  }
+  button{font:inherit; cursor:pointer; min-height:44px}
+  ::selection{background:#f2d191; color:var(--bark)}
+  .skip{position:absolute; left:1rem; top:-5rem; background:var(--bark); color:#fff; padding:.75rem 1rem; border-radius:.7rem; z-index:30}
+  .skip:focus{top:1rem; color:#fff}
+  .strip{background:var(--bark); color:#f7ecdc; text-align:center; font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; font-weight:800; padding:.6rem 1rem}
+  .strip b{color:var(--sun)}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 1.15rem}
+  header.site{position:sticky; top:0; z-index:20; background:rgba(247,236,220,.97); border-bottom:1px solid var(--line)}
+  .topbar{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.8rem 0}
+  .wordmark{font-family:Georgia,"Times New Roman",serif; font-size:1.5rem; font-weight:700; line-height:1; color:var(--bark); text-decoration:none}
+  .wordmark em{font-style:normal; color:var(--clay)}
+  .wordmark small{display:block; font-family:system-ui,sans-serif; font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:800; margin-top:.3rem}
+  nav{overflow-x:auto; scrollbar-width:thin}
+  nav ul{list-style:none; margin:0; padding:.2rem 0; display:flex; gap:.2rem .9rem; white-space:nowrap}
+  nav a{text-decoration:none; color:var(--bark); font-size:.92rem; font-weight:700; padding:.55rem .25rem}
+  nav a:hover{color:var(--clay-deep)}
+  nav a.pill-cta{background:var(--clay); color:#fff; padding:.55rem .9rem; border-radius:999px}
+  main{display:block}
+  section{padding:3.4rem 0}
+  section + section{border-top:1px solid var(--line)}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; line-height:1.08; margin:0 0 .75rem; color:var(--bark)}
+  h1{font-size:clamp(2.6rem,8vw,4.6rem); letter-spacing:-.02em}
+  h1 em{font-style:italic; color:var(--clay)}
+  h2{font-size:clamp(1.8rem,4.8vw,2.6rem)}
+  h3{font-size:1.28rem}
+  p{margin:0 0 1rem}
+  .kicker{font-size:.76rem; letter-spacing:.2em; text-transform:uppercase; color:var(--clay-deep); font-weight:800; margin-bottom:.7rem}
+  .lede{font-size:1.13rem; color:var(--bark-2); max-width:60ch}
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:.5rem; text-decoration:none; font-weight:800; border-radius:999px; padding:.85rem 1.3rem; border:2px solid var(--bark); min-height:48px}
+  .btn-clay{background:var(--clay); border-color:var(--clay); color:#fff}
+  .btn-bark{background:var(--bark); border-color:var(--bark); color:#fff}
+  .btn-ghost{background:transparent; color:var(--bark)}
+  .note{font-size:.92rem; color:var(--muted)}
+  .note strong{color:var(--bark)}
+
+  /* HERO — asymmetric, photo-led, no light-map */
+  .hero{padding:1.6rem 0 3rem; border-top:none; background:
+    radial-gradient(700px 320px at 92% 0%, rgba(226,166,61,.28), transparent 62%),
+    radial-gradient(520px 360px at 0% 100%, rgba(125,139,111,.22), transparent 58%)}
+  .hero-grid{display:grid; gap:1.4rem}
+  .hero-photo{position:relative; border-radius:4px 28px 4px 28px; overflow:hidden; box-shadow:0 22px 44px rgba(46,33,26,.22)}
+  .hero-photo img{width:100%; height:420px; object-fit:cover}
+  .hero-photo figcaption{position:absolute; left:.9rem; right:.9rem; bottom:.9rem; background:rgba(255,250,242,.94); border-radius:12px; padding:.65rem .85rem; font-size:.82rem; color:var(--muted)}
+  .hero-copy{position:relative; padding-top:.4rem}
+  .hero-copy .vertical{ display:none; }
+  .hero-actions{display:flex; flex-wrap:wrap; gap:.7rem; margin:1.3rem 0 1rem}
+  .hero-chips{display:flex; flex-wrap:wrap; gap:.5rem; list-style:none; padding:0; margin:1.1rem 0 0}
+  .hero-chips li{background:var(--cream-2); border:1px solid var(--line); border-radius:999px; padding:.5rem .85rem; font-size:.88rem; font-weight:700}
+  .hero-chips li:nth-child(2){background:var(--sage-soft)}
+  .hero-chips li:nth-child(3){background:#fbeed3}
+  .tactile-note{margin-top:1.4rem; border-left:4px solid var(--clay); padding:.2rem 0 .2rem 1rem; font-family:Georgia,serif; font-size:1.08rem; font-style:italic; color:var(--bark-2)}
+
+  /* PLANNER — Susun Sudutmu */
+  .planner{background:var(--bark); color:#f7ecdc; border-radius:26px; padding:1.6rem 1.4rem; box-shadow:0 20px 44px rgba(46,33,26,.28)}
+  .planner h2{color:#fff}
+  .planner .lede{color:#e8dcc6}
+  .planner-grid{display:grid; gap:1.6rem; margin-top:1.4rem}
+  .choice-group{border:1px solid rgba(247,236,220,.28); border-radius:16px; padding:1rem}
+  .choice-group legend,.choice-group > h3{font-family:system-ui,sans-serif; font-size:.95rem; font-weight:800; letter-spacing:.04em; color:#fff; margin:0 0 .7rem}
+  .chips{display:flex; flex-wrap:wrap; gap:.55rem}
+  .chip{background:transparent; color:#f7ecdc; border:1.5px solid rgba(247,236,220,.45); border-radius:999px; padding:.6rem .95rem; font-weight:700}
+  .chip[aria-pressed="true"]{background:var(--sun); border-color:var(--sun); color:#2b211b}
+  .chip:hover{border-color:#fff}
+  .planner-actions{display:flex; flex-wrap:wrap; gap:.65rem; margin-top:1.3rem}
+  .btn-sun{background:var(--sun); border-color:var(--sun); color:#2b211b}
+  .btn-line-light{background:transparent; border-color:#f7ecdc; color:#f7ecdc}
+  .status{margin-top:1.1rem; background:rgba(255,250,242,.1); border:1px dashed rgba(247,236,220,.4); border-radius:12px; padding:.9rem 1rem; font-size:.96rem}
+  .corner-stage{margin-top:1.4rem; background:var(--cream-2); color:var(--ink); border-radius:18px; padding:1.15rem}
+  .stage-visual{position:relative; height:210px; border-radius:14px; overflow:hidden; background:linear-gradient(180deg,#f3e6cf 0 62%,#d9b98f 62% 100%); border:1px solid var(--line)}
+  .stage-visual .window{position:absolute; left:12px; top:14px; width:92px; height:110px; background:#fbeed3; border:6px solid #fff; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,.12)}
+  .stage-visual .sunbeam{position:absolute; left:108px; top:28px; width:150px; height:120px; background:rgba(226,166,61,.28); clip-path:polygon(0 0,100% 18%,78% 100%,0 78%)}
+  .zone{position:absolute; bottom:14px; border:2px dashed #b9a68d; border-radius:12px; display:flex; align-items:flex-end; justify-content:center; padding:.45rem; font-size:.78rem; font-weight:800; color:#6b5a4a; text-align:center; transition:background .3s}
+  .zone.on{background:rgba(125,139,111,.28); border-style:solid; border-color:var(--sage)}
+  .zone-lantai{left:12px; width:96px; height:108px}
+  .zone-meja{left:128px; width:112px; height:78px}
+  .zone-gantung{right:12px; width:96px; height:118px; bottom:auto; top:14px}
+  .zone .plant{font-family:Georgia,serif; font-size:1.9rem; line-height:1; display:block}
+  .steps{display:grid; gap:.8rem; margin-top:1.1rem}
+  .step-card{background:#fff; border:1px solid var(--line); border-left:6px solid var(--clay); border-radius:14px; padding:1rem 1.1rem}
+  .step-card h3{margin-bottom:.3rem}
+  .step-card .no{font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--clay-deep); font-weight:800}
+  .step-card p{margin-bottom:.4rem; color:var(--bark-2)}
+  .empty-state{background:#fff8e8; border:1px solid #e2c98f; border-radius:14px; padding:1.1rem; margin-top:1.1rem}
+  .empty-state h3{color:var(--clay-deep)}
+  .planner .disclaimer{font-size:.9rem; color:#e8dcc6; border-top:1px solid rgba(247,236,220,.22); padding-top:1rem; margin-top:1.3rem}
+
+  /* MATERIAL STRIP */
+  .materials{display:grid; gap:1rem; margin-top:1.6rem}
+  .material{background:var(--cream-2); border:1px solid var(--line); border-radius:16px; padding:1.2rem}
+  .material .swatch{height:54px; border-radius:12px; margin-bottom:.9rem; border:1px solid rgba(0,0,0,.08)}
+  .swatch-clay{background:linear-gradient(135deg,#b85c38,#d98a63)}
+  .swatch-wood{background:linear-gradient(135deg,#8a6a4a,#c2a077)}
+  .swatch-weave{background:repeating-linear-gradient(45deg,#e9dcc6 0 10px,#d9c7ad 10px 20px)}
+
+  /* DISCOVERY — asymmetric */
+  .discovery-head{display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:1rem}
+  .filters{display:flex; flex-wrap:wrap; gap:.5rem; margin:1.4rem 0 1.2rem}
+  .filter{background:#fff; border:1.5px solid var(--line); border-radius:999px; padding:.6rem 1rem; font-weight:750}
+  .filter[aria-pressed="true"]{background:var(--bark); color:#fff; border-color:var(--bark)}
+  .disc-grid{display:grid; gap:1.1rem}
+  .disc-card{background:var(--cream-2); border:1px solid var(--line); border-radius:18px; overflow:hidden}
+  .disc-card.wide{grid-column:1 / -1}
+  .disc-card figure{margin:0}
+  .disc-card img{width:100%; height:240px; object-fit:cover}
+  .disc-card figcaption{font-size:.82rem; color:var(--muted); padding:.65rem .95rem; background:#fff; border-top:1px solid var(--line)}
+  .disc-body{padding:1.1rem 1.15rem 1.25rem}
+  .disc-body .tag{display:inline-block; background:var(--sage-soft); border-radius:999px; padding:.22rem .65rem; font-size:.8rem; font-weight:800; margin-bottom:.55rem}
+  .disc-meta{list-style:none; padding:0; margin:.8rem 0 0; display:grid; gap:.3rem; font-size:.93rem}
+  .disc-meta li{display:flex; justify-content:space-between; gap:1rem; border-top:1px dotted var(--line); padding-top:.35rem}
+  .count-note{font-size:.92rem; color:var(--muted); margin-top:.9rem}
+
+  /* PRICE — ledger cards, not a table */
+  .price-grid{display:grid; gap:1rem; margin-top:1.5rem}
+  .price-card{background:var(--cream-2); border:1px solid var(--line); border-radius:16px; padding:1.25rem; position:relative}
+  .price-card::after{content:""; position:absolute; left:1.25rem; right:1.25rem; bottom:3.2rem; border-top:2px dotted var(--line)}
+  .price-card h3{margin-bottom:.2rem}
+  .price-card .amount{font-family:Georgia,serif; font-size:1.5rem; color:var(--clay-deep); margin:.6rem 0 .9rem}
+  .price-card p{color:var(--bark-2); font-size:.96rem}
+
+  /* STYLING — two large photo cards */
+  .style-grid{display:grid; gap:1.2rem; margin-top:1.5rem}
+  .style-card{border-radius:22px; overflow:hidden; background:var(--bark); color:#f7ecdc}
+  .style-card img{width:100%; height:260px; object-fit:cover}
+  .style-card .inner{padding:1.3rem 1.35rem 1.5rem}
+  .style-card h3{color:#fff}
+  .style-card p{color:#e8dcc6}
+  .style-card ul{margin:.6rem 0 0; padding-left:1.15rem; color:#e8dcc6}
+  .style-card li{margin-bottom:.4rem}
+  .style-card.biz{background:#234434}
+  .style-card figcaption{font-size:.82rem; color:#d9c7ad; padding:.6rem 1.35rem 1.1rem}
+
+  /* WORKSHOP */
+  .work-grid{display:grid; gap:1rem; margin-top:1.5rem}
+  .work-card{background:#fff; border:1px solid var(--line); border-radius:16px; padding:1.25rem}
+  .work-card .when{display:inline-block; background:#fbeed3; border-radius:999px; padding:.25rem .7rem; font-size:.82rem; font-weight:800; margin-bottom:.6rem}
+
+  /* PRACTICAL + FAQ */
+  .practical{display:grid; gap:1.1rem; margin-top:1.4rem}
+  .practical article{background:var(--cream-2); border:1px solid var(--line); border-radius:16px; padding:1.2rem}
+  details{background:#fff; border:1px solid var(--line); border-radius:12px; padding:.95rem 1.05rem; margin-bottom:.7rem}
+  summary{cursor:pointer; font-weight:800; font-family:Georgia,serif; font-size:1.08rem; min-height:44px; display:flex; align-items:center}
+  details p{margin:.6rem 0 0; color:var(--bark-2)}
+
+  /* ENQUIRY */
+  .enquiry{background:var(--sand); border-radius:24px; padding:1.6rem 1.4rem}
+  .enquiry-grid{display:grid; gap:1.4rem}
+  form{display:grid; gap:.95rem; margin-top:1rem}
+  label{font-weight:800; font-size:.95rem}
+  input,select,textarea{width:100%; margin-top:.35rem; padding:.8rem .9rem; border:1.5px solid #c2a98a; border-radius:12px; background:#fff; font:inherit; color:var(--ink); min-height:48px}
+  textarea{min-height:120px; resize:vertical}
+  .sent-note{display:none; background:#e6e9dc; border:1px solid #9aa88a; border-radius:12px; padding:1rem; margin-top:1rem}
+  .sent-note.show{display:block}
+  .enquiry-side{background:var(--cream-2); border:1px solid var(--line); border-radius:16px; padding:1.2rem}
+  .enquiry-side ul{margin:.6rem 0 0; padding-left:1.15rem}
+  .enquiry-side li{margin-bottom:.45rem}
+
+  footer{padding:2.4rem 0 3rem; font-size:.9rem; color:var(--muted)}
+  footer .fine{font-size:.84rem; max-width:74ch}
+
+  @media (min-width:720px){
+    .hero-grid{grid-template-columns:1.05fr .95fr; gap:2rem; align-items:start}
+    .hero-photo img{height:520px}
+    .hero-copy{margin-top:3.2rem}
+    .hero-copy .vertical{display:block; position:absolute; right:-.4rem; top:-2.4rem; writing-mode:vertical-rl; font-size:.72rem; letter-spacing:.28em; text-transform:uppercase; color:var(--muted); font-weight:800}
+    .materials{grid-template-columns:repeat(3,1fr)}
+    .disc-grid{grid-template-columns:1fr 1fr}
+    .price-grid{grid-template-columns:1fr 1fr}
+    .style-grid{grid-template-columns:1fr 1fr}
+    .style-grid .style-card.biz{margin-top:2.4rem}
+    .work-grid{grid-template-columns:repeat(3,1fr)}
+    .practical{grid-template-columns:repeat(3,1fr)}
+    .enquiry-grid{grid-template-columns:1.2fr .8fr}
+    .planner-grid{grid-template-columns:1fr 1fr}
+    .planner{padding:2rem}
+  }
+  @media (min-width:1020px){
+    .hero-grid{grid-template-columns:1.15fr .85fr}
+    .disc-grid{grid-template-columns:1.25fr .75fr 1fr}
+    .disc-card.wide{grid-column:auto}
+    .price-grid{grid-template-columns:repeat(4,1fr)}
+    .price-grid .price-card:last-child{grid-column:span 1}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important; animation:none !important}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#utama">Lewati ke konten utama</a>
+<div class="strip" role="note">Eksperimen internal <b>· Sela Botanika · Bukan untuk dirilis</b></div>
+
+<header class="site">
+  <div class="wrap topbar">
+    <a class="wordmark" href="#atas">Sela <em>Botanika</em><small>Studio tanaman · Bandung — fiktif</small></a>
+    <nav aria-label="Navigasi utama">
+      <ul>
+        <li><a href="#susun">Susun sudut</a></li>
+        <li><a href="#temukan">Tanaman &amp; esensial</a></li>
+        <li><a href="#harga">Harga</a></li>
+        <li><a href="#styling">Styling</a></li>
+        <li><a href="#workshop">Workshop</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a class="pill-cta" href="#tanya">Tanya dulu</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="utama">
+  <!-- HERO — asymmetric photo-led, different from R1 light-map -->
+  <section class="hero" id="atas" aria-labelledby="judul-utama">
+    <div class="wrap hero-grid">
+      <figure class="hero-photo reveal">
+        <img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?q=80&amp;w=1400&amp;auto=format&amp;fit=crop" alt="Ilustrasi tanaman hijau di dekat jendela yang terang, dalam ruangan yang tenang" fetchpriority="high">
+        <figcaption>Foto ilustratif: Unsplash. Bukan toko, ruangan, atau tanaman Sela Botanika. Lisensi Unsplash; hak tiap foto tidak diverifikasi satu per satu.</figcaption>
+      </figure>
+      <div class="hero-copy reveal">
+        <span class="vertical" aria-hidden="true">Ruang Hening — Bandung (fiktif)</span>
+        <p class="kicker">Studio tanaman hias · Untuk pemula &amp; penghobi</p>
+        <h1 id="judul-utama">Satu sudut yang <em>hening</em>, dirawat pelan-pelan.</h1>
+        <p class="lede">Sela Botanika bukan toko yang ramai. Ini studio kecil fiktif di Bandung yang mengajakmu mulai dari satu sudut: cahaya yang ada, ruang yang tersedia, dan waktu yang sungguh kamu punya.</p>
+        <div class="hero-actions">
+          <a class="btn btn-clay" href="#susun">Susun sudutmu ↓</a>
+          <a class="btn btn-ghost" href="#temukan">Lihat tanaman &amp; esensial</a>
+        </div>
+        <p class="tactile-note">“Jangan mulai dari seluruh rumah. Mulai dari satu sudut yang kamu lewati setiap hari.”</p>
+        <ul class="hero-chips" aria-label="Ringkasan arah konsep">
+          <li>🪴 Satu sudut dulu</li>
+          <li>🪟 Cahaya &amp; ruang dulu</li>
+          <li>🤲 Ritme yang realistis</li>
+        </ul>
+        <p class="note" style="margin-top:1.1rem"><strong>Catatan jujur:</strong> semua harga di halaman ini ilustratif. Harga akhir dikonfirmasi saat bertanya. Tidak ada stok, jadwal, atau janji pengiriman di sini.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOM-FIT INTERACTION — Susun Sudutmu (first, not R1 order) -->
+  <section id="susun" aria-labelledby="susun-judul">
+    <div class="wrap">
+      <div class="planner reveal">
+        <p class="kicker" style="color:var(--sun)">Interaksi utama · Susun Sudutmu</p>
+        <h2 id="susun-judul">Susun satu sudut, langkah demi langkah.</h2>
+        <p class="lede">Pilih sudut, cahaya, dan waktumu. Lalu tekan “Susun sudutku” — halaman ini akan menyusun urutan penataan yang tenang: yang besar dulu, lalu meja, lalu gantung. Tidak ada yang dikirim atau disimpan.</p>
+
+        <div class="planner-grid">
+          <div>
+            <div class="choice-group" role="group" aria-labelledby="label-sudut">
+              <h3 id="label-sudut">1 · Sudut mana yang mau disusun?</h3>
+              <div class="chips" id="sudut-chips">
+                <button type="button" class="chip" data-sudut="baca" aria-pressed="true">Pojok baca</button>
+                <button type="button" class="chip" data-sudut="kerja" aria-pressed="false">Meja kerja</button>
+                <button type="button" class="chip" data-sudut="jendela" aria-pressed="false">Ambang jendela</button>
+              </div>
+            </div>
+            <div class="choice-group" role="group" aria-labelledby="label-cahaya" style="margin-top:1rem">
+              <h3 id="label-cahaya">2 · Cahaya di sudut itu</h3>
+              <div class="chips" id="cahaya-chips">
+                <button type="button" class="chip" data-cahaya="terang" aria-pressed="true">Terang, lembut</button>
+                <button type="button" class="chip" data-cahaya="sedang" aria-pressed="false">Sedang</button>
+                <button type="button" class="chip" data-cahaya="redup" aria-pressed="false">Redup</button>
+                <button type="button" class="chip" data-cahaya="langsung" aria-pressed="false">Matahari langsung lama</button>
+              </div>
+            </div>
+            <div class="choice-group" role="group" aria-labelledby="label-waktu" style="margin-top:1rem">
+              <h3 id="label-waktu">3 · Waktu perawatan yang realistis</h3>
+              <div class="chips" id="waktu-chips">
+                <button type="button" class="chip" data-waktu="sedikit" aria-pressed="true">Kurang dari 10 mnt / minggu</button>
+                <button type="button" class="chip" data-waktu="sedang" aria-pressed="false">10–30 mnt / minggu</button>
+                <button type="button" class="chip" data-waktu="banyak" aria-pressed="false">Lebih dari 30 mnt / minggu</button>
+              </div>
+            </div>
+            <div class="planner-actions">
+              <button type="button" class="btn btn-sun" id="btn-susun">Susun sudutku</button>
+              <button type="button" class="btn btn-line-light" id="btn-kosong">Kosongkan sudut</button>
+            </div>
+            <p class="status" id="status-susun" role="status" aria-live="polite">Sudutmu masih kosong. Pilih sudut, cahaya, dan waktu, lalu tekan “Susun sudutku”.</p>
+          </dIv>
+
+          <div class="corner-stage" aria-label="Panggung sudut">
+            <h3 style="font-family:system-ui,sans-serif; font-size:.95rem; margin-bottom:.7rem">Panggung sudutmu — gambaran saja</h3>
+            <div class="stage-visual" id="panggung" aria-hidden="true">
+              <div class="window"></div><div class="sunbeam"></div>
+              <div class="zone zone-lantai" id="zona-lantai"><span><span class="plant" hidden>🪴</span>Lantai<br>kosong</span></div>
+              <div class="zone zone-meja" id="zona-meja"><span><span class="plant" hidden>🌿</span>Meja<br>kosong</span></div>
+              <div class="zone zone-gantung" id="zona-gantung"><span><span class="plant" hidden>🌱</span>Gantung<br>kosong</span></div>
+            </div>
+            <p class="note" style="margin-top:.7rem">Gambar panggung ini adalah ilustrasi susunan, bukan foto ruangan Sela Botanika.</p>
+            <div class="steps" id="langkah-susun" aria-live="polite"></div>
+            <div class="empty-state" id="kosong-susun" hidden>
+              <h3>Belum ada susunan yang tenang untuk kombinasi ini.</h3>
+              <p>Itu bukan kegagalan — itu tanda untuk mengamati dulu. Coba ubah satu pilihan: misalnya, pindah dari ambang jendela yang redup ke sudut yang cahayanya lebih terang, atau mulai dari diskusi set pemula sebelum memilih tanaman.</p>
+              <p style="margin:0"><strong>Saran:</strong> amati sudutmu pagi, siang, dan sore, lalu coba lagi dengan satu pilihan yang berbeda.</p>
+            </div>
+          </div>
+        </div>
+        <p class="disclaimer">Panduan ini bersifat umum dan tidak menggantikan pengamatan langsung. Tidak ada jaminan tanaman akan cocok, tidak ada klaim keamanan untuk hewan peliharaan, pemurnian udara, manfaat kesehatan, atau diagnosis ahli.</p>
+      </div>
+
+      <!-- MATERIAL STRIP -->
+      <div class="materials reveal" style="margin-top:2rem">
+        <article class="material"><div class="swatch swatch-clay" aria-hidden="true"></div><h3>Tanah liat</h3><p>Hangat, matte, dan beratnya menenangkan. Pot tanah liat membantu sudut terasa membumi — pilih karena sentuhannya, bukan karena tren.</p></article>
+        <article class="material"><div class="swatch swatch-wood" aria-hidden="true"></div><h3>Kayu</h3><p>Rak dan dudukan kayu membuat tanaman kecil punya tempat yang jelas. Kayu yang tenang membuat hijau terlihat lebih hidup.</p></article>
+        <article class="material"><div class="swatch swatch-weave" aria-hidden="true"></div><h3>Anyaman &amp; kain</h3><p>Tekstur lembut untuk sudut baca: alas, keranjang, atau kain yang membuat sudut terasa dipakai, bukan dipajang.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCOVERY -->
+  <section id="temukan" aria-labelledby="temukan-judul">
+    <div class="wrap">
+      <div class="discovery-head reveal">
+        <div>
+          <p class="kicker">Tanaman &amp; esensial · Kategori untuk diskusi</p>
+          <h2 id="temukan-judul">Pilih dari bentuk dan ritme, bukan dari stok.</h2>
+          <p class="lede">Enam arah di bawah ini — empat tanaman, dua esensial — membantu membayangkan sudutmu. Ini kategori umum, bukan daftar stok, SKU, atau ketersediaan.</p>
+        </div>
+      </div>
+
+      <div class="filters reveal" role="group" aria-label="Saring kategori berdasarkan cahaya awal">
+        <button type="button" class="filter" data-filter="semua" aria-pressed="true">Semua</button>
+        <button type="button" class="filter" data-filter="terang" aria-pressed="false">Cahaya terang</button>
+        <button type="button" class="filter" data-filter="sedang" aria-pressed="false">Cahaya sedang</button>
+        <button type="button" class="filter" data-filter="redup" aria-pressed="false">Cahaya redup</button>
+      </div>
+
+      <div class="disc-grid" id="disc-grid">
+        <article class="disc-card wide reveal" data-cahaya="terang sedang">
+          <figure>
+            <img src="https://images.unsplash.com/photo-1459156212016-c812468e2115?q=80&amp;w=1400&amp;auto=format&amp;fit=crop" alt="Ilustrasi daun hijau besar dari dekat dengan cahaya lembut" loading="lazy">
+            <figcaption>Foto ilustratif: Unsplash. Bukan inventaris atau tanaman Sela Botanika.</figcaption>
+          </figure>
+          <div class="disc-body">
+            <span class="tag">Tanaman · Sudut lantai</span>
+            <h3>Daun besar untuk pojok baca</h3>
+            <p>Satu tanaman besar sudah cukup untuk membuat pojok terasa selesai. Beri ia ruang tumbuh dan jarak yang lega dari dinding.</p>
+            <ul class="disc-meta"><li><span>Cahaya awal</span><b>Terang, lembut</b></li><li><span>Ruang</span><b>Lantai / pojok</b></li><li><span>Harga ilustratif</span><b>Rp35.000–450.000</b></li></ul>
+          </div>
+        </article>
+
+        <article class="disc-card reveal" data-cahaya="sedang terang">
+          <div class="disc-body">
+            <span class="tag">Tanaman · Meja &amp; rak</span>
+            <h3>Daun meja untuk kerja</h3>
+            <p>Kecil, dekat, dan mudah dipindah. Cocok untuk meja kerja yang butuh satu titik hijau tanpa memenuhi ruang.</p>
+            <ul class="disc-meta"><li><span>Cahaya awal</span><b>Sedang–terang</b></li><li><span>Ruang</span><b>Meja / rak</b></li><li><span>Harga ilustratif</span><b>Rp35.000–450.000</b></li></ul>
+          </div>
+        </article>
+
+        <article class="disc-card reveal" data-cahaya="terang sedang">
+          <div class="disc-body">
+            <span class="tag">Tanaman · Gantung</span>
+            <h3>Menjuntai untuk ambang &amp; rak tinggi</h3>
+            <p>Untuk saat lantai sudah penuh. Perhatikan panjang juntai dan akses saat merawat — gantung yang tenang adalah yang mudah dijangkau.</p>
+            <ul class="disc-meta"><li><span>Cahaya awal</span><b>Terang, lembut</b></li><li><span>Ruang</span><b>Gantung / dinding</b></li><li><span>Harga ilustratif</span><b>Rp35.000–450.000</b></li></ul>
+          </div>
+        </article>
+
+        <article class="disc-card reveal" data-cahaya="redup sedang">
+          <div class="disc-body">
+            <span class="tag">Tanaman · Ritme lambat</span>
+            <h3>Tahan lupa siram, ritme lambat</h3>
+            <p>Untuk minggu yang padat. Arah ini mengutamakan ritme sederhana — tetap perlu diamati, bukan diabaikan.</p>
+            <ul class="disc-meta"><li><span>Cahaya awal</span><b>Sedang–redup</b></li><li><span>Ruang</span><b>Meja / lantai</b></li><li><span>Harga ilustratif</span><b>Rp35.000–450.000</b></li></ul>
+          </div>
+        </article>
+
+        <article class="disc-card reveal" data-cahaya="semua">
+          <figure>
+            <img src="https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Ilustrasi tanaman di dalam pot di atas permukaan kayu" loading="lazy">
+            <figcaption>Foto ilustratif: Unsplash. Bukan inventaris atau pot Sela Botanika.</figcaption>
+          </figure>
+          <div class="disc-body">
+            <span class="tag">Esensial · Pot &amp; media</span>
+            <h3>Pot, media &amp; alat dasar</h3>
+            <p>Pot, media tanam, dan alat perawatan dasar dibicarakan sebagai bagian dari perawatan — bukan sekadar pelengkap.</p>
+            <ul class="disc-meta"><li><span>Untuk</span><b>Semua sudut</b></li><li><span>Harga ilustratif</span><b>Rp15.000–180.000</b></li></ul>
+          </div>
+        </article>
+
+        <article class="disc-card reveal" data-cahaya="semua">
+          <div class="disc-body">
+            <span class="tag">Esensial · Set pemula</span>
+            <h3>Set pemula — isi dikonfirmasi saat tanya</h3>
+            <p>Tanaman + pot/media + panduan awal sebagai titik mulai diskusi. Isi set tidak ditetapkan di halaman ini.</p>
+            <ul class="disc-meta"><li><span>Untuk</span><b>Pemula</b></li><li><span>Harga ilustratif</span><b>Rp85.000–250.000</b></li></ul>
+          </div>
+        </article>
+      </div>
+      <p class="count-note" id="count-note" role="status" aria-live="polite">Menampilkan 6 arah.</p>
+    </div>
+  </section>
+
+  <!-- PRICE -->
+  <section id="harga" aria-labelledby="harga-judul">
+    <div class="wrap">
+      <p class="kicker reveal">Harga · Rentang ilustratif</p>
+      <h2 id="harga-judul" class="reveal">Anggaran sebagai gambaran, bukan janji.</h2>
+      <p class="lede reveal">Rentang di bawah ini hanya untuk membayangkan anggaran awal. Tidak ada harga per produk atau penawaran yang mengikat.</p>
+      <div class="price-grid">
+        <article class="price-card reveal"><h3>Tanaman hias</h3><p>Kategori umum untuk pemula dan penghobi.</p><div class="amount">Rp35.000–450.000</div><p class="note">Ilustratif · harga akhir dikonfirmasi saat tanya.</p></article>
+        <article class="price-card reveal"><h3>Pot, media &amp; alat</h3><p>Pot, media tanam, dan alat perawatan dasar.</p><div class="amount">Rp15.000–180.000</div><p class="note">Ilustratif · harga akhir dikonfirmasi saat tanya.</p></article>
+        <article class="price-card reveal"><h3>Set pemula</h3><p>Tanaman + pot/media + panduan awal.</p><div class="amount">Rp85.000–250.000</div><p class="note">Ilustratif · isi set dikonfirmasi saat tanya.</p></article>
+        <article class="price-card reveal"><h3>Workshop</h3><p>Sesi belajar pemula, per peserta.</p><div class="amount">Rp100.000–175.000 / orang</div><p class="note">Ilustratif · tanpa jadwal tetap.</p></article>
+      </div>
+      <p class="note reveal" style="margin-top:1.1rem"><strong>Styling tanaman:</strong> tidak memiliki harga tetap. Dikutip setelah kebutuhan dibahas. Semua rentang di atas bersifat ilustratif dan sintetis.</p>
+    </div>
+  </section>
+
+  <!-- STYLING -->
+  <section id="styling" aria-labelledby="styling-judul">
+    <div class="wrap">
+      <p class="kicker reveal">Styling · Rumah &amp; usaha</p>
+      <h2 id="styling-judul" class="reveal">Satu pertanyaan dulu: ruangan ini dipakai untuk apa?</h2>
+      <div class="style-grid">
+        <article class="style-card reveal">
+          <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&amp;w=1400&amp;auto=format&amp;fit=crop" alt="Ilustrasi ruang tamu apartemen yang tenang dengan tanaman dan cahaya alami" loading="lazy">
+          <div class="inner">
+            <h3>🏠 Untuk rumah &amp; apartemen</h3>
+            <p>Penataan mengikuti kebiasaanmu: membaca, bekerja, atau berkumpul. Ruang kecil tetap lega dan mudah dirawat.</p>
+            <ul><li>Mulai dari satu sudut, bukan seluruh rumah.</li><li>Posisi dipilih dari cahaya dan akses perawatan.</li><li>Pot dan media dibicarakan sebagai bagian dari perawatan.</li></ul>
+          </div>
+          <figcaption>Foto ilustratif: Unsplash. Bukan ruangan atau pelanggan Sela Botanika.</figcaption>
+        </article>
+        <article class="style-card biz reveal">
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&amp;w=1400&amp;auto=format&amp;fit=crop" alt="Ilustrasi interior ruangan yang hangat dengan tanaman dan furnitur kayu" loading="lazy">
+          <div class="inner">
+            <h3>☕ Untuk kafe &amp; studio</h3>
+            <p>Penataan untuk ruang yang dikunjungi orang lain: area duduk, meja, dan jalur berjalan. Kesan ruangan dan kemudahan perawatan rutin jadi fokus.</p>
+            <ul><li>Diskusi kebutuhan dulu: suasana, area, dan rutinitas ruang.</li><li>Dibedakan dari penataan rumah.</li><li>Harga dikutip setelah kebutuhan dibahas.</li></ul>
+          </div>
+          <figcaption>Foto ilustratif: Unsplash. Bukan ruangan, kafe, atau pelanggan Sela Botanika.</figcaption>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKSHOP -->
+  <section id="workshop" aria-labelledby="workshop-judul">
+    <div class="wrap">
+      <p class="kicker reveal">Workshop pemula · Enquiry-led</p>
+      <h2 id="workshop-judul" class="reveal">Belajar merawat, pelan-pelan, dari hal dasar.</h2>
+      <p class="lede reveal">Tidak ada tanggal, jam, kapasitas, pendaftaran, pembayaran, atau pemesanan di halaman ini. Jadwal dibahas setelah topik dan kebutuhan dibicarakan.</p>
+      <div class="work-grid">
+        <article class="work-card reveal"><span class="when">Tanpa jadwal tetap</span><h3>Membaca ruanganmu</h3><p>Mengamati cahaya, jarak dari jendela, dan kebiasaan ruangan sebelum memilih tanaman.</p><p><strong>Harga ilustratif:</strong> Rp100.000–175.000 / orang</p></article>
+        <article class="work-card reveal"><span class="when">Tanpa jadwal tetap</span><h3>Dasar merawat &amp; pindah pot</h3><p>Ritme menyiram, memeriksa media, dan memindahkan tanaman ke pot dengan cara yang tenang dan rapi.</p><p><strong>Harga ilustratif:</strong> Rp100.000–175.000 / orang</p></article>
+        <article class="work-card reveal"><span class="when">Tanpa jadwal tetap</span><h3>Menata ruang kecil</h3><p>Menyusun tanaman di meja, rak, dan sudut supaya ruangan tetap lega dan mudah dirawat.</p><p><strong>Harga ilustratif:</strong> Rp100.000–175.000 / orang</p></article>
+      </div>
+      <figure class="reveal" style="margin-top:1.6rem">
+        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&amp;w=1600&amp;auto=format&amp;fit=crop" alt="Ilustrasi tangan yang sedang merawat tanaman dan media tanam" loading="lazy" style="width:100%; height:280px; object-fit:cover; border-radius:18px">
+        <figcaption style="font-size:.82rem; color:var(--muted); margin-top:.55rem">Foto ilustratif: Unsplash. Bukan staf, peserta, atau kegiatan Sela Botanika.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- PRACTICAL + FAQ -->
+  <section id="faq" aria-labelledby="faq-judul">
+    <div class="wrap">
+      <p class="kicker reveal">Catatan praktis &amp; FAQ</p>
+      <h2 id="faq-judul" class="reveal">Tiga kebiasaan kecil sebelum memilih.</h2>
+      <div class="practical reveal">
+        <article><h3>1 · Amati tiga waktu</h3><p>Lihat sudutmu pagi, siang, dan sore. Cahaya berubah dalam sehari — catatan singkat sudah cukup.</p></article>
+        <article><h3>2 · Ukur dengan langkah</h3><p>Berdiri di tempat tanaman akan diletakkan. Perhatikan jarak dari jendela, panas, dan aliran udara.</p></article>
+        <article><h3>3 · Mulai dari satu</h3><p>Satu sudut yang terawat lebih menenangkan daripada banyak tanaman yang terbengkalai. Tambah pelan-pelan.</p></article>
+      </div>
+      <div style="margin-top:1.6rem" class="reveal">
+        <details><summary>Apakah tanaman di halaman ini tersedia untuk dibeli?</summary><p>Tidak ada informasi stok atau ketersediaan di halaman ini. Kategori dan harga bersifat ilustratif untuk diskusi awal.</p></details>
+        <details><summary>Apakah susunan di atas bisa memastikan tanaman cocok?</summary><p>Tidak. Susunan hanya titik awal berdasarkan sudut, cahaya, dan waktu yang kamu pilih. Tidak ada jaminan kesesuaian.</p></details>
+        <details><summary>Apakah Sela Botanika memberi diagnosis atau saran kesehatan?</summary><p>Tidak. Tidak ada diagnosis ahli, klaim pemurnian udara, manfaat kesehatan, atau klaim keamanan untuk hewan peliharaan.</p></details>
+        <details><summary>Kapan workshop diadakan?</summary><p>Tidak ada jadwal tetap yang ditampilkan. Workshop bersifat enquiry-led: topik dan kebutuhan dibicarakan dulu.</p></details>
+        <details><summary>Berapa biaya styling?</summary><p>Tidak ada harga tetap. Styling dikutip setelah kebutuhan dibahas.</p></details>
+        <details><summary>Apakah ada pengiriman?</summary><p>Tidak ada janji pengiriman di halaman ini. Detail pengiriman, jika ada, dibicarakan dan dikonfirmasi saat bertanya.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENQUIRY -->
+  <section id="tanya" aria-labelledby="tanya-judul">
+    <div class="wrap">
+      <div class="enquiry reveal">
+        <div class="enquiry-grid">
+          <div>
+            <p class="kicker">Enquiry · Tanpa pesan terkirim</p>
+            <h2 id="tanya-judul">Tanya dulu — ceritakan sudutmu.</h2>
+            <p class="lede">Ceritakan sudut, cahaya, dan waktumu. Semakin jelas ceritamu, semakin membantu diskusinya.</p>
+            <p class="note"><strong>Penting:</strong> formulir ini adalah simulasi lokal. Tidak ada pesan yang dikirim, karena belum ada kanal kontak yang dikonfigurasi. Tidak ada nomor WhatsApp, email, atau tautan sosial di sini.</p>
+            <form id="enquiry-form" novalidate>
+              <div><label for="nama">Nama <span class="note">(opsional)</span></label><input id="nama" name="nama" type="text" autocomplete="name" placeholder="Nama kamu"></div>
+              <div><label for="topik">Aku ingin bertanya tentang</label><select id="topik" name="topik"><option>Memilih tanaman untuk satu sudut</option><option>Set pemula</option><option>Workshop pemula</option><option>Styling rumah / studio / kafe</option><option>Lainnya</option></select></div>
+              <div><label for="pesan">Ceritakan sudutmu</label><textarea id="pesan" name="pesan" placeholder="Contoh: Pojok baca di apartemen, cahaya terang lembut pagi hari, aku bisa merawat 10 menit seminggu."></textarea></div>
+              <div><button class="btn btn-bark" type="submit">Lihat catatan pengiriman</button></div>
+            </form>
+            <div class="sent-note" id="catatan-tanya" role="status"><strong>Tidak ada pesan yang dikirim.</strong><br>Tidak ada kanal kontak yang dikonfigurasi untuk Sela Botanika, jadi pesanmu tidak terkirim ke mana pun dan tidak tersimpan di mana pun.</div>
+          </div>
+          <aside class="enquiry-side" aria-label="Yang membantu saat bertanya">
+            <h3>Yang membantu saat bertanya</h3>
+            <ul>
+              <li>Sudut mana — pojok baca, meja kerja, atau ambang jendela?</li>
+              <li>Cahaya seperti apa — terang lembut, sedang, atau redup?</li>
+              <li>Waktu yang realistis — kurang dari 10 menit, atau lebih?</li>
+              <li>Untuk rumah, atau untuk kafe / studio?</li>
+            </ul>
+            <p class="note" style="margin-top:.9rem">Tidak perlu nama tanaman. Cerita tentang ruanganmu lebih membantu.</p>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Sela Botanika — Ruang Hening.</strong> Toko tanaman hias dan studio kecil, fiktif, di Bandung. Konsep eksperimen internal; bukan untuk dirilis.</p>
+    <p class="fine">Semua harga bersifat ilustratif. Tidak ada alamat, jam buka, nomor kontak, stok, SKU, jadwal workshop, testimoni, staf, atau foto toko/pelanggan yang ditampilkan. Foto di halaman ini adalah foto ilustratif dari Unsplash dan bukan inventaris, ruangan, staf, atau pelanggan Sela Botanika. Tidak ada checkout, pembayaran, pemesanan, akun, atau backend di halaman ini.</p>
+    <p class="fine">Sumber foto ilustratif: Unsplash — lihat keterangan di bawah setiap gambar.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hasGsap = typeof window.gsap !== "undefined";
+  if (hasGsap && !reduced && window.ScrollTrigger) { try { gsap.registerPlugin(ScrollTrigger); } catch(e){} }
+
+  function animateReveal(){
+    if (!hasGsap || reduced) return;
+    try {
+      gsap.from(".hero-photo", {y: 26, opacity: 0, duration: .9, ease: "power2.out"});
+      gsap.from(".hero-copy", {y: 18, opacity: 0, duration: .9, delay: .12, ease: "power2.out"});
+      if (window.ScrollTrigger) {
+        gsap.utils.toArray(".reveal").forEach(function(el){
+          if (el.classList.contains("hero-photo") || el.classList.contains("hero-copy")) return;
+          gsap.from(el, {y: 28, opacity: 0, duration: .8, ease: "power2.out",
+            scrollTrigger: {trigger: el, start: "top 88%", once: true}});
+        });
+      }
+    } catch(e){}
+  }
+  animateReveal();
+
+  /* --- Planner state --- */
+  var state = { sudut: "baca", cahaya: "terang", waktu: "sedikit" };
+  function bindChips(id, key){
+    var wrap = document.getElementById(id);
+    if(!wrap) return;
+    wrap.addEventListener("click", function(e){
+      var b = e.target.closest("button.chip"); if(!b) return;
+      state[key] = b.dataset[key];
+      wrap.querySelectorAll("button.chip").forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    });
+  }
+  bindChips("sudut-chips","sudut"); bindChips("cahaya-chips","cahaya"); bindChips("waktu-chips","waktu");
+
+  var statusEl = document.getElementById("status-susun");
+  var stepsEl = document.getElementById("langkah-susun");
+  var emptyEl = document.getElementById("kosong-susun");
+  var zones = {
+    lantai: document.getElementById("zona-lantai"),
+    meja: document.getElementById("zona-meja"),
+    gantung: document.getElementById("zona-gantung")
+  };
+  function setZone(id, on, label){
+    var z = zones[id]; if(!z) return;
+    z.classList.toggle("on", !!on);
+    var plant = z.querySelector(".plant"); if(plant) plant.hidden = !on;
+    var txt = z.querySelector("span:last-child") || z;
+    if(on){ z.innerHTML = '<span><span class="plant">🪴</span>' + label + '</span>'; }
+    else { z.innerHTML = '<span>' + label + '<br>kosong</span>'; }
+  }
+  function resetZones(){
+    setZone("lantai", false, "Lantai"); setZone("meja", false, "Meja"); setZone("gantung", false, "Gantung");
+  }
+  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+
+  function buildPlan(){
+    var sudutLabel = {baca:"Pojok baca", kerja:"Meja kerja", jendela:"Ambang jendela"}[state.sudut];
+    var cahayaLabel = {terang:"terang, lembut", sedang:"sedang", redup:"redup", langsung:"matahari langsung lama"}[state.cahaya];
+    var waktuLabel = {sedikit:"kurang dari 10 menit / minggu", sedang:"10–30 menit / minggu", banyak:"lebih dari 30 menit / minggu"}[state.waktu];
+    // No-match rules — meaningful empty state, not a failure
+    if (state.cahaya === "redup" && state.sudut === "jendela") {
+      return { nomatch: true, reason: "Ambang jendela biasanya terang, tapi kamu memilih cahaya redup. Amati dulu: apakah sudut itu benar-benar redup, atau cahayanya hanya terhalang di jam tertentu?" };
+    }
+    if (state.cahaya === "langsung" && state.waktu === "sedikit") {
+      return { nomatch: true, reason: "Matahari langsung lama + waktu kurang dari 10 menit/minggu adalah kombinasi yang perlu diamati dulu. Mulai dari diskusi, bukan dari memilih tanaman." };
+    }
+    var steps = [];
+    if (state.sudut === "baca") {
+      steps = [
+        {zone:"lantai", title:"Langkah 1 — Letakkan yang besar dulu", body:"Satu tanaman daun besar di lantai pojok baca. Ini jangkar sudutmu; yang lain menyesuaikan dengannya.", price:"Harga ilustratif tanaman: Rp35.000–450.000."},
+        {zone:"meja", title:"Langkah 2 — Isi meja samping", body:"Satu tanaman meja kecil di samping tempat duduk. Dekat, mudah dijangkau, dan mudah dipindah saat mencoba posisi lain.", price:"Harga ilustratif tanaman: Rp35.000–450.000."},
+        {zone:"gantung", title:"Langkah 3 — Gantung terakhir, kalau masih lega", body:"Hanya jika sudut masih terasa kosong. Satu tanaman menjuntai di rak tinggi, supaya lantai tetap lega.", price:"Harga ilustratif tanaman: Rp35.000–450.000."}
+      ];
+    } else if (state.sudut === "kerja") {
+      steps = [
+        {zone:"meja", title:"Langkah 1 — Mulai dari meja", body:"Satu tanaman meja kecil di sisi yang tidak menghalangi kerja. Ini titik hijau yang kamu lihat setiap hari.", price:"Harga ilustratif tanaman: Rp35.000–450.000."},
+        {zone:"gantung", title:"Langkah 2 — Naikkan ke rak", body:"Satu tanaman menjuntai di rak di atas meja, supaya meja tetap lega untuk bekerja.", price:"Harga ilustratif tanaman: Rp35.000–450.000."},
+        {zone:"lantai", title:"Langkah 3 — Lantai hanya jika ada sudut", body:"Jika ada sudut kosong di dekat meja, satu tanaman lantai kecil sebagai penutup. Jika tidak ada, langkah ini boleh dilewati.", price:"Harga ilustratif tanaman: Rp35.000–450.000."}
+      ];
+    } else {
+      steps = [
+        {zone:"meja", title:"Langkah 1 — Mulai dari ambang", body:"Satu tanaman meja kecil di ambang jendela. Perhatikan panas siang hari sebelum menambah yang lain.", price:"Harga ilustratif tanaman: Rp35.000–450.000."},
+        {zone:"gantung", title:"Langkah 2 — Gantung di samping jendela", body:"Satu tanaman menjuntai di samping jendela, bukan tepat di depan sinar yang paling terik.", price:"Harga ilustratif tanaman: Rp35.000–450.000."},
+        {zone:"lantai", title:"Langkah 3 — Turun ke lantai", body:"Satu tanaman lantai kecil di bawah jendela sebagai penyeimbang. Lewati langkah ini kalau lantai sudah penuh.", price:"Harga ilustratif tanaman: Rp35.000–450.000."}
+      ];
+    }
+    if (state.waktu === "sedikit") steps.push({zone:null, title:"Catatan ritme — Pilih yang ritme lambat", body:"Dengan waktu kurang dari 10 menit/minggu, arahkan diskusi ke kategori ritme lambat dan set pemula. Isi set dikonfirmasi saat bertanya.", price:"Harga ilustratif set pemula: Rp85.000–250.000."});
+    return { nomatch:false, steps:steps, summary: sudutLabel + " · cahaya " + cahayaLabel + " · " + waktuLabel };
+  }
+
+  function renderPlan(){
+    var plan = buildPlan();
+    resetZones();
+    stepsEl.innerHTML = "";
+    if (plan.nomatch) {
+      emptyEl.hidden = false;
+      statusEl.textContent = "Belum ada susunan yang tenang untuk kombinasi ini. Coba ubah satu pilihan — lihat saran di bawah panggung.";
+      return;
+    }
+    emptyEl.hidden = true;
+    plan.steps.forEach(function(s, i){
+      if (s.zone) setZone(s.zone, true, s.zone === "lantai" ? "Lantai" : s.zone === "meja" ? "Meja" : "Gantung");
+      var card = document.createElement("article");
+      card.className = "step-card";
+      card.innerHTML = '<p class="no">Langkah ' + (i+1) + ' dari ' + plan.steps.length + '</p><h3>' + esc(s.title) + '</h3><p>' + esc(s.body) + '</p><p style="margin:0"><strong>' + esc(s.price) + '</strong> Harga akhir dikonfirmasi saat bertanya.</p>';
+      stepsEl.appendChild(card);
+    });
+    statusEl.textContent = "Susunan dibuat: " + plan.summary + ". " + plan.steps.length + " langkah ditampilkan di bawah panggung, dari yang besar dulu ke yang kecil.";
+    if (hasGsap && !reduced) {
+      try {
+        gsap.fromTo("#langkah-susun .step-card", {y: 22, opacity: 0}, {y: 0, opacity: 1, duration: .6, stagger: .14, ease: "power2.out", overwrite: true});
+        gsap.fromTo(".zone.on", {scale: .92, opacity: .4}, {scale: 1, opacity: 1, duration: .5, stagger: .12, ease: "power2.out", overwrite: true});
+      } catch(e){}
+    }
+    stepsEl.scrollIntoView({behavior: reduced ? "auto" : "smooth", block: "nearest"});
+  }
+  document.getElementById("btn-susun").addEventListener("click", renderPlan);
+  document.getElementById("btn-kosong").addEventListener("click", function(){
+    resetZones(); stepsEl.innerHTML = ""; emptyEl.hidden = true;
+    statusEl.textContent = "Sudutmu dikosongkan. Pilih sudut, cahaya, dan waktu, lalu tekan “Susun sudutku” untuk menyusun lagi.";
+  });
+
+  /* --- Discovery filter --- */
+  var filters = document.querySelectorAll(".filter");
+  var cards = Array.prototype.slice.call(document.querySelectorAll("#disc-grid .disc-card"));
+  var countNote = document.getElementById("count-note");
+  filters.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      filters.forEach(function(x){ x.setAttribute("aria-pressed", x === btn ? "true" : "false"); });
+      var f = btn.dataset.filter, shown = 0;
+      cards.forEach(function(c){
+        var ok = f === "semua" || (c.dataset.cahaya || "").split(" ").indexOf(f) !== -1 || (c.dataset.cahaya || "") === "semua";
+        c.style.display = ok ? "" : "none"; if(ok) shown++;
+      });
+      countNote.textContent = shown === 0 ? "Tidak ada arah untuk saringan ini — coba “Semua”." : "Menampilkan " + shown + " arah dari 6.";
+    });
+  });
+
+  /* --- Enquiry: honest non-sending simulation --- */
+  var form = document.getElementById("enquiry-form");
+  var note = document.getElementById("catatan-tanya");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    note.classList.add("show");
+    note.scrollIntoView({behavior: reduced ? "auto" : "smooth", block: "nearest"});
+  });
+})();
+</script>
+</body>
+</html>
+<!--
+ADES R2 — SELA BOTANIKA — META MUSE
+Filename: r2-muse.html
+Direction: "Ruang Hening" — Indonesian-first tactile boutique studio. Materially distinct from R1.
+UI / model label: NOT_DISCLOSED
+  No exact visible product/model label was shown in the interface used for this task, so no backend model is inferred or claimed. Work was done only in the official Meta Muse free interface, within its free usage limits. No other Meta product/provider, paid tier, or API was used. No additional providers were created.
+
+Shared R1 learning applied:
+  Lead with room context (light + placement/space + realistic care rhythm); compact, explainable, non-diagnostic guided starting point; separate plant/essentials discovery, care education, workshops, and home/business styling; workshops enquiry-led with no dates/times/capacity/booking/payment; only intake price ranges as illustrative estimates, no live stock or quote claims; no actual contact channel — contact form is a local non-sending simulation only; Indonesian by default for the fictional Bandung audience; all facts fictional; internal experiment only, NOT FOR RELEASE; no invented address, hours, WhatsApp, email, social links, testimonials, staff, actual shop, inventory, schedule, delivery promise, or pet-safety / air-purification / health / expert-diagnosis claims.
+
+Independently inspected niche sites — R2 (new, via text fetch 2026-11-21, crawled 2026-11-20 21:22–21:23 UTC):
+  1) https://www.bloomscape.com/ — "What kind of plant parent are you?" quiz ("Tell us about your space and we'll match you"), Care/Pots/Decor as "Everything to help them thrive", Grow-How resources + unlimited expert access, home-ready plants, gift-led hero. Lesson: a short space-first quiz + named care library lowers beginner fear better than a catalogue; applied here as the Susun Sudutmu planner + practical notes, without copying copy, layout, or assets.
+  2) https://www.heyhorti.com/ — "A Plant Subscription that Builds Confidence in Plant Care", Wirecutter pick 2024 & 2025, education inside shipments, attention to packing/detail. Lesson: confidence is the product — teach in small steps, in the order the owner will actually use them; applied here as a 3-step guided arrangement sequence (large first, then table, then hanging), without copying copy, layout, or assets.
+  3) https://www.beardsanddaisies.co.uk/ — seasonal hero, "shop by collection", "plant care, sorted", Happiness guarantee (replace free within 30 days), Sustainability first, "plants for businesses" with a dedicated business team, press logos. Lesson: separate business styling as its own lane and make care/guarantee legible; applied here as a distinct Home vs Cafe/Studio styling section and a plain-language FAQ, without copying copy, layout, or assets.
+  Additional R1 references carried forward (inspected 2026-11-21 in R1, not re-counted as new R2 research): https://www.thesill.com/ (gift/subscription-led, Learn & Attend lane), https://www.patchplants.com/ (room-first language, named plants, Plant Doctor), https://www.leonandgeorge.com/ (curate by room need, home vs office, material quality).
+  NOT counted: https://www.greeneryunlimited.co/ — text fetch returned only a title + email-signup line, too thin to inspect; https://www.plants.com/ — gift-occasion marketplace (1800Flowers), useful only as a contrast to room-led design. GPT common context (root-houseplants, plantcultureltd, nicheplantshop) was not counted. No competitor identity, layout, copy, or protected assets were copied. R1 files exploration/r1/r1-gemini.html, exploration/r1/r1-deepseek.html, exploration/r1/r1-muse.html were not copied; R1 layout and light-map hero were deliberately avoided.
+
+Design choices — distinct from R1 (r1-muse.html, "Ruang & Ritme"):
+  - R1: light-map SVG hero, dark-green finder box with radio fieldsets, 4-card grid, 3-step light guide, price table, split styling, 3 workshop cards, FAQ, contact. R2 avoids that hero and that order.
+  - R2: "Ruang Hening" — warmer tactile system (cream #F7ECDC, clay #B85C38, bark #2E211A, sage, sand), bold asymmetry (large photo bleeding to a rounded corner, hero copy offset down, vertical side label), large material/plant photography, tactile material strip (clay / wood / weave swatches), ledger-style price cards instead of a table, two large photo styling cards with the business card offset down on desktop, enquiry split with a "what helps when you ask" aside.
+  - New section order: hero → Susun Sudutmu planner + materials → plant & essentials discovery (with filter) → illustrative price bands → home vs business styling → workshops → practical notes + FAQ → honest enquiry → footer.
+  - Language: Bahasa Indonesia throughout. All prices labelled illustrative; styling quoted only after needs are discussed; workshops enquiry-led with no dates/times/capacity.
+
+Simulated interactions (client-side only, no data transmitted or stored):
+  - Susun Sudutmu: three keyboard-operable button groups (corner / light / care time, aria-pressed, min 44px targets) + "Susun sudutku" generates a 3-step arrangement sequence and lights up zones on a CSS corner stage (floor / table / hanging). Status feedback via role="status" aria-live region. Meaningful empty/no-match state: redup + ambang jendela, and matahari langsung lama + <10 menit/minggu, show an explicit "Belum ada susunan yang tenang" panel with a suggestion to change one choice. "Kosongkan sudut" resets zones, steps, and status.
+  - Discovery filter: Semua / Terang / Sedang / Redup filters six cards and updates a live count; a zero-result message is provided for completeness.
+  - Enquiry form: submit is intercepted (preventDefault); only a status note is shown stating no message was sent because no contact channel is configured. Nothing is transmitted or stored.
+  - FAQ: native <details>/<summary>, keyboard-operable, no JS required.
+
+Images — 3+ meaningful assets, hero + at least two major sections, each captioned as illustrative on the page:
+  - Hero: https://images.unsplash.com/photo-1497250681960-ef046c08a56e — plants by a bright window.
+  - Discovery: https://images.unsplash.com/photo-1459156212016-c812468e2115 — large green leaf close-up; https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb — plant in a pot on wood.
+  - Styling: https://images.unsplash.com/photo-1522708323590-d24dbb6b0267 — calm apartment living room; https://images.unsplash.com/photo-1513694203232-719a280e022f — warm interior with plants and wood furniture.
+  - Workshop: https://images.unsplash.com/photo-1466692476868-aef1dfb1e735 — hands caring for a plant and growing medium.
+  - Source/provenance: all photographs are illustrative Unsplash images under the Unsplash Licence as remote prototypes only; they are NOT Sela Botanika premises, staff, customers, or inventory. Individual rights were NOT verified one by one — that is stated on the page and here, and no provenance is fabricated. The corner stage, material swatches, and hero vertical label are original CSS/SVG-free shapes.
+
+Motion notes:
+  - One purposeful GSAP behaviour: a guided arrangement/reveal sequence. On load, hero photo/copy fade-rise once; on scroll, .reveal sections rise once via ScrollTrigger (start top 88%, once). When "Susun sudutku" is pressed, the step cards stagger in and the active corner zones scale in, in the order the arrangement should be built (large first, then table, then hanging) — motion clarifies hierarchy/sequence, never blocks reading.
+  - GSAP 3.12.5 + ScrollTrigger loaded from jsdelivr CDN (allowed by the R2 contract). Content is visible by default: animations use gsap.from/fromTo only, so if GSAP fails to load or JS is off, nothing is hidden.
+  - prefers-reduced-motion: detected via matchMedia; when reduced, all GSAP animation is skipped cleanly and scrollIntoView uses auto behaviour. No autoplay, no looping motion, no decorative animation.
+
+Responsive notes (intended):
+  - Mobile-first single column; 720px+: hero 2-column with offset copy, planner 2-column, materials/discovery/price/styling/workshops/practical multi-column, business styling card offset; 1020px+: discovery 3-column, price 4-column. Navigation is a horizontally scrollable row at narrow widths; touch targets are at least 44px; no horizontal overflow is intended (overflow-x hidden on body, images max-width 100%).
+
+Tests NOT performed:
+  - No live browser render test at any width (320/390/768/1024/1280px), no device test, no cross-browser test, no GSAP CDN load test in a live browser, no screen-reader or keyboard-only audit beyond semantic markup/focus styles, no WCAG audit, no performance or image-load verification (Unsplash URLs were not live-rendered in this run), no test of the planner's GSAP timeline or ScrollTrigger reveals in a live browser, and no check of the reference sites' responsive behaviour or motion beyond the text-fetch inspection noted above. No browser test is claimed.
+-->
