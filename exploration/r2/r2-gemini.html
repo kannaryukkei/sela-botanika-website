@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="id">
+<!--
+================================================================================
+SB-R2-GEMINI — ATELIER BOTANIKA (SELA BOTANIKA SPATIAL EDITORIAL DIRECTION)
+Eksperimen internal studio saja; BUKAN UNTUK RILIS (NOT FOR RELEASE).
+Semua fakta, harga indikatif, ruang, dan narasi bersifat fiktif untuk studi desain.
+================================================================================
+
+1. IDENTITAS MODEL / UI DISCLOSURE:
+   NOT_DISCLOSED (Label model/versi tidak ditampilkan secara eksplisit oleh antarmuka UI.)
+
+2. REFERENSI NICHE INDEPENDEN (3+ DOMAIN BERBEDA) & PELAJARAN:
+   - Referensi 1: https://www.patchplants.com/pages/plant-care/complete-guide-to-indoor-light/
+     Observasi: Memecah pencahayaan ruang menjadi panduan visual praktis (seperti uji bayangan) agar pemula tidak terjebak istilah teknis yang kaku.
+     Pelajaran: Menyusun panduan awal ruang (cahaya + penempatan + ritme waktu) yang ringkas, jelas, dan non-diagnostik.
+   - Referensi 2: https://foliageliving.ca/
+     Observasi: Memisahkan jalur ritel tanaman, lokakarya belajar langsung, dan konsultasi penataan ruang rumah maupun tempat usaha.
+     Pelajaran: Memisahkan penemuan tanaman/perlengkapan, edukasi perawatan, lokakarya berbasis pertanyaan, dan penataan hunian vs usaha.
+   - Referensi 3: https://bloomscape.com/plant-care-guides/
+     Observasi: Mengelompokkan tanaman pendamping pot, media tanam, dan panduan ritme siram dalam struktur yang tenang tanpa kepadatan katalog pasar.
+     Pelajaran: Menampilkan rentang harga indikatif sebagai estimasi awal saja, dengan batasan jelas tanpa klaim stok langsung atau garansi kecocokan.
+
+3. CATATAN GAMBAR (PROVENANSI, LISENSI & STATUS HAK):
+   Seluruh gambar adalah foto stok eksternal ilustratif dari Unsplash (images.unsplash.com) untuk prototipe studi internal; BUKAN foto premis, staf, pelanggan, atau stok aktual Sela Botanika. Lisensi Unsplash memungkinkan penggunaan prototipe/eksperimen, namun hak/atribusi spesifik tiap foto belum diverifikasi secara legal/independen dalam sesi ini.
+   - Gambar 1 (Hero): https://images.unsplash.com/photo-1463320726281-696a485928c7?auto=format&fit=crop&w=1400&q=80
+     Keterangan: Sudut ruangan bercahaya alami dengan tanaman pot hijau.
+   - Gambar 2 (Penataan Hunian & Usaha): https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80
+     Keterangan: Tata letak interior hangat dengan tanaman hijau di area duduk dan meja.
+   - Gambar 3 (Lokakarya & Media Tanam): https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1100&q=80
+     Keterangan: Meja kerja meracik media tanam dan memindahkan tanaman ke pot.
+
+4. CATATAN GERAK / MOTION (GSAP):
+   Menggunakan GSAP + ScrollTrigger dari CDN publik untuk satu rangkaian pengungkapan editorial terarah pada blok nomor seksi dan bingkai foto utama saat masuk viewport (sekali jalan, tanpa autoplay berkelanjutan, tanpa memblokir pembacaan). Jika `prefers-reduced-motion: reduce` aktif, animasi GSAP dilewati sepenuhnya dan elemen tampil langsung.
+
+5. DAFTAR PENGUJIAN YANG TIDAK DILAKUKAN:
+   - Pengujian lintas peramban nyata (Chrome, Safari, Firefox, Edge) atau perangkat fisik mobile/tablet tidak dilakukan.
+   - Pengujian otomatis aksesibilitas (screen reader/axe/Lighthouse) dan uji beban jaringan tidak dilakukan.
+   - Tidak ada pengiriman data form, basis data, autentikasi, pembayaran, pemesanan, atau integrasi stok langsung.
+================================================================================
+-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atelier Botanika — Studi Ruang &amp; Tanaman Dalam Ruangan (Sela Botanika)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <style>
+    :root {
+      --stone: #F3EFE6;
+      --stone-deep: #E7E0D2;
+      --paper: #FAF8F3;
+      --ink: #18211C;
+      --ink-soft: #435048;
+      --ink-muted: #627067;
+      --moss: #233B2E;
+      --moss-dark: #16271E;
+      --clay: #A85536;
+      --clay-tint: #EFE0D8;
+      --line: rgba(24, 33, 28, 0.16);
+      --line-strong: rgba(24, 33, 28, 0.34);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-w: 1220px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background-color: var(--stone);
+      color: var(--ink);
+      line-height: 1.65;
+      overflow-x: clip;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, select, input, textarea {
+      font: inherit;
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 2.5px solid var(--clay);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0.75rem;
+      z-index: 200;
+      background: var(--moss);
+      color: var(--paper);
+      padding: 0.6rem 1rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .skip-link:focus {
+      left: 0.75rem;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: 1.25rem;
+    }
+    @media (min-width: 768px) {
+      .wrap { padding-inline: 2.25rem; }
+    }
+
+    /* Top studio disclaimer strip */
+    .studio-strip {
+      background: var(--moss-dark);
+      color: #E6ECE8;
+      font-size: 0.75rem;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* Header & navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(243, 239, 230, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 4.5rem;
+      gap: 1rem;
+    }
+
+    .wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .wordmark-main {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--moss);
+    }
+
+    .wordmark-sub {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    .nav-list {
+      display: none;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 960px) {
+      .nav-list { display: flex; }
+    }
+
+    .nav-list a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      padding-block: 0.35rem;
+      border-bottom: 1.5px solid transparent;
+      transition: color 0.18s ease, border-color 0.18s ease;
+    }
+
+    .nav-list a:hover {
+      color: var(--moss);
+      border-bottom-color: var(--clay);
+    }
+
+    .nav-burger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.5rem 0.85rem;
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      border-radius: 2px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    @media (min-width: 960px) {
+      .nav-burger { display: none; }
+    }
+
+    .drawer-nav {
+      display: none;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line-strong);
+      padding: 1rem 1.25rem 1.5rem;
+    }
+
+    .drawer-nav.is-open {
+      display: block;
+    }
+
+    .drawer-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .drawer-nav a {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      font-weight: 500;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* Typography helpers */
+    h1, h2, h3 {
+      font-family: var(--serif);
+      font-weight: 600;
+      margin: 0;
+      color: var(--ink);
+      letter-spacing: -0.015em;
+    }
+
+    .section-block {
+      padding-block: 4rem;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (min-width: 900px) {
+      .section-block { padding-block: 5.5rem; }
+    }
+
+    .section-header {
+      display: grid;
+      gap: 0.85rem;
+      margin-bottom: 2.5rem;
+      align-items: end;
+    }
+
+    @media (min-width: 768px) {
+      .section-header {
+        grid-template-columns: auto 1fr;
+        gap: 1.75rem;
+      }
+    }
+
+    .sec-num {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 4.75rem);
+      font-weight: 500;
+      line-height: 0.85;
+      color: var(--clay);
+      user-select: none;
+    }
+
+    .sec-kicker {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .sec-title {
+      font-size: clamp(1.85rem, 3.6vw, 2.8rem);
+      line-height: 1.08;
+    }
+
+    .sec-intro {
+      margin: 0.65rem 0 0;
+      max-width: 60ch;
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+    }
+
+    /* Asymmetrical Hero */
+    .hero-editorial {
+      padding-block: 2.5rem 4rem;
+    }
+
+    @media (min-width: 960px) {
+      .hero-editorial { padding-block: 3.5rem 5rem; }
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 2.25rem;
+      align-items: start;
+    }
+
+    @media (min-width: 960px) {
+      .hero-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 3rem;
+      }
+    }
+
+    .hero-eyebrow {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 0.85rem;
+      display: block;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5.2vw, 4.1rem);
+      line-height: 1.02;
+      max-width: 15ch;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 500;
+      color: var(--moss);
+    }
+
+    .hero-copy {
+      margin: 1.35rem 0 1.75rem;
+      max-width: 52ch;
+      color: var(--ink-soft);
+      font-size: 1.02rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .btn-editorial {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0.7rem 1.35rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border: 1px solid var(--moss);
+      background: var(--moss);
+      color: var(--paper);
+      cursor: pointer;
+      transition: background-color 0.18s ease, color 0.18s ease;
+    }
+
+    .btn-editorial:hover {
+      background: var(--moss-dark);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line-strong);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--ink);
+      background: var(--paper);
+    }
+
+    .hero-index-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      border-top: 1px solid var(--line-strong);
+      padding-top: 1.1rem;
+      gap: 1rem;
+    }
+
+    .hero-index-strip dt {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+
+    .hero-index-strip dd {
+      margin: 0.2rem 0 0;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .editorial-figure {
+      margin: 0;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    .editorial-figure img {
+      width: 100%;
+      aspect-ratio: 4 / 4.6;
+      object-fit: cover;
+    }
+
+    .editorial-caption {
+      padding: 0.7rem 0.95rem;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      border-top: 1px solid var(--line);
+      line-height: 1.45;
+    }
+
+    /* Room-Fit Interaction */
+    .fit-shell {
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      padding: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .fit-shell { padding: 2.25rem; }
+    }
+
+    .fit-axes {
+      display: grid;
+      gap: 1.4rem;
+      padding-bottom: 1.65rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (min-width: 860px) {
+      .fit-axes { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .axis-label {
+      display: block;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-muted);
+      margin-bottom: 0.55rem;
+    }
+
+    .choice-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .choice-chip {
+      min-height: 44px;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.84rem;
+      font-weight: 500;
+      background: var(--stone);
+      border: 1px solid var(--line-strong);
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .choice-chip:hover {
+      border-color: var(--moss);
+    }
+
+    .choice-chip[aria-pressed="true"] {
+      background: var(--moss);
+      border-color: var(--moss);
+      color: var(--paper);
+    }
+
+    .fit-status {
+      margin: 1.4rem 0 1.15rem;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+
+    .fit-results {
+      display: grid;
+      gap: 1.15rem;
+    }
+
+    @media (min-width: 768px) {
+      .fit-results { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .fit-item {
+      border: 1px solid var(--line);
+      background: var(--stone);
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .fit-item h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .fit-item p {
+      margin: 0;
+      font-size: 0.89rem;
+      color: var(--ink-soft);
+    }
+
+    .fit-rhythm {
+      font-size: 0.8rem;
+      color: var(--moss);
+      font-weight: 600;
+      border-top: 1px solid var(--line);
+      padding-top: 0.65rem;
+    }
+
+    .empty-state {
+      border: 1px dashed var(--line-strong);
+      background: var(--stone);
+      padding: 1.5rem;
+      text-align: left;
+    }
+
+    .empty-state p {
+      margin: 0 0 0.9rem;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+
+    .disclaimer-note {
+      margin-top: 1.35rem;
+      padding: 0.85rem 1rem;
+      background: var(--clay-tint);
+      border-left: 3px solid var(--clay);
+      font-size: 0.83rem;
+      color: var(--ink);
+    }
+
+    /* Discovery & Price Bands */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .filter-btn {
+      min-height: 44px;
+      padding: 0.5rem 1rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      cursor: pointer;
+    }
+
+    .filter-btn[aria-selected="true"] {
+      background: var(--moss);
+      border-color: var(--moss);
+      color: var(--paper);
+    }
+
+    .ledger-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 680px) {
+      .ledger-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .ledger-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.85rem;
+    }
+
+    .ledger-card[hidden] {
+      display: none;
+    }
+
+    .ledger-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.65rem;
+    }
+
+    .ledger-top h3 {
+      font-size: 1.3rem;
+    }
+
+    .band-tag {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--clay);
+    }
+
+    .ledger-card p {
+      margin: 0;
+      font-size: 0.91rem;
+      color: var(--ink-soft);
+    }
+
+    .ledger-foot {
+      font-size: 0.77rem;
+      color: var(--ink-muted);
+    }
+
+    /* Home vs Business Styling */
+    .story-split {
+      display: grid;
+      gap: 2.25rem;
+      align-items: start;
+    }
+
+    @media (min-width: 920px) {
+      .story-split {
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 3rem;
+      }
+    }
+
+    .mode-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .mode-btn {
+      min-height: 44px;
+      padding: 0.5rem 1.1rem;
+      font-size: 0.86rem;
+      font-weight: 600;
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      cursor: pointer;
+    }
+
+    .mode-btn[aria-pressed="true"] {
+      background: var(--moss);
+      border-color: var(--moss);
+      color: var(--paper);
+    }
+
+    .story-panel {
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      padding: 1.5rem;
+    }
+
+    .story-panel h3 {
+      font-size: 1.45rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .story-panel ul {
+      margin: 0.75rem 0 1rem;
+      padding-left: 1.15rem;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    /* Workshops */
+    .workshop-split {
+      display: grid;
+      gap: 2.25rem;
+      align-items: start;
+    }
+
+    @media (min-width: 920px) {
+      .workshop-split {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 3rem;
+      }
+    }
+
+    .workshop-points {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1.15rem;
+    }
+
+    .workshop-row {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 1rem 1.2rem;
+    }
+
+    .workshop-row strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--moss);
+      margin-bottom: 0.2rem;
+    }
+
+    .workshop-row span {
+      font-size: 0.89rem;
+      color: var(--ink-soft);
+    }
+
+    /* FAQ */
+    .faq-stack {
+      display: grid;
+      gap: 0.75rem;
+      max-width: 840px;
+    }
+
+    details.faq-box {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 0.95rem 1.2rem;
+    }
+
+    details.faq-box summary {
+      font-weight: 600;
+      font-size: 0.96rem;
+      cursor: pointer;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    details.faq-box p {
+      margin: 0.6rem 0 0;
+      padding-top: 0.65rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    /* Non-sending enquiry simulation */
+    .enquiry-grid {
+      display: grid;
+      gap: 2rem;
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      padding: 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .enquiry-grid {
+        grid-template-columns: 0.9fr 1.1fr;
+        padding: 2.25rem;
+      }
+    }
+
+    .sim-banner {
+      background: var(--stone-deep);
+      border: 1px solid var(--line-strong);
+      padding: 0.9rem 1rem;
+      font-size: 0.84rem;
+      color: var(--ink);
+      margin-top: 1rem;
+    }
+
+    .field-row {
+      margin-bottom: 1rem;
+    }
+
+    .field-row label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .field-row input,
+    .field-row select,
+    .field-row textarea {
+      width: 100%;
+      min-height: 44px;
+      padding: 0.65rem 0.85rem;
+      background: var(--stone);
+      border: 1px solid var(--line-strong);
+      font-size: 0.92rem;
+    }
+
+    .field-row textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    .sim-output {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--stone);
+      border: 1px dashed var(--clay);
+      font-size: 0.88rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--moss);
+      color: #E3EAE6;
+      padding-block: 3rem 2.25rem;
+      font-size: 0.86rem;
+    }
+
+    .footer-cols {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-cols { grid-template-columns: 1.3fr 1fr 1fr; }
+    }
+
+    .site-footer h2 {
+      color: var(--paper);
+      font-size: 1.5rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .site-footer p {
+      margin: 0;
+      color: #C4D0C9;
+    }
+
+    .footer-base {
+      margin-top: 2rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      font-size: 0.78rem;
+      color: #B4C3BA;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Langsung ke konten utama</a>
+
+  <div class="studio-strip" role="note">
+    Eksperimen internal studio saja; BUKAN UNTUK RILIS — Skenario fiktif Sela Botanika di Bandung. Harga bersifat indikatif; tanpa stok langsung atau pengiriman pesan aktif.
+  </div>
+
+  <header class="site-header">
+    <div class="wrap header-bar">
+      <a href="#top" class="wordmark" aria-label="Atelier Botanika beranda">
+        <span class="wordmark-main">Atelier Botanika</span>
+        <span class="wordmark-sub">Sela Botanika · Studi Ruang Bandung</span>
+      </a>
+
+      <nav aria-label="Navigasi utama">
+        <ul class="nav-list">
+          <li><a href="#panduan-ruang">Panduan Ruang</a></li>
+          <li><a href="#penemuan">Tanaman &amp; Perlengkapan</a></li>
+          <li><a href="#penataan">Penataan Ruang</a></li>
+          <li><a href="#lokakarya">Lokakarya</a></li>
+          <li><a href="#tanya-jawab">Catatan &amp; FAQ</a></li>
+          <li><a href="#pertanyaan">Simulasi Catatan</a></li>
+        </ul>
+      </nav>
+
+      <button type="button" class="nav-burger" id="nav-burger" aria-expanded="false" aria-controls="drawer-nav">
+        Menu
+      </button>
+    </div>
+
+    <nav class="drawer-nav" id="drawer-nav" aria-label="Navigasi seluler">
+      <ul>
+        <li><a href="#panduan-ruang">01 · Panduan Ruang</a></li>
+        <li><a href="#penemuan">02 · Tanaman &amp; Perlengkapan</a></li>
+        <li><a href="#penataan">03 · Penataan Hunian &amp; Usaha</a></li>
+        <li><a href="#lokakarya">04 · Lokakarya Berbasis Pertanyaan</a></li>
+        <li><a href="#tanya-jawab">05 · Catatan Praktis &amp; FAQ</a></li>
+        <li><a href="#pertanyaan">06 · Simulasi Catatan Lokal</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section class="hero-editorial" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="hero-eyebrow">Sela Botanika · Skenario Studio Bandung</span>
+          <h1 class="hero-title">Ruang yang tenang, <em>tanaman yang selaras</em> dengan waktu Anda.</h1>
+          <p class="hero-copy">
+            Atelier Botanika menghadirkan pendekatan spasial dan edukatif untuk Sela Botanika: membantu penghuni apartemen atau rumah ringkas, pekerja muda, hobis, serta pengelola kafe atau studio kecil mengenali cahaya ruang dan ritme perawatan yang realistis sebelum memilih tanaman.
+          </p>
+          <div class="hero-cta-row">
+            <a href="#panduan-ruang" class="btn-editorial">Mulai Panduan Ruang</a>
+            <a href="#penemuan" class="btn-editorial btn-ghost">Lihat Rentang Harga Indikatif</a>
+          </div>
+          <dl class="hero-index-strip">
+            <div>
+              <dt>Fokus Awal</dt>
+              <dd>Cahaya, ruang &amp; ritme</dd>
+            </div>
+            <div>
+              <dt>Layanan Utama</dt>
+              <dd>Tanaman, pot &amp; lokakarya</dd>
+            </div>
+            <div>
+              <dt>Penataan Spasial</dt>
+              <dd>Hunian &amp; ruang usaha</dd>
+            </div>
+          </dl>
+        </div>
+
+        <figure class="editorial-figure" data-gsap="reveal">
+          <img
+            src="https://images.unsplash.com/photo-1463320726281-696a485928c7?auto=format&fit=crop&w=1400&q=80"
+            alt="Ilustrasi susunan tanaman hijau dalam pot di dekat jendela dengan cahaya alami lembut"
+            width="1400"
+            height="1610"
+          />
+          <figcaption class="editorial-caption">
+            <strong>Visual ilustratif (bukan premis atau stok aktual):</strong> Referensi pencahayaan alami di area dalam ruangan. Sumber: Unsplash (lisensi prototipe belum diverifikasi secara independen).
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 01 PANDUAN AWAL RUANG (LIGHT + PLACEMENT/SPACE + CARE RHYTHM) -->
+    <section class="section-block" id="panduan-ruang" aria-labelledby="sec-1-title">
+      <div class="wrap">
+        <header class="section-header">
+          <span class="sec-num" data-gsap="num" aria-hidden="true">01</span>
+          <div>
+            <span class="sec-kicker">Panduan Awal Non-Diagnostik</span>
+            <h2 class="sec-title" id="sec-1-title">Mulai dari cahaya, penempatan, dan waktu luang mingguan</h2>
+            <p class="sec-intro">
+              Titik awal sederhana untuk menyaring pilihan tanaman secara masuk akal. Bukan diagnosis botani, bukan jaminan kecocokan atau umur tanaman, serta tidak memuat klaim keamanan hewan peliharaan, pemurnian udara, maupun manfaat kesehatan.
+            </p>
+          </div>
+        </header>
+
+        <div class="fit-shell">
+          <div class="fit-axes">
+            <div>
+              <span class="axis-label" id="axis-light">1. Kondisi Cahaya Ruang</span>
+              <div class="choice-row" role="group" aria-labelledby="axis-light">
+                <button type="button" class="choice-chip" data-axis="light" data-val="terang-tidak-langsung" aria-pressed="true">Terang tidak langsung</button>
+                <button type="button" class="choice-chip" data-axis="light" data-val="teduh-terbatas" aria-pressed="false">Teduh / jauh jendela</button>
+                <button type="button" class="choice-chip" data-axis="light" data-val="cahaya-pagi-kuat" aria-pressed="false">Cahaya pagi / tepi bukaan</button>
+              </div>
+            </div>
+
+            <div>
+              <span class="axis-label" id="axis-space">2. Penempatan &amp; Ruang</span>
+              <div class="choice-row" role="group" aria-labelledby="axis-space">
+                <button type="button" class="choice-chip" data-axis="space" data-val="meja-rak" aria-pressed="true">Meja atau rak ringkas</button>
