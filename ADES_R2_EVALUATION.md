@@ -11,9 +11,9 @@
 |---|---|---|
 | `r2-muse.html.html` | `exploration/r2/r2-muse.html` | Complete HTML source; filename-attributed to Meta Muse |
 | `r2-gemini.html.html` | `exploration/r2/r2-gemini.html` | Complete HTML source; filename-attributed to Gemini |
-| `r2-deepseek.html.html` | `exploration/r2/r2-deepseek.html` | **INCOMPLETE**: file ends mid-SVG at `<text x`; no closing SVG/section/script/body/html; no R2 reference/model/motion manifest |
+| `r2-deepseek.html.html` (complete resubmission) | `exploration/r2/r2-deepseek.html` | Complete HTML source (2,050 lines; 85,849 bytes); filename-attributed to DeepSeek; prior truncated upload separately archived at `exploration/r2/archive/r2-deepseek-truncated-upload.html` |
 
-The DeepSeek-named upload is preserved exactly as received and is not represented as a complete browser-ready candidate. It contains four main sections only (sampul, amati, baca-ruang, arah), two inline SVG illustrations, zero `<img>` assets, no inline JavaScript, no GSAP/ScrollTrigger, and no embedded R2 source/learning manifest. It stops during the second illustration before the rest of the page can be evaluated. Its direction is “Catatan Lapangan”; source does not establish the required R2 reference research or purposeful motion.
+The first DeepSeek-named upload was preserved byte-for-byte in the archive path above. The replacement is a complete document from doctype through closing `</html>`, with 11 main content sections (00–10), three original inline SVG plates, no `<img>` photo assets, one inline JavaScript block, GSAP + ScrollTrigger CDN references, responsive mobile/desktop index, room reader, searchable/filterable discovery index, workshop note disclosure, FAQ details, and a non-sending contact simulation. Its embedded manifest names five reference URLs and describes the intended learning; those visits are agent-reported and have not been independently re-opened by the Lead.
 
 ## 2. Candidate source review
 
@@ -38,11 +38,16 @@ The DeepSeek-named upload is preserved exactly as received and is not represente
 - **Source-level result:** complete candidate with three image elements and purposeful GSAP source. Browser behavior, image availability, animation execution, interaction states and actual responsive appearance remain NOT_VERIFIED.
 
 ### DeepSeek — “Catatan Lapangan”
-- **Distinctive direction visible in received fragment:** Indonesian editorial field-notes / folio index, paper/ink/lime/clay palette, numbered sheets, SVG room-light diagrams and room/care reader.
-- **Completeness:** FAIL / INCOMPLETE UPLOAD. The source ends in the middle of an SVG text element. It is not a full website artifact and cannot be evaluated for the remaining sections, interactions, responsive navigation, imagery or motion.
-- **Images/motion/references:** zero photographic image elements; no JavaScript or GSAP source in the received fragment; no R2 manifest or reference list present. This is an assessment of the uploaded fragment only, not a claim about an unreceived continuation.
-- **Model disclosure:** absent from received fragment; do not infer.
-- **Required recovery:** resend one complete R2 HTML from doctype through closing `</html>`, with its R2 reference/learning manifest, media provenance, motion/GSAP status and limitations. No other agent needs to rerun.
+- **Direction:** Indonesian editorial field-notes / folio index, paper/ink/lime/clay palette, numbered sheets, original SVG room-light and floor-plan diagrams; “Mulai dari ruang. Bukan dari nama.” organizes the visitor journey.
+- **Completeness:** PASS at source-document level. The complete replacement contains 11 main sections, from cover and room observation through room reader, plant directions, discovery index, pocket care notes, home/business styling, workshops, illustrative prices, FAQ and non-sending enquiry.
+- **Interactions declared in source:** mobile index disclosure with Escape close and focus handling; active-section index/folio; radio-driven room reader with a no-match state; search + category filters + empty/reset states; workshop note disclosure; native FAQ details; contact form that prevents submission and only displays a local non-sending status.
+- **Visual assets:** three original inline SVG plates (hero light study, direction plate, styling floor-plan plate), each captioned as synthetic/internal. Zero photographic `<img>` elements. This is a deliberate original-illustration direction rather than an image-led photo treatment; no third-party visual rights are claimed.
+- **Motion:** GSAP 3.12.5 + ScrollTrigger CDN source for scroll-progress line, active folio/index state and restrained one-time section/reveal transitions. A non-GSAP scroll/IntersectionObserver fallback is present; GSAP enhancement is skipped when `prefers-reduced-motion` is requested. Runtime execution and CDN availability remain NOT_VERIFIED.
+- **Responsive strategy:** mobile-first single column and disclosed mobile index; tablet multi-column grids; desktop sticky left index and asymmetric cover. CSS source specifies 720/760/820/900/1100px breakpoints; actual viewport rendering remains NOT_VERIFIED.
+- **References in manifest (agent-reported, not independently verified by Lead):** Hardy Houseplant, Studio Campo, Interiordesign.id, UI8 Florivern botanical storefront template, and Dynamic Code botanical editorial. Manifest describes field-guide trust/limits, sequential field-note structure, pot-position light observation, herbarium index metaphor, and paper/ink/editorial grid lessons.
+- **Model disclosure:** DeepSeek official free chat interface; exact model label NOT_DISCLOSED / not independently verifiable in this environment.
+- **Static source checks:** 2,050 lines; complete doctype and closing tags; one inline script passed `node --check`. HTMLParser completed without unmatched closing tags or residual open elements in a lightweight structural scan. These are source checks, not HTML-validator or browser tests.
+- **Remaining limits:** no browser render, responsive device test, interaction execution, accessibility/screen-reader audit, performance audit, cross-browser test, or GSAP runtime verification.
 
 ### GPT Lead — “Herbarium Ruang”
 - Existing candidate: `exploration/r2/gpt-direction.html`.
@@ -54,9 +59,9 @@ The DeepSeek-named upload is preserved exactly as received and is not represente
 
 - Muse and Gemini HTML source were read in full and parsed with Python's built-in HTML parser.
 - Muse and Gemini inline JavaScript passed `node --check` syntax validation.
-- The DeepSeek-named upload is visibly truncated at `<text x`; it is not a complete document and has no inline script to syntax-check.
-- Image element counts from source: Muse 6; Gemini 3; DeepSeek fragment 0; GPT candidate 6.
-- GSAP/ScrollTrigger source present: Muse and Gemini and GPT; absent in DeepSeek fragment.
+- The first DeepSeek upload was truncated and is archived unchanged. The complete replacement (2,050 lines) passed doctype/closing-tag checks and lightweight HTMLParser stack checks; its one inline script passed `node --check`.
+- Image element counts from source: Muse 6; Gemini 3; DeepSeek 0 (three original inline SVG plates); GPT candidate 6.
+- GSAP/ScrollTrigger source present in all four complete R2 directions (GPT, Muse, Gemini, DeepSeek). DeepSeek's CDN/runtime and reduced-motion branch have not been browser-executed.
 - These checks do not prove runtime behavior, visual quality, responsive correctness, accessibility, image loading, or rights.
 
 ## 4. Browser / rendered QA status
@@ -72,9 +77,9 @@ Do not treat source declarations or candidate self-reports as test results.
 
 ## 5. R2 gate assessment
 
-- Two complete external R2 candidates are received (Muse and Gemini).
-- One external R2 submission (DeepSeek-named) is incomplete and does not meet the full-site artifact requirement.
-- GPT's original R2 candidate is present. The current complete candidate set therefore contains GPT + Muse + Gemini, but the selected four-participant workflow is not complete until DeepSeek supplies its full artifact or the operator explicitly waives that participant.
-- R2 source-level review can proceed for the three complete candidates; G2/R3 synthesis remains blocked on the missing DeepSeek deliverable or an explicit waiver.
+- Three complete external R2 candidates are now received (Muse, Gemini, DeepSeek); GPT's original R2 candidate is also present, giving four complete source-level directions.
+- DeepSeek's first truncated upload remains preserved at `exploration/r2/archive/r2-deepseek-truncated-upload.html`; the complete replacement is at `exploration/r2/r2-deepseek.html`.
+- All four candidates have materially distinguishable source-level design theses. DeepSeek adds an Indonesian field-notes / herbarium index direction with original SVG plates and purposeful GSAP source.
+- The four-participant R2 artifact dependency is resolved at source-document level. G2/R3 can proceed to GPT-only synthesis; visual/rendered comparison remains NOT_VERIFIED because browser QA is still blocked.
 - No operator is asked to choose between model-produced websites. GPT Lead will synthesise after the missing deliverable is resolved.
 - No release, deployment, third-party outreach or spending is authorized.
