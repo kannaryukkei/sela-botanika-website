@@ -43,3 +43,7 @@ If `py` is not available on Windows, install Python 3.10+ and use `python -m htt
 - If GSAP does not load, the page content and native controls remain available; the scroll progress indicator uses a non-GSAP fallback.
 - If the layout appears unstyled, confirm the server was started from the repository root so `assets/css/styles.css` and `assets/js/main.js` resolve.
 - A local preview is not a public deployment. No hosting, DNS, payment, or release action is included.
+
+## Verification note
+
+The documented Python HTTP-server command was smoke-tested in the current Linux container with Python 3.13.5 against a temporary fixture on `127.0.0.1:4173`; this verifies the server command/port mechanism only, not a clean clone or this website's full local run. The Windows PowerShell `py` command has not been executed on Windows. A clean repository checkout and site preview remain NOT_VERIFIED because GitHub DNS resolution and browser navigation are blocked in the current environment.
