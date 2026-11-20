@@ -76,7 +76,7 @@ _Last updated: 2026-11-21 (Asia/Jakarta)_
 | FAQ / practical notes | Answer repeated questions | Stock, pricing, pots included?, delivery, workshops, business spaces | Contact placeholder |
 
 - **Excluded:** checkout, payment, accounts, booking, real inventory sync, CRM, WhatsApp integration, real testimonials, fabricated social links, fabricated street address/hours, pet/health/air-purification claims.
-- **Acceptance criteria:** truthful synthetic/demo treatment; clear visitor hierarchy; intuitive mobile-first navigation; visible indicative price ranges; no availability illusion; primary paths for stock questions/workshop questions/styling brief; at least 3 locally integrated image assets with provenance; purposeful GSAP prototype in R2 and purposeful integration in R3 if supported; responsive and accessibility basics verified at available widths; no contact control falsely claiming to send.
+- **Acceptance criteria:** truthful synthetic/demo treatment; clear visitor hierarchy; intuitive mobile-first navigation; visible indicative price ranges; no availability illusion; primary paths for stock questions/workshop questions/styling brief; at least 3 locally integrated image assets with provenance; (legacy ADES 1.x criterion) purposeful GSAP prototype in R2 and purposeful integration in R3 if supported; responsive and accessibility basics verified at available widths; no contact control falsely claiming to send.
 
 ## 4. G0 tools, runtime, and harness verification
 - **Verified:** GitHub connector actions available for repo metadata, fetch tree/file, create/update file. Repository is writable according to connector permission response.
@@ -146,7 +146,7 @@ References inspected:
 - No paid external model access, API credits, third-party proxy or roster substitution.
 - No public deployment, DNS changes, third-party outreach, spending or release without explicit operator approval.
 - **Current dependency:** source implementation is complete and static QA is recorded. Operator approved the integrated direction on 2026-11-21. Browser rendering remains blocked: local Playwright navigation was denied by `ERR_BLOCKED_BY_ADMINISTRATOR`; clean Git clone could not resolve `github.com`. No browser screenshot, interaction execution, or clean-checkout run has been verified.
-- **Next step:** continue autonomous source/runbook verification. No R4 design revision is indicated by the approval; use R4 only if a material gap emerges or is requested. Do not treat direction approval as deployment/release authorization.
+- **Next step:** continue autonomous source/runbook verification. No legacy R4+ targeted design revision is indicated by the approval; use a focused refinement only if a material gap emerges or is requested. Do not treat direction approval as deployment/release authorization.
 
 ## 10. Current artifact index
 | Artifact | Repository path |
