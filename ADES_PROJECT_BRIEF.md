@@ -17,9 +17,9 @@ _Last updated: 2026-11-21 (Asia/Jakarta)_
 - **Initial inspected HEAD:** `ee37041356cbf3ef06b1b9e099e1e28f36f48e60` was an empty-tree historical state after `Delete index.html`; not the current repository state.
 - **Parent commit inspected:** `3d61e0284ed1e29cab79966330db0edaa59f8d23`; its tree had one `index.html` (20,002 bytes). Historical only.
 - **Current stage/gate:** R1 and all four R2 source artifacts are complete. GPT-only R3 synthesis and a six-file static website project are committed. Static source QA passed; rendered/browser QA remains NOT_VERIFIED because local clone DNS failed and browser navigation is blocked in this environment.
-- **Overall status:** IN_PROGRESS / REVIEW_REQUIRED (integrated direction ready for one material operator review; no rendered preview verified)
-- **Next Lead task:** Continue only if a material revision is requested. Preserve the browser-QA limitation; do not claim visual inspection or release readiness.
-- **Next operator action:** Review the single integrated GPT recommendation and decide whether its direction needs a material revision. This is not approval to publish or deploy.
+- **Overall status:** DIRECTION_APPROVED / TECHNICAL_QA_IN_PROGRESS (operator approved the integrated GPT direction on 2026-11-21; rendered preview remains blocked/unverified)
+- **Next Lead task:** Continue autonomous source/runbook verification; retain the browser-render limitation and do not claim visual inspection or release readiness.
+- **Operator decision (2026-11-21):** “semua disetujui, lanjut!” — accepted the integrated GPT recommendation and current direction. Scope is design/direction approval only; it does not authorize publication, deployment, DNS changes, spending, external contact, or release.
 
 ## 2. G0–G5 gate board
 | Gate | Status | Evidence / decision |
@@ -28,7 +28,7 @@ _Last updated: 2026-11-21 (Asia/Jakarta)_
 | G1 — Discovery & scope | PASS | Audience, offer, visitor needs, primary room-fit-to-enquiry journey, secondary workshop/business-styling paths, provisional page structure, price caveats, exclusions, and acceptance criteria consolidated in this Brief from the intake. |
 | G2 — Multi-agent exploration/synthesis | IN_PROGRESS | R1 complete; four complete R2 directions evaluated at source level; GPT-only R3 synthesis and integrated multi-file site are committed. Actual rendered candidate comparison remains NOT_VERIFIED due browser environment block. |
 | G3 — Build ready for QA | IN_PROGRESS | Static multi-file site implemented and fetched back; HTML/JS/CSS source checks pass. V0→V1 correction completed for image URL escaping and evidence notes. Browser QA and clean-checkout verification remain NOT_VERIFIED. |
-| G4 — Operator review | NOT_STARTED | One integrated GPT recommendation is ready for consolidated material review; no operator acceptance recorded. |
+| G4 — Operator review | PASS (direction scope) | Operator explicitly approved the single integrated GPT recommendation on 2026-11-21 (“semua disetujui, lanjut!”). Approval is for the integrated direction/artifact only; no rendered local preview was reviewed and no release authority was granted. |
 | G5 — Handover/release | IN_PROGRESS | Repository-specific local runbook prepared (Python standard-library server, port 4173); clean checkout/run not verified. Public release is not authorized. |
 
 ## 3. Business understanding, facts, and scope
@@ -130,7 +130,7 @@ References inspected:
 | MOTION-01 | IN_PROGRESS | R3 source includes GSAP + ScrollTrigger scroll progress and restrained reveals, reduced-motion bypass and no-GSAP fallback. Runtime/CDN/ScrollTrigger execution NOT_VERIFIED |
 | BUILD-01 | IN_PROGRESS | Static multi-file website project committed; six project files fetched back; no package manager/backend required; static source checks pass |
 | QA-01 | NOT_VERIFIED | HTML structure/hash/ID/alt/link checks pass; JavaScript syntax compiles; CSS braces balance. Browser navigation blocked (`ERR_BLOCKED_BY_ADMINISTRATOR`); git clone failed DNS resolution. No rendered, interaction, accessibility, performance or cross-browser QA |
-| PREVIEW-01 | NOT_STARTED | Integrated source project is ready for local preview; Lead has not produced a verified browser render or operator preview |
+| PREVIEW-01 | BLOCKED | Operator approved the integrated direction, but Lead has not produced a rendered browser preview; local HTTP/file navigation is blocked by `ERR_BLOCKED_BY_ADMINISTRATOR`, and GitHub clone cannot resolve `github.com`. Approval is not represented as visual preview verification |
 | RELEASE-01 | NOT_AUTHORIZED | Synthetic internal experiment only; public release prohibited without explicit authorization |
 
 ## 9. Decisions and blockers
@@ -139,8 +139,8 @@ References inspected:
 - No checkout/payment/backend/CRM/booking until supported by a material requirement and separately approved.
 - No paid external model access, API credits, third-party proxy or roster substitution.
 - No public deployment, DNS changes, third-party outreach, spending or release without explicit operator approval.
-- **Current dependency:** source implementation is complete and static QA is recorded. Browser rendering remains blocked: the local Playwright navigation attempt was denied by `ERR_BLOCKED_BY_ADMINISTRATOR`; clean Git clone could not resolve `github.com`. No browser screenshot, interaction execution, or clean-checkout run has been verified.
-- **Next step:** one consolidated operator review of the integrated GPT recommendation for material direction only. If a material revision is requested, perform a targeted GPT-only R4 pass using 1–2 relevant references. Do not treat approval of the direction as deployment/release authorization.
+- **Current dependency:** source implementation is complete and static QA is recorded. Operator approved the integrated direction on 2026-11-21. Browser rendering remains blocked: local Playwright navigation was denied by `ERR_BLOCKED_BY_ADMINISTRATOR`; clean Git clone could not resolve `github.com`. No browser screenshot, interaction execution, or clean-checkout run has been verified.
+- **Next step:** continue autonomous source/runbook verification. No R4 design revision is indicated by the approval; use R4 only if a material gap emerges or is requested. Do not treat direction approval as deployment/release authorization.
 
 ## 10. Current artifact index
 | Artifact | Repository path |
@@ -170,4 +170,4 @@ References inspected:
 - **Partially verified:** Chromium binary and Python Playwright package are installed, but local HTTP and `file://` navigation were blocked by `ERR_BLOCKED_BY_ADMINISTRATOR`; headless screenshot attempt timed out. Git clone failed because `github.com` DNS resolution was unavailable. No usable browser QA harness or local working copy.
 - **Runtime:** static HTML/CSS/JS; Python 3.10+ recommended for the standard-library HTTP server. No Node.js, npm, package install, backend, or environment variables.
 - **Runbook:** PREPARED in `README.md`; Python server on 127.0.0.1:4173; Windows PowerShell uses `py -m http.server`. Clean checkout and local launch are NOT_VERIFIED.
-- **Operator preview:** NOT_RUN. No local preview URL has been verified by Lead.
+- **Operator preview:** NOT_RUN / BLOCKED. Operator approved the integrated direction (2026-11-21), not a rendered browser preview. No local preview URL has been verified by Lead.
