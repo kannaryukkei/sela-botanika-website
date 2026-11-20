@@ -13,23 +13,23 @@ _Last updated: 2026-11-21 (Asia/Jakarta)_
 - **Free-tier selection rule:** use each named provider's official free consumer interface and its default model/mode available to the operator. Do not purchase API credits, enable a paid plan, or assume a backend version not displayed by the provider.
 - **Model identity evidence (2026-11-21):** Gemini official subscription page lists Flash-Lite access on Free; DeepSeek official consumer chat is free, but the exact backend model/version served to a free chat session is not reliably exposed by the available official evidence; Meta's official Muse page says Muse is free with usage limits, but does not identify a fixed underlying model/version. Preserve those unknowns as NOT_DISCLOSED rather than guessing.
 - **External execution path:** DELEGATION_PACK (no direct authorized model integration verified in this session). Each external agent must note the exact model/version displayed in its own UI if available; otherwise report NOT_DISCLOSED and include a screenshot/text evidence of the selected free interface/model label.
-- **Repository latest verified commit:** `822f7a27e6951161fe787c4dc2e6f7f8fbc5f82a` on `main` (GPT R2 concept; R1 submissions and R2 delegation artifacts are committed in prior history)
-- **Initial inspected HEAD:** `ee37041356cbf3ef06b1b9e099e1e28f36f48e60` had an empty tree after `Delete index.html`; subsequent commits now add the ADES Brief, R1 concept, and Delegation Pack only. No integrated website implementation exists yet.
-- **Parent commit inspected:** `3d61e0284ed1e29cab79966330db0edaa59f8d23`; its tree had one `index.html` (20,002 bytes). This is historical prior work, not present at HEAD.
-- **Current stage/gate:** G2 R2 source-artifact collection is complete: GPT + Gemini + DeepSeek + Meta Muse have four complete HTML directions. R1 outputs and shared learning are archived. R3 GPT-only synthesis is now the next Lead task; rendered comparison remains NOT_VERIFIED.
-- **Overall status:** IN_PROGRESS
-- **Next Lead task:** Complete GPT-only R3 evidence synthesis and integrated multi-file website project. Evaluate the four source candidates against shared R1 learning and visitor tasks; keep rendered visual/responsive/interaction evidence explicitly NOT_VERIFIED until a working browser harness is available. Do not ask operator to choose model-produced candidates.
-- **Next operator action:** None for R2 artifact collection. A material approval will be requested only after one integrated GPT recommendation and near-final internal QA are ready.
+- **Repository latest verified commit:** `7104ebc25396ba6dc3e70ecf0411ac7b9bc1c738` on `main` (R3 website, asset manifest, synthesis, runbook and static QA notes committed)
+- **Initial inspected HEAD:** `ee37041356cbf3ef06b1b9e099e1e28f36f48e60` was an empty-tree historical state after `Delete index.html`; not the current repository state.
+- **Parent commit inspected:** `3d61e0284ed1e29cab79966330db0edaa59f8d23`; its tree had one `index.html` (20,002 bytes). Historical only.
+- **Current stage/gate:** R1 and all four R2 source artifacts are complete. GPT-only R3 synthesis and a six-file static website project are committed. Static source QA passed; rendered/browser QA remains NOT_VERIFIED because local clone DNS failed and browser navigation is blocked in this environment.
+- **Overall status:** IN_PROGRESS / REVIEW_REQUIRED (integrated direction ready for one material operator review; no rendered preview verified)
+- **Next Lead task:** Continue only if a material revision is requested. Preserve the browser-QA limitation; do not claim visual inspection or release readiness.
+- **Next operator action:** Review the single integrated GPT recommendation and decide whether its direction needs a material revision. This is not approval to publish or deploy.
 
 ## 2. G0–G5 gate board
 | Gate | Status | Evidence / decision |
 |---|---|---|
 | G0 — Project activation | PASS | Intake and Guide read; studio_development mode and no-release boundaries set; repository identity/branch/HEAD and GitHub write permission verified; current tool availability checked. Runtime/browser/harness limitations are recorded, not treated as proof of QA. |
 | G1 — Discovery & scope | PASS | Audience, offer, visitor needs, primary room-fit-to-enquiry journey, secondary workshop/business-styling paths, provisional page structure, price caveats, exclusions, and acceptance criteria consolidated in this Brief from the intake. |
-| G2 — Multi-agent exploration/synthesis | IN_PROGRESS | R1 complete. Four complete R2 source directions now present (GPT, Gemini, DeepSeek, Meta Muse); full DeepSeek resubmission archived and source-checked. R3 GPT-only synthesis and integrated project remain to be completed; rendered comparison is NOT_VERIFIED. |
-| G3 — Build ready for QA | NOT_STARTED | No integrated website implementation or stack exists yet; only R1 concept HTML and project-control files are present. |
-| G4 — Operator review | NOT_STARTED | No near-final artifact. |
-| G5 — Handover/release | NOT_STARTED | No runbook possible until implementation stack exists. Public release is not authorized. |
+| G2 — Multi-agent exploration/synthesis | IN_PROGRESS | R1 complete; four complete R2 directions evaluated at source level; GPT-only R3 synthesis and integrated multi-file site are committed. Actual rendered candidate comparison remains NOT_VERIFIED due browser environment block. |
+| G3 — Build ready for QA | IN_PROGRESS | Static multi-file site implemented and fetched back; HTML/JS/CSS source checks pass. V0→V1 correction completed for image URL escaping and evidence notes. Browser QA and clean-checkout verification remain NOT_VERIFIED. |
+| G4 — Operator review | NOT_STARTED | One integrated GPT recommendation is ready for consolidated material review; no operator acceptance recorded. |
+| G5 — Handover/release | IN_PROGRESS | Repository-specific local runbook prepared (Python standard-library server, port 4173); clean checkout/run not verified. Public release is not authorized. |
 
 ## 3. Business understanding, facts, and scope
 ### Business / visitor strategy
@@ -111,21 +111,26 @@ References inspected:
 - **R2 status:** GPT `exploration/r2/gpt-direction.html` (“Herbarium Ruang”), Meta Muse `exploration/r2/r2-muse.html`, Gemini `exploration/r2/r2-gemini.html`, and DeepSeek `exploration/r2/r2-deepseek.html` (“Catatan Lapangan”) are all complete source artifacts. DeepSeek's original truncated upload is preserved unchanged at `exploration/r2/archive/r2-deepseek-truncated-upload.html`; the full replacement is 2,050 lines / 85,849 bytes and passed lightweight HTML structure checks plus `node --check` for its inline JavaScript. It has 11 main sections, three original inline SVG plates (zero photo `<img>` elements), a mobile/desktop index, room reader, searchable/filterable discovery, FAQ and non-sending form simulation, plus GSAP + ScrollTrigger source and reduced-motion fallback. Its manifest names five niche references (Hardy Houseplant, Studio Campo, Interiordesign.id, UI8 Florivern, Dynamic Code); those visits are agent-reported and not independently verified by Lead. Model label: NOT_DISCLOSED. R2 source-level evaluation is recorded in `ADES_R2_EVALUATION.md`.
 - **R2 evidence limits:** no candidate has browser-rendered evidence in this environment. Mobile/tablet/desktop appearance, visitor journeys, interactive behavior, image load/crops, accessibility, performance, cross-browser behavior and GSAP runtime remain NOT_VERIFIED. The DeepSeek direction is illustration-led (original SVG), not photo-led; no external visual asset provenance is claimed.
 - **R2 requirements:** materially distinct full-site HTML, Indonesian-first, honest image/illustration provenance, functioning local simulations, responsive navigation and purposeful GSAP prototype with reduced-motion fallback. No release or live business features.
-- **R3:** GPT Lead alone synthesizes evidence and implements the integrated multi-file project after R2 artifacts are evaluated.
+- **R3 — GPT Lead synthesis:** completed at source/synthesis level; integrated direction is “Mulai dari ruang. Bukan dari nama.” with a warm editorial system, room-reader journey, concise category discovery, home/business styling, and local-only enquiry simulation. Source-based design decisions and limits are recorded in `ADES_R3_SYNTHESIS.md`.
+- **R3 implementation:** `index.html`, `assets/css/styles.css`, `assets/js/main.js`, `README.md`, `ADES_ASSET_MANIFEST.md`, and `ADES_R3_SYNTHESIS.md`. Three unique Unsplash photos are embedded from remote CDN sources with contributor/photo-page credits; no local image files were downloaded. Generated-image attempt failed and was not retried.
+- **R3 motion:** GSAP 3.12.5 + ScrollTrigger source provides scroll progress and restrained one-time section/hero reveals; reduced-motion bypass and no-GSAP fallback are present in source. Browser execution is NOT_VERIFIED.
+- **R3 source QA:** fetched back all six project files; doctype/closing tags pass; 9 sections; 4 image elements / 3 unique image sources; all images have alt text; no duplicate IDs; all in-page hash targets resolve; new-tab links have `rel=noopener`; lightweight tag-stack scan clean; JS source compiles; CSS braces balance and 4 media queries include reduced-motion.
+- **R3 rendered QA:** NOT_VERIFIED. Playwright/Chromium navigation returned `ERR_BLOCKED_BY_ADMINISTRATOR`; git clone failed because the container could not resolve `github.com`; no screenshot or local browser render exists. One Unsplash CDN preview returned cache miss in the web viewer; browser image loading remains unverified.
+- **R3 recommendation:** one integrated GPT direction, not a model-candidate choice. Operator review is for material direction only; no release/deployment is authorized.
 
 ## 8. Control family state
 | Control | Status | Evidence / blocker |
 |---|---|---|
 | GOV-01 | PASS | Synthetic project boundary and no-release restrictions in intake; no external contact, cost or publication |
 | DISC-01 | PASS | Audience, offer, visitor tasks, scope, exclusions and acceptance criteria consolidated from intake |
-| EXP-01 | IN_PROGRESS | R1 complete; four complete R2 source candidates (GPT, Gemini, DeepSeek, Muse) received and source-reviewed; R3 GPT-only synthesis and integrated project pending. Browser-rendered comparison remains NOT_VERIFIED |
-| VIS-01 | NOT_VERIFIED | Muse 6 and Gemini 3 remote Unsplash image elements; GPT 6 remote image elements; DeepSeek 3 original inline SVG plates and 0 photo elements. No browser image-load/render, crop, rights or responsive visual verification |
-| INT-01 | NOT_VERIFIED | Source-level interactions in all four R2 directions; Muse, Gemini and DeepSeek inline JS syntax checks passed where available, but no browser interactions were executed |
-| RESP-01 | NOT_VERIFIED | Responsive source patterns exist in candidates; Playwright/Chromium navigation was blocked by environment policy, so no viewport screenshots or responsive inspection |
-| MOTION-01 | IN_PROGRESS | All four complete R2 directions include purposeful GSAP + ScrollTrigger source and reduced-motion handling/fallback. Runtime/CDN/ScrollTrigger behavior remains NOT_VERIFIED |
-| BUILD-01 | NOT_STARTED | No integrated production-style multi-file website project yet |
-| QA-01 | NOT_VERIFIED | Muse/Gemini inline JS syntax checks passed; browser navigation was blocked (`ERR_BLOCKED_BY_ADMINISTRATOR`) and headless screenshot attempt timed out. No rendered, responsive, interaction, accessibility, performance or cross-browser QA |
-| PREVIEW-01 | NOT_STARTED | No near-final integrated candidate |
+| EXP-01 | IN_PROGRESS | R1 complete; all four R2 HTML directions received and source-reviewed; R3 GPT-only synthesis and multi-file integration committed. Rendered candidate comparison remains NOT_VERIFIED because no working browser harness was available |
+| VIS-01 | NOT_VERIFIED | R3 embeds 3 unique remote Unsplash photo sources (4 image elements) with credits and an asset manifest; Unsplash license page inspected. Browser image load/crop/responsive verification NOT_VERIFIED; no local photo files |
+| INT-01 | NOT_VERIFIED | R3 source includes mobile nav, room reader, space tabs, category/search filter, FAQ, and non-sending form; source checks pass but interactions were not executed in a browser |
+| RESP-01 | NOT_VERIFIED | R3 CSS has mobile/tablet/desktop breakpoints and mobile navigation source; no viewport screenshots or responsive browser inspection |
+| MOTION-01 | IN_PROGRESS | R3 source includes GSAP + ScrollTrigger scroll progress and restrained reveals, reduced-motion bypass and no-GSAP fallback. Runtime/CDN/ScrollTrigger execution NOT_VERIFIED |
+| BUILD-01 | IN_PROGRESS | Static multi-file website project committed; six project files fetched back; no package manager/backend required; static source checks pass |
+| QA-01 | NOT_VERIFIED | HTML structure/hash/ID/alt/link checks pass; JavaScript syntax compiles; CSS braces balance. Browser navigation blocked (`ERR_BLOCKED_BY_ADMINISTRATOR`); git clone failed DNS resolution. No rendered, interaction, accessibility, performance or cross-browser QA |
+| PREVIEW-01 | NOT_STARTED | Integrated source project is ready for local preview; Lead has not produced a verified browser render or operator preview |
 | RELEASE-01 | NOT_AUTHORIZED | Synthetic internal experiment only; public release prohibited without explicit authorization |
 
 ## 9. Decisions and blockers
@@ -134,8 +139,8 @@ References inspected:
 - No checkout/payment/backend/CRM/booking until supported by a material requirement and separately approved.
 - No paid external model access, API credits, third-party proxy or roster substitution.
 - No public deployment, DNS changes, third-party outreach, spending or release without explicit operator approval.
-- **Current dependency:** R2 DeepSeek resubmission has been received and checked. The original truncated upload is preserved unchanged in `exploration/r2/archive/r2-deepseek-truncated-upload.html`; the complete replacement occupies `exploration/r2/r2-deepseek.html`. No external participant rerun is required.
-- **Next step:** GPT-only R3 synthesis and integrated multi-file implementation. Browser QA remains an environment blocker; attempt safe alternatives during R3, record exact limitations, and do not claim rendered inspection. No model winner selection will be requested.
+- **Current dependency:** source implementation is complete and static QA is recorded. Browser rendering remains blocked: the local Playwright navigation attempt was denied by `ERR_BLOCKED_BY_ADMINISTRATOR`; clean Git clone could not resolve `github.com`. No browser screenshot, interaction execution, or clean-checkout run has been verified.
+- **Next step:** one consolidated operator review of the integrated GPT recommendation for material direction only. If a material revision is requested, perform a targeted GPT-only R4 pass using 1–2 relevant references. Do not treat approval of the direction as deployment/release authorization.
 
 ## 10. Current artifact index
 | Artifact | Repository path |
@@ -153,12 +158,16 @@ References inspected:
 | R2 DeepSeek (complete resubmission) | `exploration/r2/r2-deepseek.html` |
 | R2 DeepSeek original truncated upload (preserved) | `exploration/r2/archive/r2-deepseek-truncated-upload.html` |
 | R2 evaluation | `ADES_R2_EVALUATION.md` |
+| R3 integrated website | `index.html`, `assets/css/styles.css`, `assets/js/main.js` |
+| R3 synthesis | `ADES_R3_SYNTHESIS.md` |
+| R3 asset manifest | `ADES_ASSET_MANIFEST.md` |
+| Local runbook | `README.md` |
 | R1 delegation pack (historical) | `ADES_R1_DELEGATION_PACK.md` |
 
 ## 11. Runtime and harness
 - **Repository:** `https://github.com/kannaryukkei/sela-botanika-website`, branch `main`.
-- **Verified capabilities:** GitHub fetch/create/update operations.
-- **Partially verified:** Chromium binary and Python Playwright package are installed in the current tool container, but navigation to local HTTP and `file://` pages was blocked by `ERR_BLOCKED_BY_ADMINISTRATOR`; direct headless screenshot attempt timed out. This is not a usable browser QA harness.
-- **Not verified:** local repository checkout, runtime versions for the actual website project, coding-agent harness.
-- **Runbook:** NOT_PREPARED; derive exact commands only after the R3 implementation stack and lockfiles exist.
-- **Operator preview:** NOT_RUN. No local preview URL has been verified.
+- **Verified capabilities:** GitHub fetch/create/update; all six R3 project files fetched back after commit.
+- **Partially verified:** Chromium binary and Python Playwright package are installed, but local HTTP and `file://` navigation were blocked by `ERR_BLOCKED_BY_ADMINISTRATOR`; headless screenshot attempt timed out. Git clone failed because `github.com` DNS resolution was unavailable. No usable browser QA harness or local working copy.
+- **Runtime:** static HTML/CSS/JS; Python 3.10+ recommended for the standard-library HTTP server. No Node.js, npm, package install, backend, or environment variables.
+- **Runbook:** PREPARED in `README.md`; Python server on 127.0.0.1:4173; Windows PowerShell uses `py -m http.server`. Clean checkout and local launch are NOT_VERIFIED.
+- **Operator preview:** NOT_RUN. No local preview URL has been verified by Lead.
