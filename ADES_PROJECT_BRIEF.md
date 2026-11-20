@@ -16,17 +16,17 @@ _Last updated: 2026-11-21 (Asia/Jakarta)_
 - **Repository latest verified commit:** `822f7a27e6951161fe787c4dc2e6f7f8fbc5f82a` on `main` (GPT R2 concept; R1 submissions and R2 delegation artifacts are committed in prior history)
 - **Initial inspected HEAD:** `ee37041356cbf3ef06b1b9e099e1e28f36f48e60` had an empty tree after `Delete index.html`; subsequent commits now add the ADES Brief, R1 concept, and Delegation Pack only. No integrated website implementation exists yet.
 - **Parent commit inspected:** `3d61e0284ed1e29cab79966330db0edaa59f8d23`; its tree had one `index.html` (20,002 bytes). This is historical prior work, not present at HEAD.
-- **Current stage/gate:** G1 complete. R1 roster outputs received, archived and source-reviewed; shared learning synthesis and R2 delegation pack committed. G2 remains IN_PROGRESS pending three external R2 HTML directions and GPT-only R3 synthesis.
+- **Current stage/gate:** G2 R2 source-artifact collection is complete: GPT + Gemini + DeepSeek + Meta Muse have four complete HTML directions. R1 outputs and shared learning are archived. R3 GPT-only synthesis is now the next Lead task; rendered comparison remains NOT_VERIFIED.
 - **Overall status:** IN_PROGRESS
-- **Next Lead task:** Independently evaluate returned R2 HTMLs when supplied; compare against shared R1 learning, then complete GPT-only R3 multi-file synthesis. Do not ask operator to choose model-produced candidates.
-- **Next operator action:** Run the three prompts in `ADES_R2_DELEGATION_PACK.md` using the exact official free interfaces and return exactly one full-site HTML file per agent. No model substitution or paid access; no waiver is assumed.
+- **Next Lead task:** Complete GPT-only R3 evidence synthesis and integrated multi-file website project. Evaluate the four source candidates against shared R1 learning and visitor tasks; keep rendered visual/responsive/interaction evidence explicitly NOT_VERIFIED until a working browser harness is available. Do not ask operator to choose model-produced candidates.
+- **Next operator action:** None for R2 artifact collection. A material approval will be requested only after one integrated GPT recommendation and near-final internal QA are ready.
 
 ## 2. G0–G5 gate board
 | Gate | Status | Evidence / decision |
 |---|---|---|
 | G0 — Project activation | PASS | Intake and Guide read; studio_development mode and no-release boundaries set; repository identity/branch/HEAD and GitHub write permission verified; current tool availability checked. Runtime/browser/harness limitations are recorded, not treated as proof of QA. |
 | G1 — Discovery & scope | PASS | Audience, offer, visitor needs, primary room-fit-to-enquiry journey, secondary workshop/business-styling paths, provisional page structure, price caveats, exclusions, and acceptance criteria consolidated in this Brief from the intake. |
-| G2 — Multi-agent exploration/synthesis | IN_PROGRESS | Free-tier-only roster confirmed; direct model integrations unavailable; R1 Delegation Pack and GPT R1 concept committed. External R1 HTML outputs are pending. R2/R3 remain gated on completed/evaluated artifacts. |
+| G2 — Multi-agent exploration/synthesis | IN_PROGRESS | R1 complete. Four complete R2 source directions now present (GPT, Gemini, DeepSeek, Meta Muse); full DeepSeek resubmission archived and source-checked. R3 GPT-only synthesis and integrated project remain to be completed; rendered comparison is NOT_VERIFIED. |
 | G3 — Build ready for QA | NOT_STARTED | No integrated website implementation or stack exists yet; only R1 concept HTML and project-control files are present. |
 | G4 — Operator review | NOT_STARTED | No near-final artifact. |
 | G5 — Handover/release | NOT_STARTED | No runbook possible until implementation stack exists. Public release is not authorized. |
@@ -108,8 +108,9 @@ References inspected:
 - **Legacy supplemental file:** `exploration/r1/external-submission-unattributed.html` is a separate earlier exploration artifact, not one of the three roster-named files. It remains excluded from roster completion and must not be attributed to an agent.
 - **R1 evidence synthesis:** `ADES_SHARED_REFERENCE_LEARNING.md` records common findings, source-level comparison, reference evidence and gaps. Lead independently retrieved public content for Patch Plants, Foliage Living, Bloomscape, The Sill, Léon & George, Seb's Urban Jungle, Botanical Designs by Tina, Plunt and Our Infinite Nature. DeepSeek's Siap Nanam, Rareform Plants and Botanical Archive references remain agent-reported / NOT_INDEPENDENTLY_VERIFIED. No full visual render of competitor sites was performed.
 - **R1 status:** COMPLETE at source/document level. Each roster participant supplied one complete HTML concept with a reference manifest. Browser rendering and interaction validation of these artifacts remain NOT_VERIFIED.
-- **R2 status:** GPT candidate `exploration/r2/gpt-direction.html` (“Herbarium Ruang”) is present. External submissions received by exact upload filename: Meta Muse `exploration/r2/r2-muse.html` (complete), Gemini `exploration/r2/r2-gemini.html` (complete), DeepSeek `exploration/r2/r2-deepseek.html` (**incomplete upload; source truncates mid-SVG at `<text x`**). Muse and Gemini pass source-level completeness; both include ≥3 image elements and GSAP/ScrollTrigger source with reduced-motion handling. DeepSeek fragment has 0 `<img>`, no JavaScript/GSAP or R2 manifest/reference list, and is not a full-site candidate. R2 evaluation: `ADES_R2_EVALUATION.md`. GPT + Muse + Gemini provide three complete candidate directions, but the four-participant roster workflow remains incomplete pending a full DeepSeek resubmission or explicit operator waiver.
-- **R2 requirements:** each agent returns a materially distinct complete full-site HTML, Indonesian-first, three or more meaningful image assets, functioning local simulations, responsive navigation, and purposeful GSAP prototype with reduced-motion fallback. No release or live business features.
+- **R2 status:** GPT `exploration/r2/gpt-direction.html` (“Herbarium Ruang”), Meta Muse `exploration/r2/r2-muse.html`, Gemini `exploration/r2/r2-gemini.html`, and DeepSeek `exploration/r2/r2-deepseek.html` (“Catatan Lapangan”) are all complete source artifacts. DeepSeek's original truncated upload is preserved unchanged at `exploration/r2/archive/r2-deepseek-truncated-upload.html`; the full replacement is 2,050 lines / 85,849 bytes and passed lightweight HTML structure checks plus `node --check` for its inline JavaScript. It has 11 main sections, three original inline SVG plates (zero photo `<img>` elements), a mobile/desktop index, room reader, searchable/filterable discovery, FAQ and non-sending form simulation, plus GSAP + ScrollTrigger source and reduced-motion fallback. Its manifest names five niche references (Hardy Houseplant, Studio Campo, Interiordesign.id, UI8 Florivern, Dynamic Code); those visits are agent-reported and not independently verified by Lead. Model label: NOT_DISCLOSED. R2 source-level evaluation is recorded in `ADES_R2_EVALUATION.md`.
+- **R2 evidence limits:** no candidate has browser-rendered evidence in this environment. Mobile/tablet/desktop appearance, visitor journeys, interactive behavior, image load/crops, accessibility, performance, cross-browser behavior and GSAP runtime remain NOT_VERIFIED. The DeepSeek direction is illustration-led (original SVG), not photo-led; no external visual asset provenance is claimed.
+- **R2 requirements:** materially distinct full-site HTML, Indonesian-first, honest image/illustration provenance, functioning local simulations, responsive navigation and purposeful GSAP prototype with reduced-motion fallback. No release or live business features.
 - **R3:** GPT Lead alone synthesizes evidence and implements the integrated multi-file project after R2 artifacts are evaluated.
 
 ## 8. Control family state
@@ -117,11 +118,11 @@ References inspected:
 |---|---|---|
 | GOV-01 | PASS | Synthetic project boundary and no-release restrictions in intake; no external contact, cost or publication |
 | DISC-01 | PASS | Audience, offer, visitor tasks, scope, exclusions and acceptance criteria consolidated from intake |
-| EXP-01 | IN_PROGRESS | R1 complete; GPT, Muse and Gemini R2 full source candidates evaluated; DeepSeek-named R2 upload is truncated and blocks full roster completion; GPT-only R3 synthesis pending |
-| VIS-01 | NOT_VERIFIED | Muse R2 has 6 and Gemini R2 has 3 remote Unsplash image elements; GPT R2 has 6. DeepSeek fragment has none. No browser image-load, crop, rights or local asset verification |
-| INT-01 | NOT_VERIFIED | Source-level interactions in GPT, Muse and Gemini R2; Muse/Gemini inline JS passed `node --check`, but browser interactions were not executed |
+| EXP-01 | IN_PROGRESS | R1 complete; four complete R2 source candidates (GPT, Gemini, DeepSeek, Muse) received and source-reviewed; R3 GPT-only synthesis and integrated project pending. Browser-rendered comparison remains NOT_VERIFIED |
+| VIS-01 | NOT_VERIFIED | Muse 6 and Gemini 3 remote Unsplash image elements; GPT 6 remote image elements; DeepSeek 3 original inline SVG plates and 0 photo elements. No browser image-load/render, crop, rights or responsive visual verification |
+| INT-01 | NOT_VERIFIED | Source-level interactions in all four R2 directions; Muse, Gemini and DeepSeek inline JS syntax checks passed where available, but no browser interactions were executed |
 | RESP-01 | NOT_VERIFIED | Responsive source patterns exist in candidates; Playwright/Chromium navigation was blocked by environment policy, so no viewport screenshots or responsive inspection |
-| MOTION-01 | IN_PROGRESS | GPT, Muse and Gemini R2 include purposeful GSAP + ScrollTrigger source and reduced-motion bypass; runtime/CDN/ScrollTrigger behavior NOT_VERIFIED. DeepSeek fragment has no motion implementation |
+| MOTION-01 | IN_PROGRESS | All four complete R2 directions include purposeful GSAP + ScrollTrigger source and reduced-motion handling/fallback. Runtime/CDN/ScrollTrigger behavior remains NOT_VERIFIED |
 | BUILD-01 | NOT_STARTED | No integrated production-style multi-file website project yet |
 | QA-01 | NOT_VERIFIED | Muse/Gemini inline JS syntax checks passed; browser navigation was blocked (`ERR_BLOCKED_BY_ADMINISTRATOR`) and headless screenshot attempt timed out. No rendered, responsive, interaction, accessibility, performance or cross-browser QA |
 | PREVIEW-01 | NOT_STARTED | No near-final integrated candidate |
@@ -133,8 +134,8 @@ References inspected:
 - No checkout/payment/backend/CRM/booking until supported by a material requirement and separately approved.
 - No paid external model access, API credits, third-party proxy or roster substitution.
 - No public deployment, DNS changes, third-party outreach, spending or release without explicit operator approval.
-- **Current dependency:** request one complete replacement for the DeepSeek-named R2 upload, which currently ends mid-SVG and contains no closing `</html>` or R2 manifest. Keep the original fragment archived as received. Gemini and Muse do not need to rerun. Manual delegation remains the only verified bridge; no direct model integrations were verified.
-- **Next step:** receive the complete DeepSeek R2 HTML + reference/media/motion manifest, then finish the four-candidate source evaluation and proceed to GPT-only R3 synthesis. No model winner selection will be requested.
+- **Current dependency:** R2 DeepSeek resubmission has been received and checked. The original truncated upload is preserved unchanged in `exploration/r2/archive/r2-deepseek-truncated-upload.html`; the complete replacement occupies `exploration/r2/r2-deepseek.html`. No external participant rerun is required.
+- **Next step:** GPT-only R3 synthesis and integrated multi-file implementation. Browser QA remains an environment blocker; attempt safe alternatives during R3, record exact limitations, and do not claim rendered inspection. No model winner selection will be requested.
 
 ## 10. Current artifact index
 | Artifact | Repository path |
@@ -149,7 +150,8 @@ References inspected:
 | GPT R2 direction | `exploration/r2/gpt-direction.html` |
 | R2 Meta Muse | `exploration/r2/r2-muse.html` |
 | R2 Gemini | `exploration/r2/r2-gemini.html` |
-| R2 DeepSeek-named upload (incomplete) | `exploration/r2/r2-deepseek.html` |
+| R2 DeepSeek (complete resubmission) | `exploration/r2/r2-deepseek.html` |
+| R2 DeepSeek original truncated upload (preserved) | `exploration/r2/archive/r2-deepseek-truncated-upload.html` |
 | R2 evaluation | `ADES_R2_EVALUATION.md` |
 | R1 delegation pack (historical) | `ADES_R1_DELEGATION_PACK.md` |
 
