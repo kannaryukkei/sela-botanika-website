@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sela Botanika — Catatan Lapangan</title>
+<meta name="description" content="Arah prototipe Catatan Lapangan untuk Sela Botanika: membaca cahaya ruang, ritme rawat, dan arah tanaman sebelum memilih. Eksperimen studio internal; bukan untuk rilis.">
+<style>
+  :root{
+    --paper:#f2eee4;
+    --paper-deep:#e9e3d6;
+    --paper-white:#fbf8f1;
+    --ink:#1d241f;
+    --ink-soft:#4e5851;
+    --line:#c9c2b4;
+    --line-dark:#9d988c;
+    --accent:#c6f24d;
+    --accent-deep:#9cc21e;
+    --clay:#a97655;
+    --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    --sans:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+    --mono:ui-monospace,"Cascadia Mono","SFMono-Regular",Menlo,Consolas,monospace;
+    --max:1240px;
+    --shadow-hard:6px 6px 0 var(--ink);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{overflow-x:clip}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:1rem;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    pointer-events:none;
+    opacity:.032;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+  }
+
+  img,svg{max-width:100%;display:block}
+  button,input,select,textarea{font:inherit}
+  button{cursor:pointer}
+  a{color:var(--ink);text-underline-offset:.18em}
+  a:hover{color:var(--ink-soft)}
+  :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  [hidden]{display:none !important}
+  .sr-only{
+    position:absolute;
+    width:1px;height:1px;
+    padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0,0,0,0);
+    white-space:nowrap;border:0;
+  }
+
+  .shell{width:min(100% - 2rem,var(--max));margin-inline:auto}
+  @media (min-width:720px){.shell{width:min(100% - 3.5rem,var(--max))}}
+
+  /* ---------- Masthead ---------- */
+  .masthead{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--paper);
+    border-bottom:2px solid var(--ink);
+  }
+  .masthead-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    min-height:62px;
+    padding:.5rem 0;
+  }
+  .brand{
+    display:inline-flex;
+    align-items:baseline;
+    gap:.55rem;
+    text-decoration:none;
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:1.05rem;
+    letter-spacing:-.02em;
+    line-height:1;
+    min-width:0;
+  }
+  .brand-sub{
+    font-family:var(--mono);
+    font-size:.58rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+  .masthead-meta{
+    display:none;
+    font-family:var(--mono);
+    font-size:.58rem;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+  .index-toggle{
+    display:inline-flex;
+    align-items:center;
+    gap:.45rem;
+    min-height:40px;
+    padding:.4rem .65rem;
+    border:1.5px solid var(--ink);
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--mono);
+    font-size:.62rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+  .index-toggle:hover{background:var(--accent)}
+  .index-toggle::after{content:"↓";font-size:.9rem;line-height:1}
+  .index-toggle[aria-expanded="true"]::after{content:"↑"}
+
+  @media (min-width:900px){
+    .masthead-meta{display:block}
+    .index-toggle{display:none}
+  }
+  @media (max-width:380px){
+    .brand-sub{display:none}
+  }
+
+  .mobile-index{
+    border-bottom:2px solid var(--ink);
+    background:var(--paper-deep);
+    padding:.7rem 0 .9rem;
+  }
+  .mobile-index ol{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:.15rem .75rem;
+  }
+  .mobile-index a{
+    display:flex;
+    align-items:baseline;
+    gap:.45rem;
+    min-height:40px;
+    padding:.45rem .2rem;
+    border-bottom:1px solid var(--line);
+    text-decoration:none;
+    font-size:.8rem;
+  }
+  .mobile-index a .idx{
+    font-family:var(--mono);
+    font-size:.6rem;
+    color:var(--ink-soft);
+  }
+  .mobile-index a.is-active{
+    background:var(--ink);
+    color:var(--paper);
+    padding-inline:.45rem;
+  }
+  .mobile-index a.is-active .idx{color:var(--accent)}
+
+  /* ---------- Page grid / field index ---------- */
+  .page-grid{display:block}
+  .field-index{display:none}
+  @media (min-width:1100px){
+    .page-grid{
+      display:grid;
+      grid-template-columns:190px minmax(0,1fr);
+      gap:2.25rem;
+      align-items:start;
+    }
+    .field-index{
+      display:block;
+      position:sticky;
+      top:78px;
+      align-self:start;
+      padding-top:2.2rem;
+    }
+  }
+  .index-head{
+    font-family:var(--mono);
+    font-size:.58rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:.65rem;
+  }
+  .index-track{
+    position:relative;
+    border-left:1px solid var(--line);
+    padding-left:.9rem;
+  }
+  .index-progress{
+    position:absolute;
+    left:-1px;
+    top:0;
+    width:2px;
+    height:100%;
+    background:var(--accent-deep);
+    transform:scaleY(0);
+    transform-origin:top;
+    transition:transform .12s linear;
+  }
+  .index-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    gap:.1rem;
+  }
+  .index-list a{
+    display:grid;
+    grid-template-columns:2rem 1fr;
+    gap:.45rem;
+    align-items:baseline;
+    padding:.4rem .4rem;
+    border:1px solid transparent;
+    text-decoration:none;
+    font-size:.76rem;
+    line-height:1.3;
+    color:var(--ink-soft);
+  }
+  .index-list a .idx{
+    font-family:var(--mono);
+    font-size:.58rem;
+    letter-spacing:.06em;
+  }
+  .index-list a:hover{background:var(--paper-deep);color:var(--ink)}
+  .index-list a.is-active{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+  .index-list a.is-active .idx{color:var(--accent)}
+
+  /* ---------- Sheets ---------- */
+  main{counter-reset:sheet}
+  .sheet{
+    padding:clamp(2.4rem,6vw,4.8rem) 0;
+    border-bottom:1px solid var(--line);
+  }
+  .sheet-head{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:.75rem 1.5rem;
+    border-top:2px solid var(--ink);
+    padding-top:.7rem;
+    margin-bottom:1.4rem;
+  }
+  .folio{
+    margin:0;
+    font-family:var(--mono);
+    font-size:.6rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .folio b{
+    display:inline-block;
+    background:var(--accent);
+    color:var(--ink);
+    padding:.12rem .35rem;
+    margin-right:.45rem;
+    border:1px solid var(--ink);
+    background-image:repeating-linear-gradient(45deg,transparent,transparent 3px,rgba(29,36,31,.08) 3px,rgba(29,36,31,.08) 4px);
+  }
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:500;
+    line-height:1.02;
+    letter-spacing:-.025em;
+    margin:0;
+  }
+  h2{font-size:clamp(1.9rem,4.5vw,3.4rem)}
+  h3{font-size:clamp(1.1rem,2.4vw,1.5rem);letter-spacing:-.015em}
+  p{margin:0 0 .9rem;max-width:66ch}
+  .lede{
+    font-size:clamp(1rem,2vw,1.22rem);
+    line-height:1.5;
+    color:var(--ink-soft);
+    max-width:56ch;
+  }
+  .small{font-size:.8rem;line-height:1.5;color:var(--ink-soft)}
+  .mono{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+  .ink-rule{height:2px;background:var(--ink);border:0;margin:1rem 0}
+  .accent-mark{display:inline-block;background:var(--accent);border:1px solid var(--ink);padding:.08rem .35rem;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase}
+
+  .sheet-grid{display:grid;gap:1.5rem}
+  @media (min-width:760px){
+    .sheet-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:1.5rem 2rem}
+    .span-3{grid-column:span 3}
+    .span-4{grid-column:span 4}
+    .span-5{grid-column:span 5}
+    .span-6{grid-column:span 6}
+    .span-7{grid-column:span 7}
+    .span-8{grid-column:span 8}
+    .span-9{grid-column:span 9}
+    .span-12{grid-column:span 12}
+  }
+
+  /* ---------- Cover ---------- */
+  .cover{padding-top:clamp(1.8rem,4vw,3.2rem)}
+  .cover-grid{display:grid;gap:2rem}
+  @media (min-width:900px){
+    .cover-grid{grid-template-columns:7fr 5fr;align-items:end;gap:3rem}
+  }
+  .cover-kicker{
+    font-family:var(--mono);
+    font-size:.6rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--ink);
+    padding-bottom:.55rem;
+    margin-bottom:1rem;
+  }
+  .cover h1{
+    font-size:clamp(3rem,10.5vw,7rem);
+    line-height:.9;
+    letter-spacing:-.045em;
+    margin-bottom:1.1rem;
+    max-width:11ch;
+  }
+  .cover h1 em{
+    font-style:normal;
+    display:block;
+    box-shadow:inset 0 -.18em 0 var(--accent);
+  }
+  .cover-actions{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.3rem}
+  .cover-meta{
+    display:grid;
+    gap:.25rem;
+    margin:1.4rem 0 0;
+    border-top:1px solid var(--ink);
+    padding-top:.65rem;
+    max-width:38rem;
+  }
+  .cover-meta div{
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    padding:.3rem 0;
+    border-bottom:1px dotted var(--line);
+    font-size:.7rem;
+  }
+  .cover-meta dt{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-soft);
+  }
+  .cover-meta dd{margin:0;text-align:right}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.4rem;
+    min-height:44px;
+    padding:.6rem .9rem;
+    border:1.5px solid var(--ink);
+    background:var(--ink);
+    color:var(--paper);
+    text-decoration:none;
+    font-family:var(--sans);
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:.02em;
+    line-height:1.2;
+    transition:background .18s ease,color .18s ease,transform .18s ease;
+  }
+  .btn:hover{background:var(--accent);color:var(--ink);transform:translate(-1px,-1px)}
+  .btn.secondary{background:transparent;color:var(--ink)}
+  .btn.secondary:hover{background:var(--paper-deep)}
+  .btn.small{min-height:38px;padding:.35rem .65rem;font-size:.72rem}
+  .btn:active{transform:translate(0,0)}
+
+  /* ---------- Plates ---------- */
+  .plate{
+    margin:0;
+    border:1.5px solid var(--ink);
+    background:var(--paper-white);
+    box-shadow:var(--shadow-hard);
+  }
+  .plate svg{width:100%;height:auto}
+  .plate figcaption{
+    padding:.6rem .7rem;
+    border-top:1px solid var(--ink);
+    background:var(--paper);
+    font-size:.63rem;
+    line-height:1.45;
+    color:var(--ink-soft);
+  }
+  .plate figcaption strong{color:var(--ink)}
+  @media (min-width:900px){
+    .cover .plate{box-shadow:8px 8px 0 var(--ink)}
+  }
+
+  /* ---------- Protocol strip ---------- */
+  .protocol{
+    display:grid;
+    gap:1rem;
+  }
+  @media (min-width:720px){.protocol{grid-template-columns:repeat(3,1fr)}}
+  .protocol-item{
+    border-top:4px solid var(--ink);
+    padding-top:.65rem;
+  }
+  .protocol-item .n{
+    font-family:var(--mono);
+    font-size:.62rem;
+    letter-spacing:.1em;
+    color:var(--ink-soft);
+    display:block;
+    margin-bottom:.3rem;
+  }
+  .protocol-item h3{font-size:1.1rem;margin-bottom:.35rem}
+  .protocol-item p{font-size:.82rem;color:var(--ink-soft);margin:0}
+
+  .pull-note{
+    margin:0;
+    padding:.9rem 1rem;
+    background:var(--paper-deep);
+    border-left:6px solid var(--accent);
+    border-top:1px solid var(--line);
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    font-family:var(--serif);
+    font-size:1.08rem;
+    line-height:1.35;
+  }
+
+  /* ---------- Reader ---------- */
+  .reader-layout{display:grid;gap:1.25rem}
+  @media (min-width:900px){.reader-layout{grid-template-columns:5fr 7fr;align-items:start}}
+  .reader-form{
+    border:1.5px solid var(--ink);
+    background:var(--paper-white);
+    padding:1rem;
+  }
+  fieldset{border:0;margin:0 0 1.1rem;padding:0}
+  fieldset:last-of-type{margin-bottom:.4rem}
+  legend{
+    font-family:var(--mono);
+    font-size:.6rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:.5rem;
+  }
+  .chip-grid{display:grid;gap:.45rem}
+  @media (min-width:600px){.chip-grid{grid-template-columns:1fr 1fr}}
+  .chip{
+    position:relative;
+    display:flex;
+    align-items:flex-start;
+    gap:.55rem;
+    min-height:46px;
+    padding:.55rem .6rem;
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--ink);
+    font-size:.79rem;
+    line-height:1.35;
+    cursor:pointer;
+  }
+  .chip:hover{border-color:var(--ink);background:var(--paper-deep)}
+  .chip:focus-within{outline:3px solid var(--ink);outline-offset:2px}
+  .chip input{
+    position:absolute;
+    opacity:0;
+    width:1px;
+    height:1px;
+    pointer-events:none;
+  }
+  .chip .dot{
+    width:14px;
+    height:14px;
+    border:1.5px solid var(--ink);
+    background:transparent;
+    flex:0 0 auto;
+    margin-top:.14rem;
+  }
+  .chip input:checked + .dot{
+    background:var(--accent);
+    box-shadow:inset 0 0 0 3px var(--paper);
+  }
+  .chip input:checked ~ .chip-text{font-weight:600}
+
+  .reader-output{
+    border:1.5px solid var(--ink);
+    background:var(--paper-deep);
+    padding:1rem;
+    min-height:300px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:.9rem;
+  }
+  .reader-output .eyebrow{
+    font-family:var(--mono);
+    font-size:.58rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:0 0 .35rem;
+  }
+  .reader-output h3{font-size:1.25rem;margin-bottom:.35rem}
+  .reader-output p{font-size:.82rem;color:var(--ink-soft);margin:0}
+  .result-list{list-style:none;margin:.2rem 0 0;padding:0;display:grid;gap:.5rem}
+  .result-list li{
+    background:var(--paper-white);
+    border:1px solid var(--line);
+    border-left:5px solid var(--accent);
+    padding:.55rem .65rem;
+  }
+  .result-list strong{display:block;font-size:.87rem;margin-bottom:.12rem}
+  .result-list span{font-size:.78rem;line-height:1.4;color:var(--ink-soft)}
+  .result-note{
+    border-top:1px solid var(--line);
+    padding-top:.6rem;
+    font-size:.68rem !important;
+    line-height:1.45;
+  }
+  .no-match{
+    border:1.5px dashed var(--ink);
+    background:var(--paper);
+    padding:.8rem;
+  }
+  .no-match h3{font-size:1.15rem;margin-bottom:.35rem}
+  .no-match p{font-size:.8rem}
+
+  /* ---------- Directions ---------- */
+  .direction-grid{display:grid;gap:.8rem}
+  @media (min-width:720px){.direction-grid{grid-template-columns:repeat(3,1fr)}}
+  .direction-card{
+    background:var(--paper-white);
+    border:1px solid var(--line);
+    border-top:4px solid var(--ink);
+    padding:.9rem;
+    display:flex;
+    flex-direction:column;
+    gap:.4rem;
+  }
+  .direction-card .tag{
+    align-self:flex-start;
+    font-family:var(--mono);
+    font-size:.55rem;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    background:var(--accent);
+    border:1px solid var(--ink);
+    padding:.12rem .35rem;
+  }
+  .direction-card h3{font-size:1.15rem}
+  .direction-card p{font-size:.8rem;color:var(--ink-soft);margin:0}
+
+  /* ---------- Discovery ---------- */
+  .discovery-controls{display:grid;gap:.6rem;margin-bottom:.9rem}
+  .search-wrap{display:flex;gap:.4rem;flex-wrap:wrap}
+  .search-wrap input{
+    flex:1 1 12rem;
+    min-height:44px;
+    border:1.5px solid var(--ink);
+    background:var(--paper-white);
+    padding:.5rem .65rem;
+    font-size:.86rem;
+  }
+  .filter-row{display:flex;flex-wrap:wrap;gap:.35rem}
+  .filter-btn{
+    min-height:38px;
+    padding:.3rem .6rem;
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--ink);
+    font-size:.71rem;
+    line-height:1.2;
+  }
+  .filter-btn:hover{border-color:var(--ink);background:var(--paper-deep)}
+  .filter-btn[aria-pressed="true"]{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+  .discovery-count{
+    font-family:var(--mono);
+    font-size:.62rem;
+    letter-spacing:.06em;
+    color:var(--ink-soft);
+    min-height:1.2em;
+  }
+  .discovery-list{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
+  @media (min-width:720px){.discovery-list{grid-template-columns:1fr 1fr}}
+  .discovery-item{
+    background:var(--paper-white);
+    border:1px solid var(--line);
+    padding:.75rem .8rem;
+    display:grid;
+    gap:.3rem;
+  }
+  .discovery-item .item-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:.6rem;
+  }
+  .discovery-item .cat{
+    font-family:var(--mono);
+    font-size:.54rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+  .discovery-item h3{font-size:.98rem;margin:0}
+  .discovery-item p{font-size:.76rem;color:var(--ink-soft);margin:0;line-height:1.4}
+  .discovery-item .est{
+    border-top:1px dotted var(--line);
+    padding-top:.3rem;
+    font-family:var(--mono);
+    font-size:.61rem;
+    color:var(--ink);
+  }
+  .empty-state{
+    border:1.5px dashed var(--ink);
+    background:var(--paper-deep);
+    padding:1rem;
+    display:grid;
+    gap:.45rem;
+    margin-top:.5rem;
+  }
+  .empty-state h3{font-size:1.1rem}
+  .empty-state p{font-size:.8rem;color:var(--ink-soft);margin:0}
+
+  /* ---------- Pocket reference ---------- */
+  .ref-grid{display:grid;gap:.65rem}
+  @media (min-width:720px){.ref-grid{grid-template-columns:1fr 1fr}}
+  .ref-card{
+    background:var(--paper-white);
+    border:1px solid var(--line);
+    padding:.85rem;
+  }
+  .ref-card h3{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:.5rem;
+    font-size:1.05rem;
+    margin-bottom:.45rem;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:.3rem;
+  }
+  .ref-card h3 span{
+    font-family:var(--mono);
+    font-size:.54rem;
+    letter-spacing:.07em;
+    background:var(--accent);
+    border:1px solid var(--ink);
+    padding:.08rem .28rem;
+    white-space:nowrap;
+  }
+  .ref-card dl{margin:0;display:grid;gap:.2rem}
+  .ref-card dt{
+    font-family:var(--mono);
+    font-size:.56rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .ref-card dd{margin:0 0 .35rem;font-size:.77rem;line-height:1.42;color:var(--ink)}
+  .ref-card dd:last-child{margin-bottom:0}
+
+  /* ---------- Styling ---------- */
+  .styling-grid{display:grid;gap:1.2rem}
+  @media (min-width:760px){.styling-grid{grid-template-columns:1fr 1fr}}
+  .styling-col{border-top:4px solid var(--ink);padding-top:.65rem}
+  .styling-col h3{font-size:1.35rem;margin-bottom:.35rem}
+  .styling-col p{font-size:.82rem;color:var(--ink-soft)}
+  .styling-col ul{margin:0;padding-left:1rem;display:grid;gap:.3rem;font-size:.8rem;color:var(--ink-soft)}
+  .stamp{
+    display:inline-block;
+    border:1.5px solid var(--ink);
+    padding:.18rem .4rem;
+    font-family:var(--mono);
+    font-size:.56rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    background:var(--accent);
+    margin-top:.55rem;
+  }
+
+  /* ---------- Workshops ---------- */
+  .workshop-grid{display:grid;gap:.7rem}
+  @media (min-width:760px){.workshop-grid{grid-template-columns:repeat(3,1fr)}}
+  .workshop-card{
+    background:var(--paper-white);
+    border:1px solid var(--line);
+    padding:.9rem;
+    display:flex;
+    flex-direction:column;
+    gap:.5rem;
+  }
+  .workshop-card .band{
+    align-self:flex-start;
+    border:1px dashed var(--ink);
+    font-family:var(--mono);
+    font-size:.58rem;
+    padding:.25rem .35rem;
+  }
+  .workshop-card h3{font-size:1.1rem}
+  .workshop-card p{font-size:.78rem;color:var(--ink-soft);margin:0;line-height:1.4}
+  .enquiry-note{
+    border:1.5px solid var(--ink);
+    border-left:6px solid var(--accent);
+    background:var(--paper-deep);
+    padding:.75rem .85rem;
+    font-size:.78rem;
+    line-height:1.5;
+    margin-top:.7rem;
+  }
+  .enquiry-note strong{color:var(--ink)}
+
+  /* ---------- Prices ---------- */
+  .table-wrap{
+    overflow-x:auto;
+    border:1.5px solid var(--ink);
+    background:var(--paper-white);
+  }
+  table{width:100%;border-collapse:collapse;min-width:540px}
+  caption{
+    text-align:left;
+    padding:.65rem .8rem;
+    border-bottom:1px solid var(--line);
+    font-family:var(--mono);
+    font-size:.6rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  th,td{
+    padding:.62rem .8rem;
+    border-bottom:1px solid var(--line);
+    text-align:left;
+    font-size:.8rem;
+    vertical-align:top;
+  }
+  th{
+    background:var(--paper-deep);
+    font-family:var(--mono);
+    font-size:.58rem;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  td:last-child{font-family:var(--mono);font-size:.75rem;white-space:nowrap}
+  tr:last-child td{border-bottom:0}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{border-top:1px solid var(--ink)}
+  details.faq{border-bottom:1px solid var(--line)}
+  details.faq summary{
+    list-style:none;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+    min-height:46px;
+    padding:.55rem .2rem;
+    font-size:.86rem;
+    font-weight:600;
+  }
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary::after{
+    content:"+";
+    font-family:var(--mono);
+    font-size:1.1rem;
+    color:var(--ink);
+    line-height:1;
+  }
+  details.faq[open] summary::after{content:"–"}
+  details.faq p{
+    font-size:.8rem;
+    color:var(--ink-soft);
+    line-height:1.5;
+    margin:.1rem 0 .7rem;
+    max-width:72ch;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;gap:1.2rem}
+  @media (min-width:820px){.contact-grid{grid-template-columns:5fr 7fr}}
+  .contact-form{
+    border:1.5px solid var(--ink);
+    background:var(--paper-white);
+    padding:.9rem;
+    display:grid;
+    gap:.6rem;
+  }
+  .field{display:grid;gap:.2rem}
+  .field label{
+    font-family:var(--mono);
+    font-size:.58rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .field input,.field select,.field textarea{
+    width:100%;
+    min-height:44px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--ink);
+    padding:.5rem .55rem;
+    font-size:.84rem;
+  }
+  .field textarea{min-height:90px;resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ink)}
+  .form-actions{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.2rem}
+  .status{
+    border:1px solid var(--line);
+    border-left:5px solid var(--accent);
+    background:var(--paper-deep);
+    padding:.6rem .7rem;
+    font-size:.76rem;
+    line-height:1.45;
+    min-height:44px;
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer{
+    border-top:4px solid var(--ink);
+    padding:1.4rem 0 2.4rem;
+    font-size:.68rem;
+    line-height:1.55;
+    color:var(--ink-soft);
+  }
+  .site-footer p{max-width:88ch;margin:0 0 .55rem}
+  .site-footer strong{color:var(--ink)}
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{
+      transition-duration:.01ms !important;
+      animation-duration:.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<a class="sr-only" href="#main">Lewati ke isi utama</a>
+
+<header class="masthead">
+  <div class="shell masthead-inner">
+    <a class="brand" href="#sampul" aria-label="Sela Botanika, kembali ke sampul">
+      <span>Sela Botanika</span>
+      <span class="brand-sub">Catatan Lapangan</span>
+    </a>
+    <div class="masthead-meta"><span id="folioNow">LEMBAR 00 / 10</span> · BANDUNG · PROTOTIPE</div>
+    <button class="index-toggle" id="indexToggle" type="button" aria-expanded="false" aria-controls="mobileIndex">Indeks</button>
+  </div>
+</header>
+
+<div class="mobile-index" id="mobileIndex" hidden>
+  <nav class="shell" aria-label="Indeks catatan lapangan, versi sempit">
+    <ol>
+      <li><a href="#sampul" data-index-link><span class="idx">00</span> Sampul</a></li>
+      <li><a href="#amati" data-index-link><span class="idx">01</span> Amati ruang</a></li>
+      <li><a href="#baca-ruang" data-index-link><span class="idx">02</span> Baca ruang</a></li>
+      <li><a href="#arah" data-index-link><span class="idx">03</span> Arah tanaman</a></li>
+      <li><a href="#mulai" data-index-link><span class="idx">04</span> Mulai dari sini</a></li>
+      <li><a href="#rawat" data-index-link><span class="idx">05</span> Referensi saku</a></li>
+      <li><a href="#gaya" data-index-link><span class="idx">06</span> Rumah &amp; usaha</a></li>
+      <li><a href="#lokakarya" data-index-link><span class="idx">07</span> Lokakarya</a></li>
+      <li><a href="#harga" data-index-link><span class="idx">08</span> Rentang harga</a></li>
+      <li><a href="#tanya" data-index-link><span class="idx">09</span> Tanya praktis</a></li>
+      <li><a href="#kontak" data-index-link><span class="idx">10</span> Catatan untuk studio</a></li>
+    </ol>
+  </nav>
+</div>
+
+<div class="shell page-grid">
+
+  <aside class="field-index" aria-label="Indeks catatan lapangan">
+    <div class="index-head">INDEKS / 10 LEMBAR</div>
+    <div class="index-track">
+      <div class="index-progress" id="indexProgress" aria-hidden="true"></div>
+      <ol class="index-list">
+        <li><a href="#sampul" data-index-link><span class="idx">00</span> Sampul</a></li>
+        <li><a href="#amati" data-index-link><span class="idx">01</span> Amati ruang</a></li>
+        <li><a href="#baca-ruang" data-index-link><span class="idx">02</span> Baca ruang</a></li>
+        <li><a href="#arah" data-index-link><span class="idx">03</span> Arah tanaman</a></li>
+        <li><a href="#mulai" data-index-link><span class="idx">04</span> Mulai dari sini</a></li>
+        <li><a href="#rawat" data-index-link><span class="idx">05</span> Referensi saku</a></li>
+        <li><a href="#gaya" data-index-link><span class="idx">06</span> Rumah &amp; usaha</a></li>
+        <li><a href="#lokakarya" data-index-link><span class="idx">07</span> Lokakarya</a></li>
+        <li><a href="#harga" data-index-link><span class="idx">08</span> Rentang harga</a></li>
+        <li><a href="#tanya" data-index-link><span class="idx">09</span> Tanya praktis</a></li>
+        <li><a href="#kontak" data-index-link><span class="idx">10</span> Catatan untuk studio</a></li>
+      </ol>
+    </div>
+  </aside>
+
+  <main id="main">
+
+    <!-- 00 · SAMPUL -->
+    <section class="sheet cover" id="sampul">
+      <div class="cover-grid">
+        <div>
+          <p class="cover-kicker">Sela Botanika · Catatan Lapangan · Edisi Prototipe / Skenario Bandung</p>
+          <h1>Mulai dari ruang. <em>Bukan dari nama.</em></h1>
+          <p class="lede">Buku catatan untuk membaca cahaya, ruang, dan ritme rawat sebelum memilih arah tanaman. Untuk pemilik tanaman pemula, penghuni apartemen dan rumah kecil, pasangan muda, penghobi, serta operator kafe atau studio kecil.</p>
+          <div class="cover-actions">
+            <a class="btn" href="#baca-ruang">Baca ruang Anda</a>
+            <a class="btn secondary" href="#mulai">Lihat indeks spesimen</a>
+          </div>
+          <dl class="cover-meta">
+            <div><dt>Untuk</dt><dd>Pemula &amp; ruang kecil</dd></div>
+            <div><dt>Sifat</dt><dd>Eksperimen internal; bukan untuk rilis</dd></div>
+            <div><dt>Harga</dt><dd>Estimasi sintetis; final harus dikonfirmasi</dd></div>
+            <div><dt>Kontak</dt><dd>Tidak ada kanal; tidak ada pesan terkirim</dd></div>
+          </dl>
+        </div>
+
+        <figure class="plate">
+          <svg viewBox="0 0 800 620" role="img" aria-labelledby="plate1title plate1desc">
+            <title id="plate1title">Studi cahaya untuk satu titik pot</title>
+            <desc id="plate1desc">Ilustrasi sintetis jendela dengan berkas cahaya, siluet daun, pot, dan penanda waktu. Bukan foto lokasi, inventaris, atau orang.</desc>
+            <rect width="800" height="620" fill="#f7f2e8"/>
+            <g stroke="#d8d1c3" stroke-width="1">
+              <path d="M0 80H800M0 160H800M0 240H800M0 320H800M0 400H800M0 480H800M0 560H800"/>
+              <path d="M80 0V620M160 0V620M240 0V620M320 0V620M400 0V620M480 0V620M560 0V620M640 0V620M720 0V620"/>
+            </g>
+            <g font-family="ui-monospace, monospace" font-size="11" fill="#6a736b" letter-spacing="1.1">
+              <text x="40" y="52">STUDI CAHAYA / POT A</text>
+              <text x="40" y="594">CATATAN 01 · SKALA ILUSTRATIF</text>
+              <text x="650" y="250">12.00</text>
+              <text x="650" y="330">15.00</text>
+              <text x="650" y="410">18.00</text>
+            </g>
+            <rect x="130" y="95" width="360" height="360" fill="#eee8db" stroke="#1d241f" stroke-width="3"/>
+            <line x1="310" y1="95" x2="310" y2="455" stroke="#1d241f" stroke-width="2"/>
+            <line x1="130" y1="275" x2="490" y2="275" stroke="#1d241f" stroke-width="2"/>
+            <polygon points="130,115 300,115 470,520 300,520" fill="#c6f24d" opacity=".36"/>
+            <circle cx="635" cy="150" r="44" fill="none" stroke="#1d241f" stroke-width="2"/>
+            <circle cx="635" cy="150" r="15" fill="#c6f24d" stroke="#1d241f" stroke-width="2"/>
+            <path d="M520 520 C540 420 590 380 640 370 C610 430 580 490 570 530 Z" fill="#4f6b55" stroke="#1d241f" stroke-width="2"/>
+            <path d="M500 540 C520 470 550 440 580 430 C565 480 550 515 545 540 Z" fill="#6f8f6a" stroke="#1d241f" stroke-width="1.5" opacity=".9"/>
+            <path d="M560 540 L650 540 L635 600 L575 600 Z" fill="#a97655" stroke="#1d241f" stroke-width="3"/>
+            <rect x="556" y="534" width="98" height="12" fill="#8d5f43" stroke="#1d241f" stroke-width="2"/>
+            <g stroke="#1d241f" stroke-width="2">
+              <path d="M80 500H140"/>
+              <path d="M80 500V510M140 500V510"/>
+              <path d="M80 560H180"/>
+              <path d="M80 560V570M180 560V570"/>
+            </g>
+          </svg>
+          <figcaption><strong>Ilustrasi sintetis.</strong> SVG inline buatan sendiri untuk prototipe ini; bukan inventaris, premis, staf, atau pelanggan Sela Botanika. Sumber: ditulis untuk dokumen ini. Lisensi: internal, tidak untuk rilis. Hak pihak ketiga: tidak ada. Tidak ada foto stok atau aset yang tidak diverifikasi.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 01 · AMATI -->
+    <section class="sheet" id="amati">
+      <div class="sheet-head">
+        <p class="folio"><b>01</b> Amati ruang</p>
+        <p class="mono">SEBELUM MEMILIH ARAH</p>
+      </div>
+      <div class="sheet-grid">
+        <div class="span-7">
+          <h2>Ruang lebih dulu. Nama tanaman belakangan.</h2>
+          <p class="lede">Cahaya yang terasa cukup terang bagi mata belum tentu cukup untuk daun. Mulai dari titik tempat pot akan berada, bukan dari seluruh ruangan.</p>
+          <p>Catatan lapangan ini tidak memberi diagnosis botanis dan tidak menjamin kecocokan. Ia menyusun pertanyaan yang lebih berguna: di mana pot akan diletakkan, berapa lama sinar menyentuhnya, dan seberapa realistis waktu rawat yang tersedia.</p>
+        </div>
+        <div class="span-5">
+          <blockquote class="pull-note">“Pilih tanaman untuk ruang, bukan untuk label.” Prinsip ini dipakai sebagai kerangka berpikir, bukan klaim tentang spesies tertentu.</blockquote>
+        </div>
+        <div class="span-12">
+          <div class="protocol">
+            <article class="protocol-item">
+              <span class="n">AMATI / 01</span>
+              <h3>Titik pot, bukan seluruh ruangan</h3>
+              <p>Perhatikan jam sinar langsung menyentuh titik itu, arah jendela, tirai, teritis, dan benda tinggi yang menghalangi.</p>
+            </article>
+            <article class="protocol-item">              <span class="n">AMATI / 02</span>
+              <h3>Ritme yang realistis</h3>
+              <p>Bukan jadwal sempurna. Berapa menit per minggu yang benar-benar tersedia untuk memeriksa media, daun, dan pot?</p>
+            </article>
+            <article class="protocol-item">
+              <span class="n">AMATI / 03</span>
+              <h3>Batas ruang</h3>
+              <p>Ukuran pot, lalu lintas penghuni, permukaan yang bisa basah, dan siapa yang akan merawat saat sibuk.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · BACA RUANG -->
+    <section class="sheet" id="baca-ruang">
+      <div class="sheet-head">
+        <p class="folio"><b>02</b> Baca ruang</p>
+        <p class="mono">SIMULASI LOKAL · TANPA DATA DIKIRIM</p>
+      </div>
+      <div class="sheet-grid">
+        <div class="span-12">
+          <h2>Pilih kondisi yang paling dekat.</h2>
+          <p class="lede">Panel ini memperbarui arah awal berdasarkan pilihan Anda. Ini bukan diagnosis, bukan inventaris, dan bukan jaminan kecocokan.</p>
+        </div>
+      </div>
+
+      <div class="reader-layout reveal-group">
+        <form class="reader-form" id="roomForm" aria-label="Pembaca kondisi ruang dan ritme rawat">
+          <fieldset>
+            <legend>Cahaya di titik pot</legend>
+            <div class="chip-grid">
+              <label class="chip">
+                <input type="radio" name="light" value="low" checked>
+                <span class="dot" aria-hidden="true"></span>
+                <span class="chip-text">Naungan / tidak langsung</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="light" value="medium">
+                <span class="dot" aria-hidden="true"></span>
+                <span class="chip-text">Sedang / cahaya lembut</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="light" value="bright">
+                <span class="dot" aria-hidden="true"></span>
+                <span class="chip-text">Terang / matahari tersaring</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Waktu rawat yang realistis</legend>
+            <div class="chip-grid">
+              <label class="chip">
+                <input type="radio" name="care" value="little" checked>
+                <span class="dot" aria-hidden="true"></span>
+                <span class="chip-text">Sedikit, mingguan</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="care" value="steady">
+                <span class="dot" aria-hidden="true"></span>
+                <span class="chip-text">Rutin dan stabil</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="care" value="fuss">
+                <span class="dot" aria-hidden="true"></span>
+                <span class="chip-text">Suka mengurus lebih sering</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <p class="small" style="margin:0;">Nilai ini hanya simulasi sisi klien. Tidak ada data yang dikirim atau disimpan.</p>
+        </form>
+
+        <div class="reader-output" id="roomResult" role="status" aria-live="polite" aria-atomic="true">
+          <!-- Hasil diisi oleh JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · ARAH TANAMAN -->
+    <section class="sheet" id="arah">
+      <div class="sheet-head">
+        <p class="folio"><b>03</b> Arah tanaman</p>
+        <p class="mono">TIGA PROFIL UNTUK DIBACA</p>
+      </div>
+      <div class="sheet-grid">
+        <div class="span-7">
+          <h2>Tiga arah, bukan tiga jaminan.</h2>
+          <p class="lede">Gunakan arah ini untuk menyusun pertanyaan dan membandingkan kebutuhan. Setiap ruang tetap perlu diamati sendiri.</p>
+        </div>
+        <div class="span-5">
+          <figure class="plate">
+            <svg viewBox="0 0 800 460" role="img" aria-labelledby="plate2title plate2desc">
+              <title id="plate2title">Piring arah: naungan, sedang, terang</title>
+              <desc id="plate2desc">Ilustrasi sintetis tiga profil tanaman dengan batang cahaya dan penanda ritme rawat. Bukan foto spesimen atau inventaris.</desc>
+              <rect width="800" height="460" fill="#f7f2e8"/>
+              <g stroke="#d8d1c3" stroke-width="1">
+                <path d="M0 60H800M0 120H800M0 180H800M0 240H800M0 300H800M0 360H800M0 420H800"/>
+                <path d="M100 0V460M200 0V460M300 0V460M400 0V460M500 0V460M600 0V460M700 0V460"/>
+              </g>
+              <g font-family="ui-monospace, monospace" font-size="10" fill="#6a736b" letter-spacing=".8">
+                <text x="40" y="34">PIRING ARAH / PROFIL 01–03</text>
+                <text x="40" y="444">BUKAN SKALA BOTANIS</text>
+              </g>
+              <g>
+                <!-- Column 1 -->
+                <rect x="75" y="70" width="140" height="10" fill="#e2dccf" stroke="#1d241f"/>
+                <rect x="75" y="70" width="38" height="10" fill="#c6f24d" stroke="#1d241f"/>
+                <text x="75" y="110" font-family="ui-monospace, monospace" font-size="10" fill="#1d241f">NAUNGAN</text>
+                <path d="M145 370 C120 300 120 250 150 220 C175 250 175 310 165 370 Z" fill="#4f6b55" stroke="#1d241f" stroke-width="2"/>
+                <path d="M130 370 C105 310 95 270 110 240 C130 270 140 330 145 370 Z" fill="#6f8f6a" stroke="#1d241f" stroke-width="1.5"/>
+                <path d="M120 370 L180 370 L172 410 L128 410 Z" fill="#a97655" stroke="#1d241f" stroke-width="2"/>
+                <line x1="75" y1="370" x2="215" y2="370" stroke="#1d241f" stroke-width="1.5"/>
+                <text x="75" y="430" font-family="ui-monospace, monospace" font-size="9" fill="#6a736b">RAWAT: RENDAH</text>
+              </g>
+              <g>
+                <!-- Column 2 -->
+                <rect x="330" y="70" width="140" height="10" fill="#e2dccf" stroke="#1d241f"/>
+                <rect x="330" y="70" width="82" height="10" fill="#c6f24d" stroke="#1d241f"/>
+                <text x
