@@ -998,3 +998,113 @@
     }).join("");
 
     roomResult.innerHTML =
+      '<div>' +
+        '<p class="eyebrow">Indicative starting points</p>' +
+        '<h3>Light: ' + labelFor(light.value) + ' · Care: ' + labelFor(care.value) + '</h3>' +
+        '<ul class="direction-list">' + list + '</ul>' +
+      '</div>' +
+      '<p class="result-caveat">Client-side simulation only. No inventory is checked, no diagnosis is made, and no suitability is guaranteed. Light and care needs vary by species, pot, and room.</p>';
+  }
+
+  function labelFor(value) {
+    var labels = {
+      low: "low / mostly indirect",
+      medium: "medium / soft daylight",
+      bright: "bright / filtered sun",
+      little: "a little, weekly",
+      steady: "a steady routine",
+      fuss: "I like to fuss"
+    };
+    return labels[value] || value;
+  }
+
+  lightInputs.forEach(function (input) {
+    input.addEventListener("change", renderResult);
+  });
+  careInputs.forEach(function (input) {
+    input.addEventListener("change", renderResult);
+  });
+
+  renderResult();
+
+  /* ---------- Honest enquiry-note toggles ---------- */
+  document.querySelectorAll("[data-note-toggle]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var targetId = button.getAttribute("aria-controls");
+      var note = document.getElementById(targetId);
+      if (!note) return;
+      var expanded = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!expanded));
+      note.hidden = expanded;
+    });
+  });
+
+  /* ---------- Subtle reveal motion ---------- */
+  var revealElements = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+    revealElements.forEach(function (element) {
+      observer.observe(element);
+    });
+  } else {
+    revealElements.forEach(function (element) {
+      element.classList.add("is-visible");
+    });
+  }
+})();
+</script>
+
+<!--
+MODEL IDENTITY DISCLOSURE
+Participant role: DeepSeek R1.
+Exact model label visible in UI: NOT_DISCLOSED (no consumer chat UI label was available in this environment; version is not inferred).
+
+INDEPENDENTLY INSPECTED REFERENCE URLS + OBSERVED LESSONS
+1. https://siapnanam.com/pages/about-me
+   Observed: a personal, first-person plant-shop narrative; highland-Bandung growing context; slow-care and quality-first voice; “ready to plant” name story. Lesson: a small studio can lead with a human point of view rather than a product grid.
+2. https://rareformplants.com/
+   Observed: “Choose the plant for the room—not the label”; explicit room-condition starting points (window exposure, root condition, moisture, mature size); inquiry path that asks for practical details and states an inquiry does not reserve inventory or dates. Lesson: room context and inquiry honesty can be structured into the page, not left implicit.
+3. https://www.thebotanicalarchive.com/botanicaldesign
+   Observed: bespoke indoor plant styling for homes, offices, events; environment assessment; aftercare and maintenance included in the styling service. Lesson: styling should be framed as a room-specific service with ongoing care considered, not a one-off object sale.
+4. https://www.sebsurbanjungle.co.uk/about/
+   Observed: community-rooted plant shop with workshops, plant care for homes and businesses, and a clear service list. Lesson: a small shop can distinguish workshop, care, and styling offers without becoming a marketplace.
+5. https://www.botanicaldesigns.us/
+   Observed: personal horticulture story, hands-on beginner workshops, custom botanical design, approachable tone. Lesson: workshop content can be human and beginner-facing without inventing schedules or capacity.
+Additional inspected: https://plunt.co/pluntscape/ (concise plantscaping for homes, offices, cafés); https://www.ourinfinitenature.co/plant-styling (service lists; noted unsupported health/air claims to avoid).
+
+INTEGRATED PRINCIPLES
+- Lead with room light and realistic care time, not SKU volume.
+- Use an editorial, warm voice with an explicit point of view: room first, care rhythm second, plant direction third.
+- Keep care guidance discoverable but clearly general: no diagnosis, no pet-safety, health, or air-purification claims, no guaranteed suitability.
+- Make workshops enquiry-led only; do not invent dates, times, capacity, or booking.
+- Treat styling as a room-specific conversation with no fixed price.
+- Show synthetic price bands with visible caveats; never present them as quotes or availability.
+- Make every contact affordance honest: no message is sent because no contact channel is configured.
+- Use generated illustration only; never imply actual inventory, premises, staff, or customers.
+
+SIMULATIONS
+- The “Room reader” is a client-side simulation. It maps a light choice and a care-time choice to illustrative plant directions and general notes. It does not query inventory, diagnose a plant, rate suitability, or guarantee an outcome.
+- The enquiry and contact buttons are affordance simulations. They reveal explanatory text but submit nothing.
+
+IMAGE SOURCE / LICENSE / PROVENANCE
+- All imagery is original inline SVG and CSS generated for this concept. No photographs, no third-party image assets, no stock images, and no actual Sela Botanika logo are used. The brand mark is a generated placeholder, not a supplied logo. Nothing represents actual inventory, premises, staff, or customers.
+
+MOTION
+- Subtle IntersectionObserver reveal for section content, disabled under prefers-reduced-motion. Hover and focus transitions are present for controls. No autoplay, parallax, or looping animation.
+
+RESPONSIVE STRATEGY
+- Mobile-first single-column layout; CSS grid columns introduced at 720px, 760px, 880px, 900px, and 1000px depending on content. Fluid type with clamp. Touch-friendly radio chips with 44px minimum target height. Header navigation hidden below 560px while in-page anchors remain reachable by scrolling. Sticky header uses backdrop-filter with a fallback background.
+
+UNVERIFIED TESTS
+- This document has not been rendered or tested in a browser. No cross-browser test, accessibility audit, responsive device test, performance test, or screen-reader test was performed. The statements above describe design intentions, not verified outcomes.
+-->
+</body>
+</html>
