@@ -17,16 +17,16 @@ _Last updated: 2026-11-21 (Asia/Jakarta)_
 - **HEAD tree:** empty tree `4b825dc642cb6eb9a060e54bf8d69288fbee4904`; latest commit message: `Delete index.html`
 - **Parent commit inspected:** `3d61e0284ed1e29cab79966330db0edaa59f8d23`; its tree had one `index.html` (20,002 bytes). This is historical prior work, not present at HEAD.
 - **Current stage/gate:** G0 activation complete except local runtime/browser/harness identification; next is G1, then G2 delegation.
-- **Overall status:** IN_PROGRESS / G0 PARTIAL-PASS
-- **Next Lead task:** G1 scope/strategy, followed by R1/R2 Delegation Pack. GPT research and initial concept work can proceed independently.
-- **Next operator action:** Supply exact product/model/version strings for the three named external agents, then run one consolidated R1/R2 Delegation Pack for those exact models and return the HTML outputs. No waiver is assumed.
+- **Overall status:** IN_PROGRESS
+- **Next Lead task:** Independently evaluate returned external R1 HTMLs when supplied; deduplicate evidence, update the Shared Reference Learning Brief, then prepare R2 prompts. Do not start R2 before R1 evidence is returned.
+- **Next operator action:** Run the three R1 prompts in ADES_R1_DELEGATION_PACK.md using the official free interfaces and return exactly one HTML file per agent. No model substitution or paid access; no waiver is assumed.
 
 ## 2. G0–G5 gate board
 | Gate | Status | Evidence / decision |
 |---|---|---|
-| G0 — Project activation | IN_PROGRESS | Intake, Guide, blank Brief read. Mode/boundaries set. Repo identity and GitHub write permission verified. Current head inspected. Runtime/browser/harness not available for positive verification. |
-| G1 — Discovery & scope | NOT_STARTED | Intake supports core proposition and visitor tasks; formal site scope to be consolidated in next stage. |
-| G2 — Multi-agent exploration/synthesis | BLOCKED | Roster labels provided but model/product/version not precise; integrations not verified. Delegation Pack can be prepared. |
+| G0 — Project activation | PASS | Intake and Guide read; studio_development mode and no-release boundaries set; repository identity/branch/HEAD and GitHub write permission verified; current tool availability checked. Runtime/browser/harness limitations are recorded, not treated as proof of QA. |
+| G1 — Discovery & scope | PASS | Audience, offer, visitor needs, primary room-fit-to-enquiry journey, secondary workshop/business-styling paths, provisional page structure, price caveats, exclusions, and acceptance criteria consolidated in this Brief from the intake. |
+| G2 — Multi-agent exploration/synthesis | IN_PROGRESS | Free-tier-only roster confirmed; direct model integrations unavailable; R1 Delegation Pack and GPT R1 concept committed. External R1 HTML outputs are pending. R2/R3 remain gated on completed/evaluated artifacts. |
 | G3 — Build ready for QA | NOT_STARTED | No website files at HEAD; no project stack yet. |
 | G4 — Operator review | NOT_STARTED | No near-final artifact. |
 | G5 — Handover/release | NOT_STARTED | No runbook possible until implementation stack exists. Public release is not authorized. |
@@ -78,7 +78,7 @@ _Last updated: 2026-11-21 (Asia/Jakarta)_
 - **Harness adapter:** no coding harness has been identified; persistent repository instructions are therefore not claimed to be discovered/included in an active coding-agent context. Manual Control Contract must be pasted into each delegation prompt.
 - **Repository history note:** `main` HEAD contains an empty tree due to `Delete index.html`; parent commit contains an earlier standalone HTML concept. Do not conflate the historical concept with current HEAD or treat it as a multi-file implementation or verified render.
 
-## 5. Round 1 initial GPT niche research (initial learning only)
+## 5. Round 1 GPT niche research and concept
 References inspected:
 1. Root Houseplants — https://www.root-houseplants.com/ . Homepage structure separates shop taxonomy, business planting, plant library/care articles, FAQs and get-in-touch. The practical lesson is a clear consumer/business split plus care guidance, not copied reviews or stock logic.
 2. Plant Culture — https://www.plantcultureltd.com/ . Service navigation distinctly exposes maintenance, interior greenscaping, workshops and shopping; service sections are visual and concise. Lesson: service-led content can be organized around visitor needs.
@@ -86,7 +86,7 @@ References inspected:
 4. Soilboy — https://www.soilboy.live/plants . Category/experience navigation links plants, pots, plant care, workshops and corporate experiences. Lesson: connect products and learning, but avoid oversized catalogue navigation for this small fictional business.
 5. Clarity Plants case study — https://ecooddworld.eu/en/projects/clarity-plants/ . Search result described plant discovery around size/home conditions and care information; direct page fetch failed, so deeper visual/page inspection remains NOT_VERIFIED.
 - **Shared GPT learning (preliminary):** lead with room/lifestyle fit rather than SKU volume; pair plant story with practical care information; separate residential discovery from commercial plant styling; make workshop discovery easy while treating schedule as enquiry-only; use strong editorial imagery and restrained palette; make price bands visible but clearly provisional; avoid catalogue marketplace grids.
-- **R1 integrated GPT HTML:** historical `index.html` from parent commit is a reference artifact that may inform baseline, but not yet accepted as this R1 deliverable: it predates current execution, has not been rendered/tested in this session, and its images/interaction are not re-verified. New R1 candidate remains to be produced after research brief is finalized.
+- **GPT R1 integrated HTML:** `exploration/r1/gpt-concept.html` (commit `a5bde883d3df9b01e3f190ae4edba52a2dfa3787`). Browser-ready source created with inline CSS/JS, plant/category overview, indicative price bands, room-fit summary interaction, separate home/business styling paths, enquiry-led workshop, FAQ, and honest non-sending contact placeholder. It embeds the reference/learning manifest. Source file fetched back from GitHub and byte length verified (16,773 bytes); no browser render, viewport inspection, image-load test, or interaction test performed. Remote Unsplash media are concept-only; exact image rights/local integration remain unverified.
 
 ## 6. Asset register
 | Asset | Status | Provenance / rule |
@@ -104,7 +104,7 @@ References inspected:
 - **Model labels:** Gemini Free currently advertises Flash-Lite. DeepSeek free chat does not reliably expose an exact backend model/version in the public evidence inspected. Meta Muse free usage is documented, but no fixed underlying model/version is disclosed. Capture the actual visible model label during each delegated run; if absent, record NOT_DISCLOSED.
 - **No substitutions:** do not route to a different provider or paid tier. Do not claim an undisclosed backend version.
 - **Next operator action:** none to clarify roster/tier. ADES provides a consolidated R1 Delegation Pack; operator runs the three official free interfaces and returns exactly one browser-ready HTML file per agent. Do not treat non-response as waiver.
-- **R1/R2 minimum evidence:** each agent researches 3+ independent relevant niche sites and embeds source/learning manifest in R1; Round 2 receives shared R1 learning brief and creates materially different full-site HTML with responsive behavior, imagery, meaningful motion/GSAP prototype where possible. GPT also participates independently. Lead renders/tests all returned artifacts where tools permit; currently render QA is NOT_VERIFIED.
+- **R1/R2 minimum evidence:** each external agent must research 3+ independent relevant niche sites and embed source/learning manifest in R1. GPT's R1 concept and initial research are complete at source level. External outputs are pending. After all R1 outputs arrive, GPT will compare evidence and create the Shared Reference Learning Brief. R2 then gives each agent a distinct design thesis and taste-stretch constraint, with responsive full-site HTML, imagery and meaningful GSAP prototype where possible. Lead rendering/testing remains NOT_VERIFIED until an actual browser harness is available.
 - **G3:** GPT-only synthesis and multi-file implementation in target repo, after G2 deliverables and evidence.
 
 ## 8. Control family state
@@ -112,7 +112,7 @@ References inspected:
 |---|---|---|
 | GOV-01 | PASS (G0 facts and restrictions) | Mode and synthetic boundary in intake; no external outreach/release |
 | DISC-01 | IN_PROGRESS | Initial intake synthesis; G1 still to formalize |
-| EXP-01 | IN_PROGRESS | Free-tier-only roster confirmed; direct integrations unavailable; manual delegation pack required; exact backend versions captured only if visible |
+| EXP-01 | IN_PROGRESS | Free-tier-only roster confirmed; direct integrations unavailable; R1 Delegation Pack committed; GPT R1 concept committed; external R1 HTMLs pending |
 | VIS-01 | NOT_VERIFIED | Historical concept had image URL metadata; no current integrated project assets or rendered inspection |
 | INT-01 | NOT_VERIFIED | Historical demo finder code exists in parent concept only; no interactive browser test |
 | RESP-01 | NOT_VERIFIED | CSS breakpoints visible in historical HTML, but no actual viewport render evidence |
@@ -127,5 +127,5 @@ References inspected:
 - No fabricated contacts, schedules, inventory, testimonials, exact address, opening hours, botanical safety or health claims.
 - No checkout/payment/backend/CRM/booking until supported by a material requirement and separately approved.
 - Repository target is the user-supplied website repo, never ADES documentation repo.
-- **Current dependency:** operator must execute the prepared prompts in the three official free consumer interfaces and return each HTML artifact. This is the intended manual delegation path, not a request for further model selection. If any provider is inaccessible on the free tier, report the exact limitation; do not substitute or upgrade.
+- **Current dependency:** operator runs the three prepared R1 prompts in the official free consumer interfaces and returns each HTML artifact. This is the manual delegation path, not a request for further model selection. If any provider is inaccessible on the free tier, report the exact limitation; do not substitute or upgrade.
 - Deployment, DNS, paid services, third-party outreach and public release remain prohibited without explicit approval.
