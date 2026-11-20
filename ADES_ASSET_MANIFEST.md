@@ -4,9 +4,9 @@ All photos below are illustrative editorial references, not photographs of Sela 
 
 | Placement | Asset / creator | Original photo page | CDN image ID | Usage / status |
 |---|---|---|---|---|
-| Hero | Alex Quezada | https://unsplash.com/photos/a-potted-plant-sitting-in-a-corner-of-a-room-g7VzgZBSyuU | photo-1687217914134-3cd71ed455fc | Remote Unsplash image; illustrative; loaded as hero image |
-| Direction 01 | feey | https://unsplash.com/photos/a-close-up-of-a-green-plant-with-leaves-mCm4NxiJpjU | photo-1694285611780-f423b118bb81 | Remote Unsplash image; illustrative; lazy-loaded |
-| Direction 02 / styling detail | Febri Adiawarja | https://unsplash.com/photos/monstera-plant-in-a-terracotta-pot-against-orange-wall-TSKYvXf1d4M | photo-1762755647813-017e128a4ba0 | Remote Unsplash image; illustrative; reused in styling section |
+| Hero | Alex Quezada | https://unsplash.com/photos/a-potted-plant-sitting-in-a-corner-of-a-room-g7VzgZBSyuU | photo-1687217914134-3cd71ed455fc | Remote Unsplash image embedded in hero; photo page and image preview inspected; browser loading NOT_VERIFIED |
+| Direction 01 | feey | https://unsplash.com/photos/a-close-up-of-a-green-plant-with-leaves-mCm4NxiJpjU | photo-1694285611780-f423b118bb81 | Remote Unsplash image embedded in direction card; photo page inspected; CDN preview returned cache miss in web viewer; browser loading NOT_VERIFIED |
+| Direction 02 / styling detail | Febri Adiawarja | https://unsplash.com/photos/monstera-plant-in-a-terracotta-pot-against-orange-wall-TSKYvXf1d4M | photo-1762755647813-017e128a4ba0 | Remote Unsplash image embedded in direction and styling sections; photo page and image preview inspected; browser loading NOT_VERIFIED |
 
 ## License notes
 
