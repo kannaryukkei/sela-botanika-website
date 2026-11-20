@@ -141,3 +141,15 @@ References inspected:
 - Implementation claims in the submission are source-level claims only. No browser rendering, cross-browser/device testing, accessibility audit, image URL/license verification, or GSAP behavior has been independently verified.
 - R1 external-agent requirement remains **IN_PROGRESS**: two named roster submissions are still outstanding, and this submission must be attributed to a roster member before it can count toward that participant's required R1 deliverable.
 - G2 remains **BLOCKED / IN_PROGRESS** pending the full three-agent R1 evidence set and attribution. No R2 candidate work is authorized until the R1 gate is satisfied.
+
+
+### R1 External HTML — Source-Level Review
+
+- Repository artifact was fetched back successfully after commit; source length is 1,771 lines / 27,868 characters.
+- Source-level features present: responsive CSS breakpoints, mobile navigation drawer, room-fit filtering, category filtering, home/business styling toggle, FAQ disclosures, local-only inquiry preview, and reduced-motion CSS.
+- Six remote Unsplash image references are present in the HTML. Their actual image content, availability, provenance, and license status have **not** been independently verified by ADES; no local image assets are included.
+- No GSAP dependency or GSAP behavior is present. CSS transitions are used instead. This is not a failure for R1; R2 must prototype purposeful GSAP motion as required for this brand-led visual direction.
+- HTML document language is English (`lang="en"`); Indonesian localization is a likely R2/R3 improvement for the intended audience.
+- Source-level accessibility review: visible focus styles, skip link, semantic landmarks, and Escape-to-close mobile navigation are present. Category controls use `role="tab"` / `aria-selected`, but the source does not implement arrow-key tab navigation or a corresponding tabpanel pattern; review and correct semantics in R2.
+- Room-fit filtering always returns the top three archetypes even when filters produce weak matches; improve relevance handling and disclose when no close fit exists.
+- Static source review only. No browser render, interaction execution, responsive viewport QA, accessibility audit, or cross-browser test has been performed.
