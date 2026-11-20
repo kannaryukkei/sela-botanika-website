@@ -9,8 +9,10 @@ _Last updated: 2026-11-21 (Asia/Jakarta)_
 - **Location / service area:** Fictional Bandung, West Java; shop area Ciumbuleuit (no street address); delivery in some Bandung areas subject to confirmation; plant styling discussed for Bandung and surroundings
 - **Website repository:** https://github.com/kannaryukkei/sela-botanika-website
 - **Repository identity/access:** `kannaryukkei/sela-botanika-website`; public; default branch `main`; GitHub connector reports `push=true`, `admin=true`, `maintain=true`, `pull=true`
-- **Exact external roster as entered:** `GEMINI`, `DEEPSEEK`, `MUSE`. Product/model identifiers and versions were not supplied; these entries are not sufficiently exact to select an unambiguous model/version. No substitutions made.
-- **External execution path:** DELEGATION_PACK (no direct authorized model integration verified in this session)
+- **Exact external roster as entered:** `GEMINI`, `DEEPSEEK`, `MUSE`; operator clarified: use free-tier access only, no paid models/API.
+- **Free-tier selection rule:** use each named provider's official free consumer interface and its default model/mode available to the operator. Do not purchase API credits, enable a paid plan, or assume a backend version not displayed by the provider.
+- **Model identity evidence (2026-11-21):** Gemini official subscription page lists Flash-Lite access on Free; DeepSeek official consumer chat is free, but the exact backend model/version served to a free chat session is not reliably exposed by the available official evidence; Meta's official Muse page says Muse is free with usage limits, but does not identify a fixed underlying model/version. Preserve those unknowns as NOT_DISCLOSED rather than guessing.
+- **External execution path:** DELEGATION_PACK (no direct authorized model integration verified in this session). Each external agent must note the exact model/version displayed in its own UI if available; otherwise report NOT_DISCLOSED and include a screenshot/text evidence of the selected free interface/model label.
 - **Repository HEAD:** `ee37041356cbf3ef06b1b9e099e1e28f36f48e60` on `main` (verified via GitHub commit listing)
 - **HEAD tree:** empty tree `4b825dc642cb6eb9a060e54bf8d69288fbee4904`; latest commit message: `Delete index.html`
 - **Parent commit inspected:** `3d61e0284ed1e29cab79966330db0edaa59f8d23`; its tree had one `index.html` (20,002 bytes). This is historical prior work, not present at HEAD.
