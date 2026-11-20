@@ -997,4 +997,654 @@ Semua fakta, harga indikatif, ruang, dan narasi bersifat fiktif untuk studi desa
             <div>
               <span class="axis-label" id="axis-space">2. Penempatan &amp; Ruang</span>
               <div class="choice-row" role="group" aria-labelledby="axis-space">
-                <button type="button" class="choice-chip" data-axis="space" data-val="meja-rak" aria-pressed="true">Meja atau rak ringkas</button>
+                <button type="button" class="choice-chip" data-axis="space" data-val="meja-rak" aria-pressed="true">Meja atau rak ringkas</button>                <button type="button" class="choice-chip" data-axis="space" data-val="sudut-lantai" aria-pressed="false">Sudut lantai hunian</button>
+                <button type="button" class="choice-chip" data-axis="space" data-val="area-usaha" aria-pressed="false">Area kafe / studio</button>
+              </div>
+            </div>
+
+            <div>
+              <span class="axis-label" id="axis-rhythm">3. Ritme Perawatan Realistis</span>
+              <div class="choice-row" role="group" aria-labelledby="axis-rhythm">
+                <button type="button" class="choice-chip" data-axis="rhythm" data-val="singkat" aria-pressed="true">Sekitar 10 mnt / pekan</button>
+                <button type="button" class="choice-chip" data-axis="rhythm" data-val="terukur" aria-pressed="false">20–30 mnt / pekan</button>
+                <button type="button" class="choice-chip" data-axis="rhythm" data-val="rutin-hobi" aria-pressed="false">45+ mnt (minat hobi)</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="fit-status" id="fit-status" role="status" aria-live="polite"></p>
+          <div class="fit-results" id="fit-results"></div>
+
+          <div class="disclaimer-note" role="note">
+            <strong>Catatan batas panduan:</strong> Rekomendasi ini bersifat orientasi umum saja, bukan penilaian ahli maupun jaminan tanaman akan bertahan di ruangan Anda. Kondisi mikro seperti sirkulasi udara, kelembapan, dan kebiasaan penyiraman sangat memengaruhi hasil.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 PENEMUAN TANAMAN & PERLENGKAPAN + RENTANG HARGA INDIKATIF -->
+    <section class="section-block" id="penemuan" aria-labelledby="sec-2-title">
+      <div class="wrap">
+        <header class="section-header">
+          <span class="sec-num" data-gsap="num" aria-hidden="true">02</span>
+          <div>
+            <span class="sec-kicker">Penemuan &amp; Rentang Harga Indikatif</span>
+            <h2 class="sec-title" id="sec-2-title">Tanaman, perlengkapan, paket pemula, dan lokakarya</h2>
+            <p class="sec-intro">
+              Struktur kategori konseptual dengan rentang harga sintetis sebagai estimasi awal saja. Tidak menampilkan stok langsung, ketersediaan aktual, maupun penawaran harga final.
+            </p>
+          </div>
+        </header>
+
+        <div class="filter-bar" role="tablist" aria-label="Saring kategori penawaran">
+          <button type="button" class="filter-btn" role="tab" aria-selected="true" data-cat="semua">Semua Kategori</button>
+          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-cat="tanaman">Tanaman</button>
+          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-cat="perlengkapan">Pot, Media &amp; Alat</button>
+          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-cat="pemula">Paket Pemula</button>
+          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-cat="lokakarya">Lokakarya</button>
+        </div>
+
+        <div class="ledger-grid">
+          <article class="ledger-card" data-cat="tanaman">
+            <div>
+              <div class="ledger-top">
+                <h3>Tanaman Dalam Ruangan</h3>
+                <span class="band-tag">Estimasi Rp35.000 – Rp450.000</span>
+              </div>
+              <p>
+                Pilihan tanaman daun dan ukuran bertahap yang dikelompokkan berdasarkan kebutuhan cahaya dan kemudahan ritme rawat, bukan katalog SKU penuh atau klaim stok tersedia.
+              </p>
+            </div>
+            <div class="ledger-foot">Angka ilustratif saja; konfirmasi ketersediaan dan harga aktual diperlukan.</div>
+          </article>
+
+          <article class="ledger-card" data-cat="perlengkapan">
+            <div>
+              <div class="ledger-top">
+                <h3>Pot, Media Tanam &amp; Alat</h3>
+                <span class="band-tag">Estimasi Rp15.000 – Rp180.000</span>
+              </div>
+              <p>
+                Wadah berlubang drainase, campuran media tanam porous, sekop kecil, dan perlengkapan dasar untuk mendukung sirkulasi akar yang tertib di ruang terbatas.
+              </p>
+            </div>
+            <div class="ledger-foot">Rentang indikatif per item/perlengkapan; harga akhir menyesuaikan ukuran &amp; bahan.</div>
+          </article>
+
+          <article class="ledger-card" data-cat="pemula">
+            <div>
+              <div class="ledger-top">
+                <h3>Paket Pemula (Starter Set)</h3>
+                <span class="band-tag">Estimasi Rp85.000 – Rp250.000</span>
+              </div>
+              <p>
+                Kombinasi awal tanaman pendamping, pot, media, serta ringkasan kebiasaan cek kelembapan agar langkah pertama merawat tanaman terasa lebih terarah.
+              </p>
+            </div>
+            <div class="ledger-foot">Estimasi ilustratif paket awal; isi dan harga final bergantung konfirmasi.</div>
+          </article>
+
+          <article class="ledger-card" data-cat="lokakarya">
+            <div>
+              <div class="ledger-top">
+                <h3>Lokakarya Dasar Pemula</h3>
+                <span class="band-tag">Estimasi Rp100.000 – Rp175.000 / peserta</span>
+              </div>
+              <p>
+                Sesi praktik pengenalan media tanam, pemindahan pot (repotting), dan pembacaan tanda dasar tanaman. Bersifat berbasis pertanyaan tanpa jadwal tetap di situs ini.
+              </p>
+            </div>
+            <div class="ledger-foot">Perkiraan indikatif per peserta; jadwal, kapasitas, dan biaya final dikonfirmasi lewat tanya jawab.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 PENATAAN HUNIAN VS USAHA -->
+    <section class="section-block" id="penataan" aria-labelledby="sec-3-title">
+      <div class="wrap">
+        <header class="section-header">
+          <span class="sec-num" data-gsap="num" aria-hidden="true">03</span>
+          <div>
+            <span class="sec-kicker">Penataan Spasial Terpisah</span>
+            <h2 class="sec-title" id="sec-3-title">Penataan hunian dan ruang usaha dengan kebutuhan berbeda</h2>
+            <p class="sec-intro">
+              Apartemen atau rumah tinggal memiliki ritme berbeda dibanding kafe atau studio kecil. Penataan ruang tidak memiliki harga tetap dan dibahas sesuai kondisi ruang.
+            </p>
+          </div>
+        </header>
+
+        <div class="story-split">
+          <figure class="editorial-figure" data-gsap="reveal">
+            <img
+              src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80"
+              alt="Ilustrasi interior ruang duduk terang dengan penempatan tanaman di sudut dan meja"
+              width="1200"
+              height="1000"
+            />
+            <figcaption class="editorial-caption">
+              <strong>Visual ilustratif (bukan proyek atau klien aktual):</strong> Contoh komposisi ruang dan tanaman. Sumber: Unsplash (lisensi prototipe belum diverifikasi secara independen).
+            </figcaption>
+          </figure>
+
+          <div>
+            <div class="mode-tabs" role="group" aria-label="Pilih jalur penataan ruang">
+              <button type="button" class="mode-btn" id="btn-mode-home" aria-pressed="true">Penataan Hunian &amp; Apartemen</button>
+              <button type="button" class="mode-btn" id="btn-mode-biz" aria-pressed="false">Penataan Kafe &amp; Studio Kecil</button>
+            </div>
+
+            <div class="story-panel" id="styling-detail" aria-live="polite">
+              <h3>Apartemen, Rumah Ringkas &amp; Kamar Kerja</h3>
+              <p style="margin:0 0 0.65rem; font-size:0.92rem; color:var(--ink-soft);">
+                Fokus pada keselarasan visual dengan perabot yang ada serta rutinitas perawatan yang tidak membebani hari kerja.
+              </p>
+              <ul>
+                <li>Pemetaan titik terang alami dan area terlindung di sekitar jendela atau rak.</li>
+                <li>Pemilihan proporsi pot yang sesuai dengan luas lantai atau permukaan meja.</li>
+                <li>Penyesuaian ritme penyiraman dengan waktu luang pemilik hunian.</li>
+              </ul>
+              <p style="margin:0; font-size:0.84rem; font-weight:600; color:var(--clay);">
+                Tanpa harga tetap — ruang lingkup dibahas sesuai ukuran ruang dan kebutuhan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 LOKAKARYA (ENQUIRY-LED, NO DATES/TIMES/CAPACITY/BOOKING) -->
+    <section class="section-block" id="lokakarya" aria-labelledby="sec-4-title">
+      <div class="wrap">
+        <header class="section-header">
+          <span class="sec-num" data-gsap="num" aria-hidden="true">04</span>
+          <div>
+            <span class="sec-kicker">Edukasi &amp; Praktik Berbasis Pertanyaan</span>
+            <h2 class="sec-title" id="sec-4-title">Lokakarya pemula yang terarah pada pertanyaan peserta</h2>
+            <p class="sec-intro">
+              Informasi lokakarya bersifat berbasis pertanyaan (enquiry-led). Tidak ada tanggal, jam, kuota kursi, pemesanan online, maupun pembayaran di halaman ini.
+            </p>
+          </div>
+        </header>
+
+        <div class="workshop-split">
+          <div>
+            <p style="margin:0; color:var(--ink-soft); font-size:0.95rem;">
+              Dirancang untuk pemula yang ingin memahami dasar perawatan tanaman secara tenang tanpa istilah yang membingungkan. Estimasi biaya indikatif berada di rentang <strong>Rp100.000 – Rp175.000 per peserta</strong> (bersifat perkiraan dan perlu dikonfirmasi).
+            </p>
+            <div class="workshop-points">
+              <div class="workshop-row">
+                <strong>Topik 1 · Cahaya &amp; Kebiasaan Penyiraman</strong>
+                <span>Mengenali perbedaan cahaya ruang dan memeriksa kondisi media sebelum menyiram.</span>
+              </div>
+              <div class="workshop-row">
+                <strong>Topik 2 · Media Tanam &amp; Repotting Dasar</strong>
+                <span>Memahami drainase, aerasi media, dan memindahkan tanaman ke wadah baru secara hati-hati.</span>
+              </div>
+              <div class="workshop-row">
+                <strong>Alur Berbasis Pertanyaan</strong>
+                <span>Minat topik dan preferensi waktu dibahas lewat pertanyaan; tidak ada jadwal pasti atau sistem booking.</span>
+              </div>
+            </div>
+          </div>
+
+          <figure class="editorial-figure" data-gsap="reveal">
+            <img
+              src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1100&q=80"
+              alt="Ilustrasi aktivitas meracik media tanam dan pot kecil di atas meja"
+              width="1100"
+              height="920"
+            />
+            <figcaption class="editorial-caption">
+              <strong>Visual ilustratif (bukan sesi, staf, atau lokasi aktual):</strong> Ilustrasi kegiatan menanam. Sumber: Unsplash (lisensi prototipe belum diverifikasi secara independen).
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 FAQ & CATATAN PRAKTIS -->
+    <section class="section-block" id="tanya-jawab" aria-labelledby="sec-5-title">
+      <div class="wrap">
+        <header class="section-header">
+          <span class="sec-num" data-gsap="num" aria-hidden="true">05</span>
+          <div>
+            <span class="sec-kicker">Catatan Praktis &amp; FAQ</span>
+            <h2 class="sec-title" id="sec-5-title">Hal-hal penting sebelum memilih atau bertanya</h2>
+          </div>
+        </header>
+
+        <div class="faq-stack">
+          <details class="faq-box" open>
+            <summary>Apakah harga yang tercantum sudah pasti dan termasuk stok tersedia?</summary>
+            <p>
+              Tidak. Semua rentang harga (tanaman Rp35.000–450.000; pot/media/alat Rp15.000–180.000; paket pemula Rp85.000–250.000; lokakarya Rp100.000–175.000 per peserta) hanyalah estimasi indikatif sintetis. Tidak ada stok langsung yang ditampilkan dan harga final selalu bergantung pada konfirmasi. Penataan ruang tidak memiliki harga tetap.
+            </p>
+          </details>
+
+          <details class="faq-box">
+            <summary>Apakah panduan ruang menjamin tanaman cocok atau aman untuk hewan peliharaan?</summary>
+            <p>
+              Tidak. Panduan ruang hanya membantu menyusun titik awal berdasarkan cahaya, penempatan, dan ritme waktu. Kami tidak memberikan diagnosis botani ahli, jaminan kecocokan atau keberlangsungan hidup tanaman, klaim pemurnian udara, manfaat kesehatan, maupun jaminan keamanan hewan peliharaan.
+            </p>
+          </details>
+
+          <details class="faq-box">
+            <summary>Bagaimana jadwal lokakarya, pengiriman, atau kontak langsung?</summary>
+            <p>
+              Dalam skenario prototipe ini tidak ada jadwal, jam buka, alamat, nomor telepon/WhatsApp, email, tautan media sosial, maupun janji pengiriman. Lokakarya bersifat berbasis pertanyaan, dan formulir di bagian bawah hanya simulasi lokal tanpa pengiriman data.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 SIMULASI PERTANYAAN NON-PENGIRIMAN -->
+    <section class="section-block" id="pertanyaan" aria-labelledby="sec-6-title">
+      <div class="wrap">
+        <header class="section-header">
+          <span class="sec-num" data-gsap="num" aria-hidden="true">06</span>
+          <div>
+            <span class="sec-kicker">Simulasi Lokal Saja</span>
+            <h2 class="sec-title" id="sec-6-title">Susun draf pertanyaan (tidak terkirim ke mana pun)</h2>
+            <p class="sec-intro">
+              Saluran kontak sungguhan belum tersedia pada prototipe ini. Formulir di bawah menjalankan simulasi lokal di peramban Anda untuk merangkum draf pertanyaan tanpa mengirim atau menyimpan data.
+            </p>
+          </div>
+        </header>
+
+        <div class="enquiry-grid">
+          <div>
+            <h3 style="font-size:1.35rem; margin-bottom:0.4rem;">Status Saluran: Belum Dikonfigurasi</h3>
+            <p style="margin:0; font-size:0.9rem; color:var(--ink-soft);">
+              Tidak ada pesan yang dikirim, tidak ada server penerima, dan tidak ada penyimpanan formulir eksternal. Gunakan draf ini sekadar untuk merapikan poin yang ingin Anda tanyakan.
+            </p>
+            <div class="sim-banner" role="status">
+              <strong>Simulasi lokal aktif:</strong> Menekan tombol pratinjau hanya menampilkan ringkasan draf di layar ini.
+            </div>
+          </div>
+
+          <form id="sim-form" novalidate>
+            <div class="field-row">
+              <label for="sim-nama">Nama panggilan (opsional)</label>
+              <input type="text" id="sim-nama" name="nama" placeholder="Misalnya: Raka" />
+            </div>
+
+            <div class="field-row">
+              <label for="sim-topik">Topik draf pertanyaan</label>
+              <select id="sim-topik" name="topik">
+                <option value="Pilihan tanaman & paket pemula">Pilihan tanaman &amp; paket pemula (estimasi indikatif)</option>
+                <option value="Pertanyaan lokakarya pemula">Pertanyaan lokakarya pemula (berbasis pertanyaan)</option>
+                <option value="Penataan ruang hunian / apartemen">Penataan ruang hunian / apartemen (tanpa harga tetap)</option>
+                <option value="Penataan kafe / studio kecil">Penataan kafe / studio kecil (tanpa harga tetap)</option>
+              </select>
+            </div>
+
+            <div class="field-row">
+              <label for="sim-catatan">Catatan singkat cahaya &amp; ruang</label>
+              <textarea id="sim-catatan" name="catatan" placeholder="Tuliskan perkiraan arah cahaya, ukuran area, atau waktu luang mingguan Anda..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-editorial">Buat Pratinjau Lokal (Tidak Terkirim)</button>
+
+            <div class="sim-output" id="sim-output" hidden aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-cols">
+        <div>
+          <h2>Atelier Botanika</h2>
+          <p>
+            Arah desain editorial spasial untuk Sela Botanika dalam skenario fiktif Bandung. Eksperimen internal studio saja; BUKAN UNTUK RILIS.
+          </p>
+        </div>
+        <div>
+          <p><strong style="color:var(--paper);">Tanpa Operasional Aktual</strong></p>
+          <p style="margin-top:0.35rem;">
+            Alamat, jam buka, kontak WhatsApp/email, media sosial, stok, dan jadwal tidak dicantumkan karena seluruh detail bersifat fiktif.
+          </p>
+        </div>
+        <div>
+          <p><strong style="color:var(--paper);">Navigasi Halaman</strong></p>
+          <p style="margin-top:0.35rem;">
+            <a href="#panduan-ruang">Panduan Ruang</a> ·
+            <a href="#penemuan">Harga Indikatif</a> ·
+            <a href="#penataan">Penataan</a> ·
+            <a href="#lokakarya">Lokakarya</a> ·
+            <a href="#pertanyaan">Simulasi</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-base">
+        <span>Eksperimen internal studio saja; BUKAN UNTUK RILIS (NOT FOR RELEASE).</span>
+        <span>Gambar bersifat ilustratif; rentang harga hanya estimasi awal.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // 1. Mobile drawer toggle
+      const burger = document.getElementById('nav-burger');
+      const drawer = document.getElementById('drawer-nav');
+
+      if (burger && drawer) {
+        burger.addEventListener('click', function () {
+          const isOpen = burger.getAttribute('aria-expanded') === 'true';
+          burger.setAttribute('aria-expanded', String(!isOpen));
+          drawer.classList.toggle('is-open', !isOpen);
+        });
+
+        drawer.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            burger.setAttribute('aria-expanded', 'false');
+            drawer.classList.remove('is-open');
+          });
+        });
+
+        document.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape' && drawer.classList.contains('is-open')) {
+            burger.setAttribute('aria-expanded', 'false');
+            drawer.classList.remove('is-open');
+            burger.focus();
+          }
+        });
+      }
+
+      // 2. Compact, explainable, non-diagnostic Room-Fit interaction
+      // Note: 'teduh-terbatas' + 'rutin-hobi' intentionally yields a clear empty/no-match state
+      // so users see transparent feedback when a combination is uncommon/unmatched in this guide.
+      const plantProfiles = [
+        {
+          name: 'Daun Tegak Berkarakter Tenang',
+          light: ['terang-tidak-langsung', 'teduh-terbatas'],
+          space: ['sudut-lantai', 'area-usaha'],
+          rhythm: ['singkat', 'terukur'],
+          summary: 'Bentuk vertikal yang memberi aksen tinggi pada sudut ruangan tanpa memenuhi lantai.',
+          habit: 'Periksa kelembapan media secara berkala; hindari genangan air di dasar pot.'
+        },
+        {
+          name: 'Sulur & Daun Gantung Ringkas',
+          light: ['terang-tidak-langsung', 'teduh-terbatas'],
+          space: ['meja-rak', 'area-usaha'],
+          rhythm: ['singkat', 'terukur'],
+          summary: 'Cocok untuk tepi rak atau meja kerja dengan ruang lantai terbatas.',
+          habit: 'Siram secukupnya saat lapisan atas media terasa kering saat disentuh jari.'
+        },
+        {
+          name: 'Fokus Daun Lebar Terang Teduh',
+          light: ['terang-tidak-langsung'],
+          space: ['sudut-lantai', 'area-usaha'],
+          rhythm: ['terukur', 'rutin-hobi'],
+          summary: 'Memberi tekstur daun yang jelas di area dengan cahaya alami merata tanpa terik langsung.',
+          habit: 'Bersihkan debu daun secara lembut dan sesuaikan jadwal siram dengan cuaca.'
+        },
+        {
+          name: 'Tanaman Meja Cahaya Pagi',
+          light: ['cahaya-pagi-kuat'],
+          space: ['meja-rak'],
+          rhythm: ['singkat', 'terukur'],
+          summary: 'Dipertimbangkan untuk area dekat bukaan yang menerima cahaya pagi singkat.',
+          habit: 'Gunakan media yang memiliki drainase baik agar air tidak mengendap.'
+        },
+        {
+          name: 'Rumpun Kompak Area Usaha',
+          light: ['terang-tidak-langsung', 'cahaya-pagi-kuat'],
+          space: ['area-usaha', 'sudut-lantai'],
+          rhythm: ['terukur'],
+          summary: 'Mendukung pembagian zona visual di kafe atau studio kecil dengan perawatan terukur.',
+          habit: 'Susun jadwal cek rutin agar selaras dengan operasional harian ruang.'
+        }
+      ];
+
+      const fitState = {
+        light: 'terang-tidak-langsung',
+        space: 'meja-rak',
+        rhythm: 'singkat'
+      };
+
+      const labels = {
+        light: {
+          'terang-tidak-langsung': 'cahaya terang tidak langsung',
+          'teduh-terbatas': 'cahaya teduh / jauh dari jendela',
+          'cahaya-pagi-kuat': 'cahaya pagi / tepi bukaan'
+        },
+        space: {
+          'meja-rak': 'meja atau rak ringkas',
+          'sudut-lantai': 'sudut lantai hunian',
+          'area-usaha': 'area kafe atau studio'
+        },
+        rhythm: {
+          'singkat': 'ritme ~10 mnt/pekan',
+          'terukur': 'ritme 20–30 mnt/pekan',
+          'rutin-hobi': 'ritme 45+ mnt/pekan'
+        }
+      };
+
+      const fitStatus = document.getElementById('fit-status');
+      const fitResults = document.getElementById('fit-results');
+
+      window.resetRoomFitDefaults = function () {
+        fitState.light = 'terang-tidak-langsung';
+        fitState.space = 'meja-rak';
+        fitState.rhythm = 'singkat';
+        document.querySelectorAll('.choice-chip[data-axis]').forEach(function (chip) {
+          const ax = chip.getAttribute('data-axis');
+          const vl = chip.getAttribute('data-val');
+          chip.setAttribute('aria-pressed', String(fitState[ax] === vl));
+        });
+        renderFit();
+      };
+
+      function renderFit() {
+        if (!fitStatus || !fitResults) return;
+
+        const desc =
+          'Kombinasi terpilih: ' +
+          labels.light[fitState.light] +
+          ' · ' +
+          labels.space[fitState.space] +
+          ' · ' +
+          labels.rhythm[fitState.rhythm] +
+          '.';
+
+        const matches = plantProfiles.filter(function (p) {
+          return (
+            p.light.includes(fitState.light) &&
+            p.space.includes(fitState.space) &&
+            p.rhythm.includes(fitState.rhythm)
+          );
+        });
+
+        if (matches.length === 0) {
+          fitStatus.textContent = desc + ' Tidak ada profil contoh yang cocok persis untuk kombinasi ini.';
+          fitResults.innerHTML =
+            '<div class="empty-state" style="grid-column: 1 / -1;">' +
+              '<p><strong>Belum ada padanan langsung:</strong> Kombinasi cahaya teduh/jauh jendela dengan ritme perawatan intensif (45+ mnt/pekan) tidak memiliki contoh profil pada panduan ringkas ini.</p>' +
+              '<button type="button" class="btn-editorial btn-ghost" onclick="resetRoomFitDefaults()">Kembalikan ke Pilihan Awal</button>' +
+            '</div>';
+          return;
+        }
+
+        fitStatus.textContent = desc + ' Menampilkan ' + matches.length + ' titik awal ilustratif.';
+        fitResults.innerHTML = matches
+          .map(function (m) {
+            return (
+              '<article class="fit-item">' +
+                '<div>' +
+                  '<h3>' + m.name + '</h3>' +
+                  '<p>' + m.summary + '</p>' +
+                '</div>' +
+                '<div class="fit-rhythm">' + m.habit + '</div>' +
+              '</article>'
+            );
+          })
+          .join('');
+      }
+
+      document.querySelectorAll('.choice-chip[data-axis]').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          const axis = chip.getAttribute('data-axis');
+          const val = chip.getAttribute('data-val');
+          fitState[axis] = val;
+
+          document.querySelectorAll('.choice-chip[data-axis="' + axis + '"]').forEach(function (sibling) {
+            sibling.setAttribute('aria-pressed', String(sibling === chip));
+          });
+
+          renderFit();
+        });
+      });
+
+      renderFit();
+
+      // 3. Discovery category filter
+      const filterBtns = document.querySelectorAll('.filter-btn[data-cat]');
+      const ledgerCards = document.querySelectorAll('.ledger-card[data-cat]');
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const cat = btn.getAttribute('data-cat');
+          filterBtns.forEach(function (b) {
+            b.setAttribute('aria-selected', String(b === btn));
+          });
+
+          ledgerCards.forEach(function (card) {
+            const visible = cat === 'semua' || card.getAttribute('data-cat') === cat;
+            card.hidden = !visible;
+          });
+        });
+      });
+
+      // 4. Styling mode toggle (Hunian vs Usaha)
+      const btnHome = document.getElementById('btn-mode-home');
+      const btnBiz = document.getElementById('btn-mode-biz');
+      const stylingDetail = document.getElementById('styling-detail');
+
+      const stylingModes = {
+        home: {
+          title: 'Apartemen, Rumah Ringkas & Kamar Kerja',
+          lead: 'Fokus pada keselarasan visual dengan perabot yang ada serta rutinitas perawatan yang tidak membebani hari kerja.',
+          bullets: [
+            'Pemetaan titik terang alami dan area terlindung di sekitar jendela atau rak.',
+            'Pemilihan proporsi pot yang sesuai dengan luas lantai atau permukaan meja.',
+            'Penyesuaian ritme penyiraman dengan waktu luang pemilik hunian.'
+          ]
+        },
+        biz: {
+          title: 'Kafe, Kedai & Studio Kreatif Kecil',
+          lead: 'Menempatkan tanaman agar memperkaya suasana ruang tanpa mengganggu alur gerak pengunjung maupun area kerja.',
+          bullets: [
+            'Pertimbangan jalur lalu-lalang tamu, meja saji, dan sudut duduk.',
+            'Penyelarasan kebiasaan cek perawatan dengan ritme operasional ruang usaha.',
+            'Pendekatan bertahap sesuai pencahayaan aktual tiap bagian ruangan.'
+          ]
+        }
+      };
+
+      function updateStyling(mode) {
+        if (!btnHome || !btnBiz || !stylingDetail) return;
+        const activeHome = mode === 'home';
+        btnHome.setAttribute('aria-pressed', String(activeHome));
+        btnBiz.setAttribute('aria-pressed', String(!activeHome));
+        const d = stylingModes[mode];
+        stylingDetail.innerHTML =
+          '<h3>' + d.title + '</h3>' +
+          '<p style="margin:0 0 0.65rem; font-size:0.92rem; color:var(--ink-soft);">' + d.lead + '</p>' +
+          '<ul>' + d.bullets.map(function (item) { return '<li>' + item + '</li>'; }).join('') + '</ul>' +
+          '<p style="margin:0; font-size:0.84rem; font-weight:600; color:var(--clay);">Tanpa harga tetap — ruang lingkup dibahas sesuai ukuran ruang dan kebutuhan.</p>';
+      }
+
+      if (btnHome && btnBiz) {
+        btnHome.addEventListener('click', function () { updateStyling('home'); });
+        btnBiz.addEventListener('click', function () { updateStyling('biz'); });
+      }
+
+      // 5. Local non-sending enquiry simulation
+      const simForm = document.getElementById('sim-form');
+      const simOutput = document.getElementById('sim-output');
+
+      function escapeText(str) {
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      if (simForm && simOutput) {
+        simForm.addEventListener('submit', function (event) {
+          event.preventDefault();
+          const nama = (document.getElementById('sim-nama').value || '').trim() || 'Pengunjung';
+          const topik = document.getElementById('sim-topik').value;
+          const catatan = (document.getElementById('sim-catatan').value || '').trim() || '(Belum diisi)';
+
+          simOutput.hidden = false;
+          simOutput.innerHTML =
+            '<strong>Pratinjau Draf Lokal (Tidak Terkirim &amp; Tidak Tersimpan):</strong><br>' +
+            '<span>Nama: ' + escapeText(nama) + '</span><br>' +
+            '<span>Topik: ' + escapeText(topik) + '</span><br>' +
+            '<span>Catatan ruang: ' + escapeText(catatan) + '</span><br>' +
+            '<span style="display:block; margin-top:0.45rem; color:#627067;">Saluran kontak aktif tidak tersedia pada prototipe studio ini.</span>';
+        });
+      }
+
+      // 6. Purposeful GSAP + ScrollTrigger reveal (skips cleanly on prefers-reduced-motion)
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReduced) {
+        window.addEventListener('DOMContentLoaded', function () {
+          if (typeof window.gsap === 'undefined') return;
+          const gsap = window.gsap;
+          if (typeof window.ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(window.ScrollTrigger);
+          }
+
+          gsap.from('.hero-editorial .hero-eyebrow, .hero-editorial .hero-title, .hero-editorial .hero-copy, .hero-editorial .hero-cta-row', {
+            y: 16,
+            opacity: 0,
+            duration: 0.65,
+            stagger: 0.08,
+            ease: 'power2.out',
+            clearProps: 'transform,opacity'
+          });
+
+          gsap.utils.toArray('[data-gsap="num"]').forEach(function (numEl) {
+            gsap.from(numEl, {
+              y: 18,
+              opacity: 0,
+              duration: 0.55,
+              ease: 'power2.out',
+              clearProps: 'transform,opacity',
+              scrollTrigger: typeof window.ScrollTrigger !== 'undefined' ? {
+                trigger: numEl,
+                start: 'top 88%',
+                once: true
+              } : undefined
+            });
+          });
+
+          gsap.utils.toArray('[data-gsap="reveal"]').forEach(function (imgEl) {
+            gsap.from(imgEl, {
+              y: 20,
+              opacity: 0,
+              duration: 0.7,
+              ease: 'power2.out',
+              clearProps: 'transform,opacity',
+              scrollTrigger: typeof window.ScrollTrigger !== 'undefined' ? {
+                trigger: imgEl,
+                start: 'top 86%',
+                once: true
+              } : undefined
+            });
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
