@@ -129,3 +129,15 @@ References inspected:
 - Repository target is the user-supplied website repo, never ADES documentation repo.
 - **Current dependency:** operator runs the three prepared R1 prompts in the official free consumer interfaces and returns each HTML artifact. This is the manual delegation path, not a request for further model selection. If any provider is inaccessible on the free tier, report the exact limitation; do not substitute or upgrade.
 - Deployment, DNS, paid services, third-party outreach and public release remain prohibited without explicit approval.
+
+
+## R1 Submission Intake — 2026-11-21
+
+- Received one complete external HTML concept submission (1,771 source lines; 27,868 characters) from the operator's uploaded file.
+- Repository copy: `exploration/r1/external-submission-unattributed.html`.
+- Attribution: **UNATTRIBUTED / MODEL NOT DISCLOSED**. The submission states `NOT_DISCLOSED` for its exact UI model label and does not identify which roster member produced it. Do not infer Gemini, DeepSeek, or Meta Muse.
+- Claimed additional references: Patch Plants, Foliage Living, Bloomscape, and The Sill. The submission explicitly describes its Patch Plants, Foliage Living, and Bloomscape evidence as inspected via search/snippet analysis; these are not counted as independently verified full-site inspections by ADES. The Sill is described only as a contextual check.
+- Concept strengths: room/light/routine-first discovery, distinct home vs. commercial styling, inquiry-led workshops, clear fictional-price disclaimers, and an explicit non-sending inquiry preview.
+- Implementation claims in the submission are source-level claims only. No browser rendering, cross-browser/device testing, accessibility audit, image URL/license verification, or GSAP behavior has been independently verified.
+- R1 external-agent requirement remains **IN_PROGRESS**: two named roster submissions are still outstanding, and this submission must be attributed to a roster member before it can count toward that participant's required R1 deliverable.
+- G2 remains **BLOCKED / IN_PROGRESS** pending the full three-agent R1 evidence set and attribution. No R2 candidate work is authorized until the R1 gate is satisfied.
