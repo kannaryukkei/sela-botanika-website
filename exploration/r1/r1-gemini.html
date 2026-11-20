@@ -998,3 +998,774 @@ Mode: studio_development | Internal experiment only; NOT FOR RELEASE
       font-size: 0.84rem;
       color: var(--ink-primary);
     }
+
+    .preview-output {
+      margin-top: 1rem;
+      background: var(--bg-cream);
+      border: 1px dashed var(--terracotta);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      font-size: 0.86rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--forest);
+      color: #DCE4D8;
+      padding-block: 3rem 2.5rem;
+      font-size: 0.88rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1.4fr 1fr 1fr;
+      }
+    }
+
+    .site-footer h3 {
+      color: #F7F4EE;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .site-footer p {
+      margin: 0;
+      color: #C3D0C7;
+    }
+
+    .footer-meta {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 0.78rem;
+      color: #A9B9AE;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="concept-bar" role="region" aria-label="Studio development notice">
+    <strong>Studio Development Concept (Internal Experiment — Not for Release):</strong> Fictional Bandung indoor-plant shop &amp; styling studio scenario. All prices are illustrative estimates; no live stock, booking, or messaging is active.
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand-mark" aria-label="Sela Botanika home">
+        <span class="brand-badge" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+          </svg>
+        </span>
+        <span>
+          Sela Botanika
+          <span class="brand-sub">Bandung Concept Studio</span>
+        </span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Primary navigation">
+        <a href="#room-fit">Room-Fit Guide</a>
+        <a href="#offerings">Plants &amp; Ranges</a>
+        <a href="#styling">Space Styling</a>
+        <a href="#workshops">Workshops</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a href="#inquiry" class="btn btn-primary btn-sm header-cta">Explore Inquiry Draft</a>
+
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">
+        <span>Menu</span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile navigation">
+      <ul>
+        <li><a href="#room-fit">Room-Fit Guide</a></li>
+        <li><a href="#offerings">Plants &amp; Indicative Ranges</a></li>
+        <li><a href="#styling">Home &amp; Café Styling</a></li>
+        <li><a href="#workshops">Beginner Workshops</a></li>
+        <li><a href="#faq">Common Questions</a></li>
+        <li><a href="#inquiry">Draft an Inquiry</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO / BRAND INTRODUCTION -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Bandung Indoor Plant Studio &amp; Potting Workshop</span>
+          <h1>Choose plants that fit your room’s light—and the time you actually have.</h1>
+          <p class="hero-lead">
+            Sela Botanika is a neighborhood boutique plant shop and small-scale styling studio designed for Bandung apartments, compact homes, work desks, and independent cafés. Instead of overwhelming you with hundreds of rare cultivars, we start with your window light and realistic weekly routine.
+          </p>
+          <div class="hero-actions">
+            <a href="#room-fit" class="btn btn-primary">Try the Room-Fit Explorer</a>
+            <a href="#offerings" class="btn btn-secondary">View Indicative Price Ranges</a>
+          </div>
+
+          <dl class="hero-pillars">
+            <div class="pillar-item">
+              <dt>Everyday Retail</dt>
+              <dd>Indoor plants, pots &amp; media</dd>
+            </div>
+            <div class="pillar-item">
+              <dt>Small-Group Craft</dt>
+              <dd>Beginner potting workshops</dd>
+            </div>
+            <div class="pillar-item">
+              <dt>Spatial Guidance</dt>
+              <dd>Home &amp; café plant styling</dd>
+            </div>
+          </dl>
+        </div>
+
+        <figure class="media-frame" style="margin:0;">
+          <img
+            src="https://images.unsplash.com/photo-1463320726281-696a485928c7?auto=format&fit=crop&w=1400&q=80"
+            alt="Illustrative sunlit indoor shelf with potted green houseplants beside a warm window"
+            width="1400"
+            height="1505"
+          />
+          <figcaption class="illustrative-caption">
+            <strong>Illustrative visual only:</strong> Mood reference showing filtered indoor window light and terracotta/ceramic pairings. Does not depict actual Sela Botanika premises or live stock.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE ROOM-FIT GUIDANCE -->
+    <section class="section section-alt" id="room-fit" aria-labelledby="room-fit-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Light Plant-Choice Guidance</span>
+          <h2 id="room-fit-heading">Match a plant habit to your room and weekly rhythm</h2>
+          <p>
+            Select the light reaching your spot at midday and how many minutes a week you want to spend checking soil and leaves. Use this as a starting conversation—not a strict rulebook.
+          </p>
+        </div>
+
+        <div class="fit-workbench">
+          <div class="fit-controls" role="group" aria-label="Room and care filters">
+            <div class="control-group">
+              <label id="lbl-light">1. Natural Room Light</label>
+              <div class="pill-group" role="group" aria-labelledby="lbl-light">
+                <button type="button" class="pill-btn" data-filter="light" data-value="low" aria-pressed="false">Shaded / Far from Window</button>
+                <button type="button" class="pill-btn" data-filter="light" data-value="medium" aria-pressed="true">Bright Indirect Light</button>
+                <button type="button" class="pill-btn" data-filter="light" data-value="bright" aria-pressed="false">Direct Morning / Balcony Edge</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label id="lbl-time">2. Realistic Care Time</label>
+              <div class="pill-group" role="group" aria-labelledby="lbl-time">
+                <button type="button" class="pill-btn" data-filter="time" data-value="minimal" aria-pressed="true">~10 mins / week</button>
+                <button type="button" class="pill-btn" data-filter="time" data-value="steady" aria-pressed="false">20–30 mins / week</button>
+                <button type="button" class="pill-btn" data-filter="time" data-value="attentive" aria-pressed="false">45+ mins (Hobbyist)</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label id="lbl-space">3. Placement Context</label>
+              <div class="pill-group" role="group" aria-labelledby="lbl-space">
+                <button type="button" class="pill-btn" data-filter="space" data-value="desk" aria-pressed="true">Desk / Shelf</button>
+                <button type="button" class="pill-btn" data-filter="space" data-value="corner" aria-pressed="false">Apartment Floor Corner</button>
+                <button type="button" class="pill-btn" data-filter="space" data-value="cafe" aria-pressed="false">Café / Studio Counter</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="fit-output" aria-live="polite">
+            <div class="fit-summary-bar">
+              <p class="fit-summary-text" id="fit-summary-text">
+                Showing illustrative plant types often considered for <strong>bright indirect light</strong>, <strong>~10 mins/week</strong> care, and a <strong>desk or shelf</strong>.
+              </p>
+            </div>
+
+            <div class="fit-cards" id="fit-cards-container">
+              <!-- Populated and updated via accessible client-side script -->
+            </div>
+
+            <div class="caveat-box" role="note">
+              <strong>Important Guidance Caveat:</strong> These notes offer general, non-diagnostic orientation only. Every room in Bandung varies in airflow, humidity, window orientation, and watering habits—so plant suitability cannot be guaranteed, and we do not provide expert botanical diagnosis, pet-safety certification, air-purification claims, or health guarantees.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFERINGS & SYNTHETIC INDICATIVE PRICE BANDS -->
+    <section class="section" id="offerings" aria-labelledby="offerings-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Curated Categories &amp; Price Bands</span>
+          <h2 id="offerings-heading">What we offer—with transparent illustrative ranges</h2>
+          <p>
+            Browse our four core studio offerings below. Because living plants, handmade pots, and small-batch potting mixes vary by size and season, all figures shown are <strong>illustrative estimates only</strong>.
+          </p>
+        </div>
+
+        <div class="filter-tabs" role="tablist" aria-label="Filter studio offerings">
+          <button type="button" class="tab-btn" role="tab" aria-selected="true" data-cat="all">All Offerings</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-cat="plants">Indoor Plants</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-cat="pots">Pots, Media &amp; Tools</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-cat="starter">Starter Sets</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-cat="workshops">Beginner Workshops</button>
+        </div>
+
+        <div class="catalog-grid" id="catalog-grid">
+          <article class="catalog-card" data-category="plants">
+            <img
+              class="catalog-thumb"
+              src="https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=900&q=80"
+              alt="Illustrative foliage leaves of hardy indoor houseplants"
+              width="900"
+              height="675"
+            />
+            <div class="catalog-body">
+              <span class="price-pill">Rp35.000 – Rp450.000 (Illustrative)</span>
+              <h3>Indoor Foliage &amp; Tabletop Plants</h3>
+              <p>
+                From compact desk growers to medium floor specimens selected for typical Bandung indoor light. Grouped in-store by light comfort and watering cadence rather than collector hype.
+              </p>
+              <div class="estimate-note">Illustrative range only; actual availability &amp; final price must be confirmed.</div>
+            </div>
+          </article>
+
+          <article class="catalog-card" data-category="pots">
+            <img
+              class="catalog-thumb"
+              src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=900&q=80"
+              alt="Illustrative breathable terracotta pots and planting vessels"
+              width="900"
+              height="675"
+            />
+            <div class="catalog-body">
+              <span class="price-pill">Rp15.000 – Rp180.000 (Illustrative)</span>
+              <h3>Pots, Growing Media &amp; Hand Tools</h3>
+              <p>
+                Breathable terracotta and simple ceramic vessels with drainage, airy potting substrates, soil scoops, and gentle watering cans suited for apartment balconies and sinks.
+              </p>
+              <div class="estimate-note">Illustrative range only; sizes and materials vary; final price must be confirmed.</div>
+            </div>
+          </article>
+
+          <article class="catalog-card" data-category="starter">
+            <img
+              class="catalog-thumb"
+              src="https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=900&q=80"
+              alt="Illustrative small potted plant paired with a clean vessel for beginners"
+              width="900"
+              height="675"
+            />
+            <div class="catalog-body">
+              <span class="price-pill">Rp85.000 – Rp250.000 (Illustrative)</span>
+              <h3>First-Plant Starter Sets</h3>
+              <p>
+                A beginner-friendly plant paired with a properly drained pot, well-aerated substrate, and a plain-language printed care card covering light observation and watering checks.
+              </p>
+              <div class="estimate-note">Illustrative range only; bundle combinations vary; final price must be confirmed.</div>
+            </div>
+          </article>
+
+          <article class="catalog-card" data-category="workshops">
+            <img
+              class="catalog-thumb"
+              src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=80"
+              alt="Illustrative hands potting a small houseplant with soil and basic tools"
+              width="900"
+              height="675"
+            />
+            <div class="catalog-body">
+              <span class="price-pill">Rp100.000 – Rp175.000 / participant</span>
+              <h3>Hands-On Beginner Workshops</h3>
+              <p>
+                Intimate, practical sessions on potting mix structure, repotting without root panic, and reading leaf/soil cues. Held by inquiry rather than a fixed public calendar.
+              </p>
+              <div class="estimate-note">Illustrative per-person estimate; session scope &amp; final price must be confirmed.</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="price-disclaimer-banner" role="note">
+          <strong>Pricing &amp; Inventory Transparency:</strong> All figures listed on this page are synthetic indicative ranges created for concept planning. No live stock list or SKU catalog is published here, and final pricing must always be confirmed directly with the studio.
+        </div>
+      </div>
+    </section>
+
+    <!-- RESIDENTIAL & COMMERCIAL PLANT STYLING -->
+    <section class="section section-alt" id="styling" aria-labelledby="styling-heading">
+      <div class="container split-layout">
+        <figure class="media-frame" style="margin:0;">
+          <img
+            src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1100&q=80"
+            alt="Illustrative warm room interior accented with floor and tabletop plants"
+            width="1100"
+            height="1180"
+          />
+          <figcaption class="illustrative-caption">
+            <strong>Illustrative styling reference:</strong> Layered foliage heights and neutral vessels in natural daylight. Not an actual client project.
+          </figcaption>
+        </figure>
+
+        <div>
+          <span class="eyebrow">Residential &amp; Commercial Styling</span>
+          <h2 id="styling-heading">Thoughtful greenery for lived-in homes and independent cafés</h2>
+          <p style="color:var(--ink-secondary); margin-top:0.85rem;">
+            Good plant styling respects foot traffic, air-conditioning drafts, and who will actually water the pots on a busy Monday. Switch below to see how we approach residential rooms versus small hospitality or creative spaces.
+          </p>
+
+          <div class="mode-switch" role="group" aria-label="Styling space type">
+            <button type="button" id="style-btn-home" aria-pressed="true">Apartments &amp; Homes</button>
+            <button type="button" id="style-btn-biz" aria-pressed="false">Cafés &amp; Creative Studios</button>
+          </div>
+
+          <div class="styling-panel" id="styling-panel" aria-live="polite">
+            <h3 id="styling-panel-title">Apartments, Kos &amp; Compact Homes</h3>
+            <ul class="styling-list" id="styling-panel-list">
+              <li><strong>Light-zone mapping:</strong> Identifying bright window sills, sheltered bookshelves, and dimmer hallways before recommending plant heights.</li>
+              <li><strong>Cohesive vessel pairing:</strong> Matching terracotta, ceramic, or lightweight liners to your existing wood, concrete, or linen finishes.</li>
+              <li><strong>Realistic upkeep routine:</strong> Grouping plants with similar watering rhythms so weekend care stays effortless.</li>
+            </ul>
+            <p style="margin:0; font-size:0.86rem; color:var(--terracotta); font-weight:600;">
+              Custom Scope — No Fixed Price: Plant styling is scoped individually based on space size, vessel selection, and site conditions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEGINNER WORKSHOPS (NO INVENTED SCHEDULES) -->
+    <section class="section" id="workshops" aria-labelledby="workshops-heading">
+      <div class="container workshop-grid">
+        <div>
+          <span class="eyebrow">Small-Table Learning</span>
+          <h2 id="workshops-heading">Beginner workshops built around calm, practical habits</h2>
+          <p style="color:var(--ink-secondary); margin-top:0.85rem;">
+            Designed for first-time plant owners, couples, or small office/café teams in Bandung who want hands-on confidence before bringing home multiple pots. We do not publish fixed recurring dates or seat counts here—sessions are arranged around studio interest.
+          </p>
+
+          <div class="workshop-modules">
+            <div class="module-row">
+              <strong>1. Reading Light &amp; Watering Cues</strong>
+              <span>How to tell when potting mix is genuinely dry versus cool, and how window distance changes plant thirst.</span>
+            </div>
+            <div class="module-row">
+              <strong>2. Soil Mixes &amp; Repotting Basics</strong>
+              <span>Blending porous media, choosing drainage holes, and moving a nursery plant into a new vessel cleanly.</span>
+            </div>
+            <div class="module-row">
+              <strong>3. Indicative Workshop Band: Rp100.000 – Rp175.000 / participant</strong>
+              <span>Illustrative estimate covering basic potting materials and a starter plant to take home; final fee and date must be confirmed.</span>
+            </div>
+          </div>
+        </div>
+
+        <figure class="media-frame" style="margin:0;">
+          <img
+            src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=80"
+            alt="Illustrative tabletop potting session with fresh soil and small indoor plants"
+            width="900"
+            height="965"
+          />
+          <figcaption class="illustrative-caption">
+            <strong>Illustrative workshop imagery:</strong> Hands-on potting craft reference. Does not represent actual Sela Botanika staff, premises, or scheduled classes.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Practical Details</span>
+          <h2 id="faq-heading">Frequently asked questions</h2>
+          <p>Clear answers on how stock, pricing, delivery, and workshops work in this studio concept.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>How do stock and specific plant availability work?</summary>
+            <p>
+              Because living plants grow and arrive in small batches, we do not maintain a live online SKU catalog or guarantee that a specific cultivar is sitting on the shelf on a given day. Instead, we match your room’s light and care rhythm to healthy plants currently available at the studio.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Are the prices listed on this website final?</summary>
+            <p>
+              No. All ranges—plants (Rp35.000–450.000), pots/media/tools (Rp15.000–180.000), starter sets (Rp85.000–250.000), and workshops (Rp100.000–175.000 per participant)—are illustrative estimates only. Final pricing depends on plant size, pot material, and current studio availability, and must always be confirmed directly. Plant styling has no fixed price.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How is delivery or pickup handled?</summary>
+            <p>
+              To protect foliage and ceramic pots from transit stress, delivery options around Bandung or studio pickup arrangements are discussed individually when confirming an order or styling scope. We do not offer automated nationwide shipping or fixed delivery guarantees on this site.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>When is the next beginner workshop, and how many seats are open?</summary>
+            <p>
+              We do not list fixed dates, hours, or seat capacities on this page. Workshops are organized on an inquiry-led basis for individuals, pairs, or small groups; reach out with your preferred days and topic interest to confirm upcoming sessions.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can you guarantee a plant will survive in my room or is safe for pets?</summary>
+            <p>
+              No. Our Room-Fit Explorer offers practical, non-diagnostic starting suggestions based on light and routine, not a survival guarantee. We also do not provide veterinary pet-safety certifications, medical/air-purification claims, or specialist botanical pathology diagnosis.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- NON-SENDING CONTACT PLACEHOLDER -->
+    <section class="section" id="inquiry" aria-labelledby="inquiry-heading">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <span class="eyebrow">Studio Inquiry &amp; Room Notes</span>
+            <h2 id="inquiry-heading">Prepare a note for Sela Botanika</h2>
+            <p style="color:var(--ink-secondary); margin:0.85rem 0 1.25rem;">
+              Planning a starter plant corner, asking about workshop availability, or outlining a small café styling brief? Use this interactive planner to organize your room details.
+            </p>
+            <div class="notice-unconfigured" role="status">
+              <strong>Prototype Channel Notice:</strong> No message is sent from this form because no contact channel (email, phone, WhatsApp, or backend server) is configured in this <code>studio_development</code> concept. Submitting generates a local summary preview on your screen only.
+            </div>
+          </div>
+
+          <form class="form-grid" id="inquiry-form" novalidate>
+            <div class="field">
+              <label for="inq-name">Your Name</label>
+              <input type="text" id="inq-name" name="name" placeholder="e.g., Nadya" />
+            </div>
+
+            <div class="field">
+              <label for="inq-topic">What are you exploring?</label>
+              <select id="inq-topic" name="topic">
+                <option value="First indoor plant / Starter set">First indoor plant / Starter set (est. Rp85.000–250.000)</option>
+                <option value="Beginner potting workshop">Beginner potting workshop (est. Rp100.000–175.000/person)</option>
+                <option value="Home or apartment plant styling">Home or apartment plant styling (custom quote)</option>
+                <option value="Café or creative studio styling">Café or creative studio styling (custom quote)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="inq-notes">Room Light &amp; Space Notes</label>
+              <textarea id="inq-notes" name="notes" placeholder="Describe window direction, indoor light, or the corner/table you want to green up..."></textarea>
+            </div>
+
+            <div>
+              <button type="submit" class="btn btn-primary">Preview Inquiry Summary (Does Not Send)</button>
+            </div>
+
+            <div class="preview-output" id="preview-output" hidden aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Sela Botanika</h3>
+          <p>
+            Fictional Bandung indoor-plant shop, beginner potting workshop, and residential/café plant styling studio. Built as an internal design prototype.
+          </p>
+        </div>
+        <div>
+          <p><strong style="color:#F7F4EE;">Studio Location &amp; Hours</strong></p>
+          <p style="margin-top:0.35rem;">Bandung concept scenario. Street address, opening hours, and direct contact handles are intentionally omitted in this non-release prototype.</p>
+        </div>
+        <div>
+          <p><strong style="color:#F7F4EE;">Quick Sections</strong></p>
+          <p style="margin-top:0.35rem;">
+            <a href="#room-fit">Room-Fit Guide</a> ·
+            <a href="#offerings">Price Ranges</a> ·
+            <a href="#styling">Styling</a> ·
+            <a href="#workshops">Workshops</a> ·
+            <a href="#faq">FAQ</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-meta">
+        <span>Mode: studio_development — Internal experiment only; NOT FOR RELEASE.</span>
+        <span>All imagery illustrative only; all price ranges require studio confirmation.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // 1. Mobile Navigation Toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+
+      if (menuToggle && mobileNav) {
+        menuToggle.addEventListener('click', function () {
+          const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', String(!expanded));
+          mobileNav.classList.toggle('is-open', !expanded);
+        });
+
+        mobileNav.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            mobileNav.classList.remove('is-open');
+          });
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            mobileNav.classList.remove('is-open');
+            menuToggle.focus();
+          }
+        });
+      }
+
+      // 2. Room-Fit Guidance Explorer (Non-diagnostic, illustrative archetypes)
+      const guidanceProfiles = [
+        {
+          title: 'Upright Architectural Foliage',
+          tag: 'Forgiving & Sculptural',
+          light: ['low', 'medium'],
+          time: ['minimal', 'steady'],
+          space: ['desk', 'corner', 'cafe'],
+          desc: 'Sturdy, slow-growing upright leaves that tolerate shaded corners or bright indirect rooms without demanding daily misting.',
+          habit: 'Typical check: Allow top soil to dry thoroughly between waterings.'
+        },
+        {
+          title: 'Trailing Shelf & Counter Vines',
+          tag: 'Softens Shelves & Counters',
+          light: ['low', 'medium'],
+          time: ['minimal', 'steady'],
+          space: ['desk', 'cafe'],
+          desc: 'Adaptable trailing stems suited for high bookshelves, partition planters, or café espresso bars with soft ambient daylight.',
+          habit: 'Typical check: Water when leaves slightly relax or top few centimeters feel dry.'
+        },
+        {
+          title: 'Broad-Leaf Tropical Accent',
+          tag: 'Statement Corner Growth',
+          light: ['medium', 'bright'],
+          time: ['steady', 'attentive'],
+          space: ['corner', 'cafe'],
+          desc: 'Expressive foliage that rewards steady bright indirect window light and occasional leaf-dust wiping in Bandung’s indoor air.',
+          habit: 'Typical check: Consistent weekly moisture check and good pot drainage.'
+        },
+        {
+          title: 'Compact Sun-Sipping Tabletop Varieties',
+          tag: 'Bright Sill & Balcony Edge',
+          light: ['bright'],
+          time: ['minimal', 'steady'],
+          space: ['desk', 'cafe'],
+          desc: 'Compact forms suited for east- or west-facing sills receiving gentle direct sun without crowding small apartment surfaces.',
+          habit: 'Typical check: Gritty, fast-draining potting mix; infrequent deep watering.'
+        },
+        {
+          title: 'Patterned Foliage & Terrarium-Style Bowls',
+          tag: 'For Attentive Observers',
+          light: ['medium'],
+          time: ['attentive'],
+          space: ['desk'],
+          desc: 'Textured or patterned leaves for hobbyists who enjoy observing subtle soil moisture and humidity shifts up close.',
+          habit: 'Typical check: Prefers evenly damp (never soggy) airy substrate.'
+        }
+      ];
+
+      const state = {
+        light: 'medium',
+        time: 'minimal',
+        space: 'desk'
+      };
+
+      const labelMaps = {
+        light: {
+          low: 'shaded / far-from-window light',
+          medium: 'bright indirect light',
+          bright: 'direct morning / balcony-edge light'
+        },
+        time: {
+          minimal: '~10 mins/week care',
+          steady: '20–30 mins/week care',
+          attentive: '45+ mins/week hobbyist care'
+        },
+        space: {
+          desk: 'desk or shelf',
+          corner: 'apartment floor corner',
+          cafe: 'café or studio counter'
+        }
+      };
+
+      const cardsContainer = document.getElementById('fit-cards-container');
+      const summaryText = document.getElementById('fit-summary-text');
+
+      function renderRoomFit() {
+        if (!cardsContainer || !summaryText) return;
+
+        summaryText.innerHTML =
+          'Showing illustrative plant habits often explored for <strong>' +
+          labelMaps.light[state.light] +
+          '</strong>, <strong>' +
+          labelMaps.time[state.time] +
+          '</strong>, and a <strong>' +
+          labelMaps.space[state.space] +
+          '</strong>.';
+
+        // Score profiles so visitor always gets 3 thoughtful, relevant starting options
+        const scored = guidanceProfiles
+          .map(function (item) {
+            let score = 0;
+            if (item.light.includes(state.light)) score += 3;
+            if (item.time.includes(state.time)) score += 2;
+            if (item.space.includes(state.space)) score += 2;
+            return { item: item, score: score };
+          })
+          .sort(function (a, b) {
+            return b.score - a.score;
+          })
+          .slice(0, 3);
+
+        cardsContainer.innerHTML = scored
+          .map(function (entry) {
+            const p = entry.item;
+            return (
+              '<article class="fit-card">' +
+                '<div>' +
+                  '<span class="fit-tag">' + p.tag + '</span>' +
+                  '<h3>' + p.title + '</h3>' +
+                  '<p>' + p.desc + '</p>' +
+                '</div>' +
+                '<div class="fit-meta">' + p.habit + '</div>' +
+              '</article>'
+            );
+          })
+          .join('');
+      }
+
+      document.querySelectorAll('.pill-btn[data-filter]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const group = btn.getAttribute('data-filter');
+          const val = btn.getAttribute('data-value');
+          state[group] = val;
+
+          document.querySelectorAll('.pill-btn[data-filter="' + group + '"]').forEach(function (sibling) {
+            sibling.setAttribute('aria-pressed', sibling === btn ? 'true' : 'false');
+          });
+
+          renderRoomFit();
+        });
+      });
+
+      renderRoomFit();
+
+      // 3. Offerings Category Filter Tabs
+      const tabButtons = document.querySelectorAll('.tab-btn[data-cat]');
+      const catalogCards = document.querySelectorAll('.catalog-card[data-category]');
+
+      tabButtons.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          const cat = tab.getAttribute('data-cat');
+          tabButtons.forEach(function (t) {
+            t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+          });
+
+          catalogCards.forEach(function (card) {
+            const match = cat === 'all' || card.getAttribute('data-category') === cat;
+            card.hidden = !match;
+          });
+        });
+      });
+
+      // 4. Styling Audience Switcher (Home vs Café/Studio)
+      const btnHome = document.getElementById('style-btn-home');
+      const btnBiz = document.getElementById('style-btn-biz');
+      const panelTitle = document.getElementById('styling-panel-title');
+      const panelList = document.getElementById('styling-panel-list');
+
+      const stylingContent = {
+        home: {
+          title: 'Apartments, Kos & Compact Homes',
+          items: [
+            '<strong>Light-zone mapping:</strong> Identifying bright window sills, sheltered bookshelves, and dimmer hallways before recommending plant heights.',
+            '<strong>Cohesive vessel pairing:</strong> Matching terracotta, ceramic, or lightweight liners to your existing wood, concrete, or linen finishes.',
+            '<strong>Realistic upkeep routine:</strong> Grouping plants with similar watering rhythms so weekend care stays effortless.'
+          ]
+        },
+        biz: {
+          title: 'Independent Cafés, Studios & Small Workspaces',
+          items: [
+            '<strong>Customer flow &amp; table clearance:</strong> Placing floor planters and counter greenery where they frame seating without blocking walkways.',
+            '<strong>Staff-friendly care handover:</strong> Clear watering notes designed around opening/closing shifts and weekend hours.',
+            '<strong>Zone-by-zone scalability:</strong> Starting with an entrance cluster or counter accent rather than over-planting dim back corners.'
+          ]
+        }
+      };
+
+      function setStylingMode(mode) {
+        if (!btnHome || !btnBiz || !panelTitle || !panelList) return;
+        const isHome = mode === 'home';
+        btnHome.setAttribute('aria-pressed', String(isHome));
+        btnBiz.setAttribute('aria-pressed', String(!isHome));
+        panelTitle.textContent = stylingContent[mode].title;
+        panelList.innerHTML = stylingContent[mode].items
+          .map(function (li) { return '<li>' + li + '</li>'; })
+          .join('');
+      }
+
+      if (btnHome && btnBiz) {
+        btnHome.addEventListener('click', function () { setStylingMode('home'); });
+        btnBiz.addEventListener('click', function () { setStylingMode('biz'); });
+      }
+
+      // 5. Non-Sending Contact / Inquiry Preview
+      const inquiryForm = document.getElementById('inquiry-form');
+      const previewOutput = document.getElementById('preview-output');
+
+      if (inquiryForm && previewOutput) {
+        inquiryForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const nameVal = (document.getElementById('inq-name').value || '').trim() || 'Visitor';
+          const topicVal = document.getElementById('inq-topic').value;
+          const notesVal = (document.getElementById('inq-notes').value || '').trim() || 'No room notes entered yet.';
+
+          previewOutput.hidden = false;
+          previewOutput.innerHTML =
+            '<strong>Local Draft Preview Only (Not Sent):</strong><br>' +
+            '<span><strong>From:</strong> ' + escapeHtml(nameVal) + '</span><br>' +
+            '<span><strong>Interest:</strong> ' + escapeHtml(topicVal) + '</span><br>' +
+            '<span><strong>Room Notes:</strong> ' + escapeHtml(notesVal) + '</span><br>' +
+            '<em style="display:block;margin-top:0.5rem;color:#65756C;">Reminder: No message was transmitted because no contact channel is configured in this prototype.</em>';
+        });
+      }
+
+      function escapeHtml(str) {
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+    })();
+  </script>
+</body>
+</html>
