@@ -997,4 +997,124 @@
               <h3>Titik pot, bukan seluruh ruangan</h3>
               <p>Perhatikan jam sinar langsung menyentuh titik itu, arah jendela, tirai, teritis, dan benda tinggi yang menghalangi.</p>
             </article>
+            <article class="protocol-item">              <span class="n">AMATI / 02</span>
+              <h3>Ritme yang realistis</h3>
+              <p>Bukan jadwal sempurna. Berapa menit per minggu yang benar-benar tersedia untuk memeriksa media, daun, dan pot?</p>
+            </article>
             <article class="protocol-item">
+              <span class="n">AMATI / 03</span>
+              <h3>Batas ruang</h3>
+              <p>Ukuran pot, lalu lintas penghuni, permukaan yang bisa basah, dan siapa yang akan merawat saat sibuk.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · BACA RUANG -->
+    <section class="sheet" id="baca-ruang">
+      <div class="sheet-head">
+        <p class="folio"><b>02</b> Baca ruang</p>
+        <p class="mono">SIMULASI LOKAL · TANPA DATA DIKIRIM</p>
+      </div>
+      <div class="sheet-grid">
+        <div class="span-12">
+          <h2>Pilih kondisi yang paling dekat.</h2>
+          <p class="lede">Panel ini memperbarui arah awal berdasarkan pilihan Anda. Ini bukan diagnosis, bukan inventaris, dan bukan jaminan kecocokan.</p>
+        </div>
+      </div>
+
+      <div class="reader-layout reveal-group">
+        <form class="reader-form" id="roomForm" aria-label="Pembaca kondisi ruang dan ritme rawat">
+          <fieldset>
+            <legend>Cahaya di titik pot</legend>
+            <div class="chip-grid">
+              <label class="chip">
+                <input type="radio" name="light" value="low" checked>
+                <span class="dot" aria-hidden="true"></span>
+                <span class="chip-text">Naungan / tidak langsung</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="light" value="medium">
+                <span class="dot" aria-hidden="true"></span>
+                <span class="chip-text">Sedang / cahaya lembut</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="light" value="bright">
+                <span class="dot" aria-hidden="true"></span>
+                <span class="chip-text">Terang / matahari tersaring</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Waktu rawat yang realistis</legend>
+            <div class="chip-grid">
+              <label class="chip">
+                <input type="radio" name="care" value="little" checked>
+                <span class="dot" aria-hidden="true"></span>
+                <span class="chip-text">Sedikit, mingguan</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="care" value="steady">
+                <span class="dot" aria-hidden="true"></span>
+                <span class="chip-text">Rutin dan stabil</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="care" value="fuss">
+                <span class="dot" aria-hidden="true"></span>
+                <span class="chip-text">Suka mengurus lebih sering</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <p class="small" style="margin:0;">Nilai ini hanya simulasi sisi klien. Tidak ada data yang dikirim atau disimpan.</p>
+        </form>
+
+        <div class="reader-output" id="roomResult" role="status" aria-live="polite" aria-atomic="true">
+          <!-- Hasil diisi oleh JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · ARAH TANAMAN -->
+    <section class="sheet" id="arah">
+      <div class="sheet-head">
+        <p class="folio"><b>03</b> Arah tanaman</p>
+        <p class="mono">TIGA PROFIL UNTUK DIBACA</p>
+      </div>
+      <div class="sheet-grid">
+        <div class="span-7">
+          <h2>Tiga arah, bukan tiga jaminan.</h2>
+          <p class="lede">Gunakan arah ini untuk menyusun pertanyaan dan membandingkan kebutuhan. Setiap ruang tetap perlu diamati sendiri.</p>
+        </div>
+        <div class="span-5">
+          <figure class="plate">
+            <svg viewBox="0 0 800 460" role="img" aria-labelledby="plate2title plate2desc">
+              <title id="plate2title">Piring arah: naungan, sedang, terang</title>
+              <desc id="plate2desc">Ilustrasi sintetis tiga profil tanaman dengan batang cahaya dan penanda ritme rawat. Bukan foto spesimen atau inventaris.</desc>
+              <rect width="800" height="460" fill="#f7f2e8"/>
+              <g stroke="#d8d1c3" stroke-width="1">
+                <path d="M0 60H800M0 120H800M0 180H800M0 240H800M0 300H800M0 360H800M0 420H800"/>
+                <path d="M100 0V460M200 0V460M300 0V460M400 0V460M500 0V460M600 0V460M700 0V460"/>
+              </g>
+              <g font-family="ui-monospace, monospace" font-size="10" fill="#6a736b" letter-spacing=".8">
+                <text x="40" y="34">PIRING ARAH / PROFIL 01–03</text>
+                <text x="40" y="444">BUKAN SKALA BOTANIS</text>
+              </g>
+              <g>
+                <!-- Column 1 -->
+                <rect x="75" y="70" width="140" height="10" fill="#e2dccf" stroke="#1d241f"/>
+                <rect x="75" y="70" width="38" height="10" fill="#c6f24d" stroke="#1d241f"/>
+                <text x="75" y="110" font-family="ui-monospace, monospace" font-size="10" fill="#1d241f">NAUNGAN</text>
+                <path d="M145 370 C120 300 120 250 150 220 C175 250 175 310 165 370 Z" fill="#4f6b55" stroke="#1d241f" stroke-width="2"/>
+                <path d="M130 370 C105 310 95 270 110 240 C130 270 140 330 145 370 Z" fill="#6f8f6a" stroke="#1d241f" stroke-width="1.5"/>
+                <path d="M120 370 L180 370 L172 410 L128 410 Z" fill="#a97655" stroke="#1d241f" stroke-width="2"/>
+                <line x1="75" y1="370" x2="215" y2="370" stroke="#1d241f" stroke-width="1.5"/>
+                <text x="75" y="430" font-family="ui-monospace, monospace" font-size="9" fill="#6a736b">RAWAT: RENDAH</text>
+              </g>
+              <g>
+                <!-- Column 2 -->
+                <rect x="330" y="70" width="140" height="10" fill="#e2dccf" stroke="#1d241f"/>
+                <rect x="330" y="70" width="82" height="10" fill="#c6f24d" stroke="#1d241f"/>
+                <text x
