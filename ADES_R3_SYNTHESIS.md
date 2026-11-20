@@ -41,7 +41,11 @@ Build one Indonesian-first editorial botanical studio experience around the prin
 
 ## Verification status
 
-- Source files authored and committed; verify fetch-back before considering source integrity complete.
-- HTML structure and JavaScript syntax checks to be run after repository write.
-- Browser rendering, visitor journey execution, mobile/tablet/desktop visual review, actual image loading/crops, keyboard/screen-reader audit, performance, cross-browser behavior and GSAP runtime: NOT_VERIFIED. The available browser environment previously blocked local navigation with `ERR_BLOCKED_BY_ADMINISTRATOR`.
+- All six project files were fetched back from the repository after commit.
+- Static HTML checks: doctype and closing `</html>` present; 9 page sections; 4 image elements from 3 unique Unsplash sources; every image has non-empty alt text; no duplicate IDs; all in-page hash links resolve; all new-tab links include `rel="noopener"`; lightweight tag-stack scan has no unmatched tags or residual open elements.
+- JavaScript source compiled successfully with the V8 parser via `new Function(source)`; this is a syntax check only, not execution or runtime testing.
+- CSS brace counts balance; 4 media queries are present, including a reduced-motion rule. Source includes GSAP + ScrollTrigger, a no-GSAP scroll-progress fallback, and a reduced-motion bypass.
+- The local Git clone attempt failed because the container could not resolve `github.com`. Earlier Playwright/Chromium navigation was blocked with `ERR_BLOCKED_BY_ADMINISTRATOR`; no rendered screenshots were produced.
+- Browser rendering, visitor journey execution, mobile/tablet/desktop visual review, actual image loading/crops, keyboard/screen-reader audit, performance, cross-browser behavior and GSAP runtime: NOT_VERIFIED. The feey CDN image preview also returned a cache miss in the web viewer, so its browser delivery remains unverified.
+- Image generation was attempted for a coherent original photo set but the image-generation service returned an error; it was not retried. The integrated site therefore uses three remote Unsplash photo assets with visible contributor/photo-page credits instead of generated/local imagery.
 - No production deployment or release is authorized.
